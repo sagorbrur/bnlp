@@ -4,6 +4,12 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
 ## Installation
 
+* local install
+
+```python setup.py install```
+
+* pypi package installer
+
 ```pip install bnlp```
 
 
