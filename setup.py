@@ -12,7 +12,7 @@ setuptools.setup(
     description="A small example package",
     long_description=codecs.open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/sagorbrur/bnlp",
     license="MIT",
     packages=setuptools.find_packages(),
     classifiers=[
