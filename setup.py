@@ -5,11 +5,11 @@ import setuptools
 #     long_description = fh.read()
 
 setuptools.setup(
-    name="bnlp",
+    name="bnlp-tool",
     version="0.0.1",
     author="Sagor Sarker",
     author_email="sagorhem3532@gmail.com",
-    description="A small example package",
+    description="BNLP is a natural language processing toolkit for Bengali Language",
     long_description=codecs.open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/sagorbrur/bnlp",
