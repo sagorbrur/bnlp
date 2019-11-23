@@ -143,3 +143,4 @@ print(sentence_tokens)
 ## Contributor List
 
 * [Sagor Sarker](https://github.com/sagorbrur)
+* [Faruk Ahmad](https://github.com/faruk-ahmad)
