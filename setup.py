@@ -1,8 +1,6 @@
 import codecs
 import setuptools
 
-# with open("README.md", "r") as fh:
-#     long_description = fh.read()
 
 setuptools.setup(
     name="bnlp-tool",
@@ -23,7 +21,7 @@ setuptools.setup(
     python_requires='>=3.6',
     install_requires=[
         "sentencepiece",
-        "gensim>=3.7.3",
+        "gensim",
         "nltk",
     ],
 )
