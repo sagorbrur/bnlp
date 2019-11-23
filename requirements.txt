@@ -1,3 +1,4 @@
+python 3.6
 nltk 3.3
 sentencepiece 0.1.83
 gensim 3.7.3
