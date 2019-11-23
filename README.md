@@ -102,6 +102,36 @@ print(sentence_tokens)
 
 
     ```
+    
+ * **Bengali FastText**
+
+    - Download Bengali FastText Pretrained Model From [Here](https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.bn.300.bin.gz)
+
+    - Generate Vector Using Pretrained Model
+
+      ```py
+      from bnlp.embedding.bengali_fasttext import Bengali_Fasttext
+
+      bft = Bengali_Fasttext()
+      word = "গ্রাম"
+      model_path = "cc.bn.300.bin"
+      word_vector = bf.generate_word_vector(model_path, word)
+      print(word_vector.shape)
+      print(word_vector)
+
+
+      ```
+    - Train Bengali FastText Model
+
+      ```py
+      from bnlp.embedding.bengali_fasttext import Bengali_Fasttext
+
+      bft = Bengali_Fasttext(is_train=True)
+      data = "data.txt"
+      model_name = "saved_model.bin"
+      bf.train_fasttext(data, model_name)
+
+      ```
 
 ## Developer Guide
 
