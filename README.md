@@ -70,7 +70,7 @@ print(sentence_tokens)
     from bnlp.embedding.bengali_word2vec import Bengali_Word2Vec
 
     bwv = Bengali_Word2Vec()
-    model_path = "bnlp/embedding/wiki.bn.text.model"
+    model_path = "model/wiki.bn.text.model"
     word = 'আমার'
     vector = bwv.generate_word_vector(model_path, word)
     print(vector.shape)
@@ -84,7 +84,7 @@ print(sentence_tokens)
     from bnlp.embedding.bengali_word2vec import Bengali_Word2Vec
 
     bwv = Bengali_Word2Vec()
-    model_path = "bnlp/embedding/wiki.bn.text.model"
+    model_path = "model/wiki.bn.text.model"
     word = 'আমার'
     similar = bwv.most_similar(model_path, word)
     print(similar)
