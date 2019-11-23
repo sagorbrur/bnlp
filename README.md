@@ -20,7 +20,7 @@ python setup.py install
 
 ## Tokenization
 
-* Bengali SentencePiece Tokenization
+* **Bengali SentencePiece Tokenization**
 
   - tokenization using trained model
     ```py
@@ -45,7 +45,7 @@ python setup.py install
 
     ```
 
-* NLTK Tokenization
+* **NLTK Tokenization**
 
 ```py
 from bnlp.tokenizer.nltk_tokenizer import NLTK_Tokenizer
