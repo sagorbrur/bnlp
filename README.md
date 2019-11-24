@@ -104,10 +104,12 @@ print(sentence_tokens)
     ```
     
  * **Bengali FastText**
+ 
 
     - Download Bengali FastText Pretrained Model From [Here](https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.bn.300.bin.gz)
 
     - Generate Vector Using Pretrained Model
+      
 
       ```py
       from bnlp.embedding.bengali_fasttext import Bengali_Fasttext
@@ -132,6 +134,11 @@ print(sentence_tokens)
       bf.train_fasttext(data, model_name)
 
       ```
+
+## Issue
+* if `ModuleNotFoundError: No module named 'fasttext'` problem arise please do the next line
+
+```pip install fasttext```
 
 ## Developer Guide
 
