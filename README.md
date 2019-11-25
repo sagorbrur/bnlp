@@ -4,26 +4,11 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
 ## Installation
 
-<<<<<<< HEAD
 
 
 * pypi package installer(python 3.6)
 
   ```pip install bnlp_toolkit```
-=======
-* local install
-
-  ```
-  git clone https://github.com/sagorbrur/bnlp.git
-  cd bnlp
-  python setup.py install
-
-  ```
-
-* pypi package installer(python 3.6)
-
-  ```pip install bnlp-tool```
->>>>>>> b1edf3b26943b19b496808a4e8871111c5f6d686
 
 
 ## Pretrained Model
@@ -38,11 +23,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
   - tokenization using trained model
     ```py
-<<<<<<< HEAD
     from bnlp.sentencepiece_tokenizer import SP_Tokenizer
-=======
-    from bnlp.tokenizer.sentencepiece_tokenizer import SP_Tokenizer
->>>>>>> b1edf3b26943b19b496808a4e8871111c5f6d686
 
     bsp = SP_Tokenizer()
     model_path = "./model/bn_spm.model"
@@ -53,11 +34,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     ```
   - Training SentencePiece
     ```py
-<<<<<<< HEAD
     from bnlp.sentencepiece_tokenizer import SP_Tokenizer
-=======
-    from bnlp.tokenizer.sentencepiece_tokenizer import SP_Tokenizer
->>>>>>> b1edf3b26943b19b496808a4e8871111c5f6d686
     
     bsp = SP_Tokenizer(is_train=True)
     data = "test.txt"
@@ -70,11 +47,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 * **NLTK Tokenization**
 
 ```py
-<<<<<<< HEAD
 from bnlp.nltk_tokenizer import NLTK_Tokenizer
-=======
-from bnlp.tokenizer.nltk_tokenizer import NLTK_Tokenizer
->>>>>>> b1edf3b26943b19b496808a4e8871111c5f6d686
 
 text = "আমি ভাত খাই। সে বাজারে যায়। তিনি কি সত্যিই ভালো মানুষ?"
 bnltk = NLTK_Tokenizer(text)
@@ -93,11 +66,7 @@ print(sentence_tokens)
   - Generate Vector using pretrain model
 
     ```py
-<<<<<<< HEAD
     from bnlp.bengali_word2vec import Bengali_Word2Vec
-=======
-    from bnlp.embedding.bengali_word2vec import Bengali_Word2Vec
->>>>>>> b1edf3b26943b19b496808a4e8871111c5f6d686
 
     bwv = Bengali_Word2Vec()
     model_path = "model/wiki.bn.text.model"
@@ -111,11 +80,7 @@ print(sentence_tokens)
   - Find Most Similar Word Using Pretrained Model
 
     ```py
-<<<<<<< HEAD
     from bnlp.bengali_word2vec import Bengali_Word2Vec
-=======
-    from bnlp.embedding.bengali_word2vec import Bengali_Word2Vec
->>>>>>> b1edf3b26943b19b496808a4e8871111c5f6d686
 
     bwv = Bengali_Word2Vec()
     model_path = "model/wiki.bn.text.model"
@@ -127,11 +92,7 @@ print(sentence_tokens)
   - Train Bengali Word2Vec with your own data
 
     ```py
-<<<<<<< HEAD
     from bnlp.bengali_word2vec import Bengali_Word2Vec
-=======
-    from bnlp.embedding.bengali_word2vec import Bengali_Word2Vec
->>>>>>> b1edf3b26943b19b496808a4e8871111c5f6d686
 
     data_file = "test.txt"
     model_name = "test_model.model"
@@ -150,11 +111,7 @@ print(sentence_tokens)
       
 
       ```py
-<<<<<<< HEAD
       from bnlp.bengali_fasttext import Bengali_Fasttext
-=======
-      from bnlp.embedding.bengali_fasttext import Bengali_Fasttext
->>>>>>> b1edf3b26943b19b496808a4e8871111c5f6d686
 
       bft = Bengali_Fasttext()
       word = "গ্রাম"
@@ -168,11 +125,7 @@ print(sentence_tokens)
     - Train Bengali FastText Model
 
       ```py
-<<<<<<< HEAD
       from bnlp.bengali_fasttext import Bengali_Fasttext
-=======
-      from bnlp.embedding.bengali_fasttext import Bengali_Fasttext
->>>>>>> b1edf3b26943b19b496808a4e8871111c5f6d686
 
       bft = Bengali_Fasttext(is_train=True)
       data = "data.txt"
