@@ -13,6 +13,8 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
 ## Pretrained Model
 
+Trained on `wikipedia dump` dataset
+
 * [Bengali SentencePiece](https://github.com/sagorbrur/bnlp/tree/master/model)
 * [Bengali Word2Vec](https://drive.google.com/open?id=13fBXPwqpP8-e_aWVognoViTeg5DxSUKR)
 * [Bengali FastText](https://drive.google.com/open?id=1KRA91w6dMpuQpowOwLCRplRgSdRzyOYz)
