@@ -138,12 +138,16 @@ print(sentence_tokens)
 * if `ModuleNotFoundError: No module named 'fasttext'` problem arise please do the next line
 
 ```pip install fasttext```
-* if `nltk` issue arise please do the following line 
+* if `nltk` issue arise please do the following line before importing `bnlp`
 
 ```py
 import nltk
 nltk.download("punkt")
 ```
+
+## Thanks To
+
+* [Semantics Lab](http://semanticslab.net/)
 
 ## Developer Guide
 
