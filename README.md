@@ -116,7 +116,7 @@ print(sentence_tokens)
       bft = Bengali_Fasttext()
       word = "গ্রাম"
       model_path = "cc.bn.300.bin"
-      word_vector = bf.generate_word_vector(model_path, word)
+      word_vector = bft.generate_word_vector(model_path, word)
       print(word_vector.shape)
       print(word_vector)
 
@@ -130,7 +130,7 @@ print(sentence_tokens)
       bft = Bengali_Fasttext(is_train=True)
       data = "data.txt"
       model_name = "saved_model.bin"
-      bf.train_fasttext(data, model_name)
+      bft.train_fasttext(data, model_name)
 
       ```
 
