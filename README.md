@@ -147,9 +147,6 @@ import nltk
 nltk.download("punkt")
 ```
 
-## Thanks To
-
-* [Semantics Lab](http://semanticslab.net/)
 
 ## Developer Guide
 
@@ -157,6 +154,10 @@ nltk.download("punkt")
 * `add` or `modify`
 * send `pull request` for merging
 * we will verify and include your name in `Contributor List`
+
+## Thanks To
+
+* [Semantics Lab](http://semanticslab.net/)
 
 ## Contributor List
 
