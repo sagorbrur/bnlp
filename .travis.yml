@@ -1,0 +1,37 @@
+sudo: false
+
+cache:
+  apt: true
+  directories:
+  - $HOME/.cache/pip
+  - $HOME/.ccache
+  - $HOME/.pip-cache
+dist: trusty
+language: python
+env:
+  TOX_PARALLEL_NO_SPINNER: 1
+
+
+matrix:
+  include:
+    - python: '3.6'
+      env: TOXENV="flake8,flake8-docs"
+
+    - python: '3.5'
+      env: TOXENV="py35-linux"
+
+    - python: '3.6'
+      env: TOXENV="py36-linux"
+
+    - python: '3.7'
+      env:
+        - TOXENV="py37-linux"
+        - BOTO_CONFIG="/dev/null"
+      dist: xenial
+      sudo: true
+
+
+install:
+  - pip install tox
+  - python ci/install_wheels.py
+script: tox -vv
