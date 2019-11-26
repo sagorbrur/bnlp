@@ -21,7 +21,7 @@ class NLTK_Tokenizer(object):
             if a[-1] == ".":
                 a = a[:-2] + a[-2:].replace(".","।")
             new_tokens.append(a)
-        return tokens
+        return new_tokens
 
 
 
