@@ -102,7 +102,7 @@ print(sentence_tokens)
 
     ```py
     from bnlp.bengali_word2vec import Bengali_Word2Vec
-
+    bwv = Bengali_Word2Vec(is_train=True)
     data_file = "test.txt"
     model_name = "test_model.model"
     vector_name = "test_vector.vector"
