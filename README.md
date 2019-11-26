@@ -163,3 +163,5 @@ nltk.download("punkt")
 
 * [Sagor Sarker](https://github.com/sagorbrur)
 * [Faruk Ahmad](https://github.com/faruk-ahmad)
+* [Menon](https://github.com/menon92)
+* [Kazal](https://github.com/kazalbrur)
