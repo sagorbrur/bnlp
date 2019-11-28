@@ -124,3 +124,10 @@ class BasicTokenizer(object):
       else:
         output.append(char)
     return "".join(output)
+  
+
+if __name__ == "__main__":
+    raw_text = "আমি বাংলায় গান গাই।"
+    tokenizer1 = BasicTokenizer(False)
+    tokens1 = tokenizer1.tokenize(raw_text)
+    print(tokens1)
