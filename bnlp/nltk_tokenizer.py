@@ -1,5 +1,11 @@
 import nltk
 
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    print("punkt not found. downloading...")
+    nltk.download('punkt')
+
 
 class NLTK_Tokenizer(object):
     def __init__(self, text):
