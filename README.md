@@ -53,19 +53,32 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
     ```
 
+* **Basic Tokenizer**
+
+  NB: not include in pip install yet, will added in new version
+
+  ```py
+  from bnlp.basic_tokenizer import BasicTokenizer
+  basic_t = BasicTokenizer(False)
+  raw_text = "আমি বাংলায় গান গাই।"
+  tokens = basic_t.tokenize(raw_text)
+  print(tokens)
+
+  ```
+
 * **NLTK Tokenization**
 
-```py
-from bnlp.nltk_tokenizer import NLTK_Tokenizer
+  ```py
+  from bnlp.nltk_tokenizer import NLTK_Tokenizer
 
-text = "আমি ভাত খাই। সে বাজারে যায়। তিনি কি সত্যিই ভালো মানুষ?"
-bnltk = NLTK_Tokenizer(text)
-word_tokens = bnltk.word_tokenize()
-sentence_tokens = bnltk.sentence_tokenize()
-print(word_tokens)
-print(sentence_tokens)
+  text = "আমি ভাত খাই। সে বাজারে যায়। তিনি কি সত্যিই ভালো মানুষ?"
+  bnltk = NLTK_Tokenizer(text)
+  word_tokens = bnltk.word_tokenize()
+  sentence_tokens = bnltk.sentence_tokenize()
+  print(word_tokens)
+  print(sentence_tokens)
 
-```
+  ```
 
 
 ## Word Embedding
