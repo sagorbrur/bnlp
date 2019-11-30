@@ -1,7 +1,8 @@
 
-from bnlp.tokenizer.sentencepiece_tokenizer import SP_Tokenizer
-from bnlp.tokenizer.nltk_tokenizer import NLTK_Tokenizer
-from bnlp.embedding.bengali_word2vec import Bengali_Word2Vec
+from bnlp.sentencepiece_tokenizer import SP_Tokenizer
+from bnlp.nltk_tokenizer import NLTK_Tokenizer
+from bnlp.bengali_word2vec import Bengali_Word2Vec
+from bnlp.basic_tokenizer import BasicTokenizer
 
 
 
@@ -31,14 +32,18 @@ if __name__ == "__main__":
     # vector_name = "test_vector.vector"
     # bwv.train_word2vec(data_file, model_name, vector_name)
 
-    bwv = Bengali_Word2Vec()
-    model_path = "bnlp/embedding/wiki.bn.text.model"
-    word = 'আমার'
-    similar = bwv.most_similar(model_path, word)
-    print(similar)
-    vector = bwv.generate_word_vector(model_path, word)
-    print(vector.shape)
-    print(vector)
+    # bwv = Bengali_Word2Vec()
+    # model_path = "bnlp/embedding/wiki.bn.text.model"
+    # word = 'আমার'
+    # similar = bwv.most_similar(model_path, word)
+    # print(similar)
+    # vector = bwv.generate_word_vector(model_path, word)
+    # print(vector.shape)
+    # print(vector)
+    basic_t = BasicTokenizer(False)
+    raw_text = "আমি বাংলায় গান গাই।"
+    tokens = basic_t.tokenize(raw_text)
+    print(tokens)
 
 
     
