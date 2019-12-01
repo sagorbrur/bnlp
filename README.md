@@ -55,7 +55,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
 * **Basic Tokenizer**
 
-  NB: not include in pip install yet, will added in new version
+ 
 
   ```py
   from bnlp.basic_tokenizer import BasicTokenizer
@@ -171,7 +171,7 @@ nltk.download("punkt")
 * `Fork`
 * `add` or `modify`
 * send `pull request` for merging
-* we will verify and include your name in `Contributor List`
+
 
 ## Thanks To
 
