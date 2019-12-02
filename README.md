@@ -177,9 +177,7 @@ nltk.download("punkt")
 
 ## Developer Guide
 
-* `Fork`
-* `add` or `modify`
-* send `pull request` for merging
+Check [CONTRIBUTING](https://github.com/sagorbrur/bnlp/blob/master/CONTRIBUTING.md) page for details.
 
 
 ## Thanks To
