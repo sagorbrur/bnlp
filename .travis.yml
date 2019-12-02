@@ -5,7 +5,9 @@ sudo: false
 language: python
 
 # os
-
+os:
+  - linux
+  - osx
 # Set the python version to 2.7
 python:
   - "3.6"
