@@ -7,7 +7,6 @@ language: python
 # os
 os:
   - linux
-  - windows
 # Set the python version to 3.6, 3.7
 python:
   - "3.6"
