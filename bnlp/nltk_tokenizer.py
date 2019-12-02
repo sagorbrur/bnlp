@@ -17,7 +17,16 @@ class NLTK_Tokenizer(object):
 
     def word_tokenize(self):
         tokens = nltk.word_tokenize(self.text)
-        return tokens
+        new_tokens = []
+        for a in tokens:
+            if a[-1] == "।":
+                a1 = a[:-1]
+                a2 = a[-1]
+                new_tokens.append(a1)
+                new_tokens.append(a2)
+            else:
+              new_tokens.append(a)
+        return new_tokens
     
     def sentence_tokenize(self):
         text = self.text.replace("।", ".")
