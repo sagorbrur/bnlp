@@ -16,5 +16,5 @@ install:
 
 # Run the unit test
 script:
-  - coverage run test.py
+  - python test.py
   # - coverage run tests.py
