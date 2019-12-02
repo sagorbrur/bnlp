@@ -4,8 +4,12 @@ sudo: false
 # Set the build language to Python
 language: python
 
+# os
+
 # Set the python version to 2.7
-python: 3.6
+python:
+  - "3.6"
+  - "3.7"
 
 # Install the codecov pip dependency
 install:
