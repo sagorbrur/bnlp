@@ -18,24 +18,24 @@ class NLTK_Tokenizer(object):
     def word_tokenize(self):
         tokens = nltk.word_tokenize(self.text)
         new_tokens = []
-        for a in tokens:
-            if a[-1] == "।":
-                a1 = a[:-1]
-                a2 = a[-1]
-                new_tokens.append(a1)
-                new_tokens.append(a2)
+        for token in tokens:
+            if token[-1] == "।" and len(token)>1:
+                token_1 = token[:-1]
+                token_2 = token[-1]
+                new_tokens.append(token_1)
+                new_tokens.append(token_2)
             else:
-              new_tokens.append(a)
+              new_tokens.append(token)
         return new_tokens
     
     def sentence_tokenize(self):
         text = self.text.replace("।", ".")
         tokens = nltk.tokenize.sent_tokenize(text)
         new_tokens = []
-        for a in tokens:
-            if a[-1] == ".":
-                a = a[:-2] + a[-2:].replace(".","।")
-            new_tokens.append(a)
+        for token in tokens:
+            if token[-1] == ".":
+                token = token[:-2] + token[-2:].replace(".","।")
+            new_tokens.append(token)
         return new_tokens
 
 
