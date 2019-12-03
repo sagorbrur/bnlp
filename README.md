@@ -72,6 +72,8 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   raw_text = "আমি বাংলায় গান গাই।"
   tokens = basic_t.tokenize(raw_text)
   print(tokens)
+  
+  # output: ["আমি", "বাংলায়", "গান", "গাই", "।"]
 
   ```
 
@@ -86,6 +88,10 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   sentence_tokens = bnltk.sentence_tokenize()
   print(word_tokens)
   print(sentence_tokens)
+  
+  # output
+  # word_token: ["আমি", "ভাত", "খাই", "।", "সে", "বাজারে", "যায়", "।", "তিনি", "কি", "সত্যিই", "ভালো", "মানুষ", "?"]
+  # sentence_token: ["আমি ভাত খাই।", "সে বাজারে যায়।", "তিনি কি সত্যিই ভালো মানুষ?"]
 
   ```
 
