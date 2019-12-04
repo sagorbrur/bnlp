@@ -18,6 +18,8 @@ install:
   - pip install gensim
   - pip install nltk
   - pip install fasttext
+  - pip install PyYAML
+  - pip install scikit-learn
 
 # Run the unit test
 script:
