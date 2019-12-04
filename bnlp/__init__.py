@@ -23,6 +23,6 @@ if is_torch_available():
 
 
 if not is_torch_available():
-    logger.warning("For sentiment analysis please install torch using", 
-    "https://github.com/sagorbrur/bnlp/blob/master/README.md instruction.")
+    print("torch not installed. Install torch to use sentiment analysis.")
+    #logger.warning("For sentiment analysis please install torch using https://github.com/sagorbrur/bnlp/blob/master/README.md instruction.")
 
