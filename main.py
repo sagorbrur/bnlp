@@ -47,8 +47,8 @@ if __name__ == "__main__":
     # raw_text = "আমি বাংলায় গান গাই।"
     # tokens = basic_t.tokenize(raw_text)
     # print(tokens)
-    model = "/media/hdd/sagor/Research/Bengali-NLP/version/predict_sentiment/bengali_sentiment.pt"
-    vocab = "/media/hdd/sagor/Research/Bengali-NLP/version/predict_sentiment/vocab.txt"
+    model = "bengali_sentiment.pt"
+    vocab = "vocab.txt"
     text = "ভালো থাকার উপায় নাই।"
     senti = BN_Sentiment(model, vocab)
     senti.sentiment(text)
