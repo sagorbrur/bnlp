@@ -172,7 +172,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
       ```
 
 ## Sentiment Analysis
-You can do sentiment analysis using bnlp now. We used `pytorch` for sentiment analysis.
+You can do sentiment analysis using bnlp now. We used `pytorch 1.1.0` for sentiment analysis.
 
 ### Pytorch installation
 * Download pytorch wheel file from [here](https://download.pytorch.org/whl/cpu/torch-1.1.0-cp36-cp36m-linux_x86_64.whl)(cpu only)
@@ -184,7 +184,7 @@ NB: Details about training and dataset is comming soon
 
 ### Predict Sentiment
 
-* You can find pretrain model and vocab file inside `model` directory
+* You can find pretrained model and vocab file inside `model` directory
 
 
   ```py
@@ -192,8 +192,8 @@ NB: Details about training and dataset is comming soon
   from bnlp.sentiment_analysis import RNN
   from bnlp.sentiment_analysis import BN_Sentiment
 
-  model = "bengali_sentiment.pt"
-  vocab = "vocab.txt"
+  model = "model/bengali_sentiment.pt"
+  vocab = "model/vocab.txt"
   text = "ভালো থাকার উপায় নাই।"
   bn_senti = BN_Sentiment(model, vocab)
   bn_senti.sentiment(text)
