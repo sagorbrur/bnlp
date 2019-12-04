@@ -3,6 +3,9 @@ from bnlp.sentencepiece_tokenizer import SP_Tokenizer
 from bnlp.nltk_tokenizer import NLTK_Tokenizer
 from bnlp.bengali_word2vec import Bengali_Word2Vec
 from bnlp.basic_tokenizer import BasicTokenizer
+from bnlp.sentiment_analysis import Sequences
+from bnlp.sentiment_analysis import RNN
+from bnlp.sentiment_analysis import BN_Sentiment
 
 
 
@@ -40,10 +43,15 @@ if __name__ == "__main__":
     # vector = bwv.generate_word_vector(model_path, word)
     # print(vector.shape)
     # print(vector)
-    basic_t = BasicTokenizer(False)
-    raw_text = "আমি বাংলায় গান গাই।"
-    tokens = basic_t.tokenize(raw_text)
-    print(tokens)
+    # basic_t = BasicTokenizer(False)
+    # raw_text = "আমি বাংলায় গান গাই।"
+    # tokens = basic_t.tokenize(raw_text)
+    # print(tokens)
+    model = "/media/hdd/sagor/Research/Bengali-NLP/version/predict_sentiment/bengali_sentiment.pt"
+    vocab = "/media/hdd/sagor/Research/Bengali-NLP/version/predict_sentiment/vocab.txt"
+    text = "ভালো থাকার উপায় নাই।"
+    senti = BN_Sentiment(model, vocab)
+    senti.sentiment(text)
 
 
     
