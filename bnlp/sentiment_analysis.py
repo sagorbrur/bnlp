@@ -86,10 +86,3 @@ class BN_Sentiment(object):
         model = torch.load(self.model, map_location='cpu')
         dataset = Sequences(self.vocab, max_seq_len=128)
         predict_sentiment(text, model, dataset)
-
-if __name__ == "__main__":
-    model = "/media/hdd/sagor/Research/Bengali-NLP/version/predict_sentiment/bengali_sentiment.pt"
-    vocab = "/media/hdd/sagor/Research/Bengali-NLP/version/predict_sentiment/vocab.txt"
-    text = """দেশের উন্নতি দেখলে কার না ভালো লাগে।"""
-    senti = BN_Sentiment(model, vocab)
-    senti.sentiment(text)
