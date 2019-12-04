@@ -3,9 +3,7 @@ from bnlp.sentencepiece_tokenizer import SP_Tokenizer
 from bnlp.nltk_tokenizer import NLTK_Tokenizer
 from bnlp.bengali_word2vec import Bengali_Word2Vec
 from bnlp.basic_tokenizer import BasicTokenizer
-from bnlp.sentiment_analysis import Sequences
-from bnlp.sentiment_analysis import RNN
-from bnlp.sentiment_analysis import BN_Sentiment
+
 
 
 
@@ -47,11 +45,6 @@ if __name__ == "__main__":
     # raw_text = "আমি বাংলায় গান গাই।"
     # tokens = basic_t.tokenize(raw_text)
     # print(tokens)
-    model = "bengali_sentiment.pt"
-    vocab = "vocab.txt"
-    text = "ভালো থাকার উপায় নাই।"
-    senti = BN_Sentiment(model, vocab)
-    senti.sentiment(text)
 
 
     
