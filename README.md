@@ -107,7 +107,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     from bnlp.bengali_word2vec import Bengali_Word2Vec
 
     bwv = Bengali_Word2Vec()
-    model_path = "model/wiki.bn.text.model"
+    model_path = "model/bengali_word2vec.model"
     word = 'আমার'
     vector = bwv.generate_word_vector(model_path, word)
     print(vector.shape)
@@ -121,7 +121,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     from bnlp.bengali_word2vec import Bengali_Word2Vec
 
     bwv = Bengali_Word2Vec()
-    model_path = "model/wiki.bn.text.model"
+    model_path = "model/bengali_word2vec.model"
     word = 'আমার'
     similar = bwv.most_similar(model_path, word)
     print(similar)
@@ -151,7 +151,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
       bft = Bengali_Fasttext()
       word = "গ্রাম"
-      model_path = "cc.bn.300.bin"
+      model_path = "model/bengali_fasttext.bin"
       word_vector = bft.generate_word_vector(model_path, word)
       print(word_vector.shape)
       print(word_vector)
