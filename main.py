@@ -3,6 +3,7 @@ from bnlp.sentencepiece_tokenizer import SP_Tokenizer
 from bnlp.nltk_tokenizer import NLTK_Tokenizer
 from bnlp.bengali_word2vec import Bengali_Word2Vec
 from bnlp.basic_tokenizer import BasicTokenizer
+from bnlp.glove_wordvector import BN_Glove
 
 
 
@@ -45,6 +46,14 @@ if __name__ == "__main__":
     # raw_text = "আমি বাংলায় গান গাই।"
     # tokens = basic_t.tokenize(raw_text)
     # print(tokens)
+    
+    glove_path = "bn_glove.39M.100d.txt"
+    word = "গ্রাম"
+    bng = BN_Glove()
+    res = bng.closest_word(glove_path, word)
+    print(res)
+    vec = bng.word2vec(glove_path, word)
+    print(vec)
 
 
     
