@@ -18,6 +18,8 @@ install:
   - pip install gensim
   - pip install nltk
   - pip install fasttext
+  - pip install numpy
+  - pip install scipy
 
 # Run the unit test
 script:
