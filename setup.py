@@ -24,5 +24,7 @@ setuptools.setup(
         "gensim",
         "nltk",
         "fasttext",
+        "numpy",
+        "scipy",
     ],
 )
