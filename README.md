@@ -170,6 +170,22 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
       ```
 
+* **Bengali GloVe Word Vectors**
+
+  We trained glove model with bengali data(wiki+news articles) and published bengali glove word vectors</br>
+  You can download and use it on your different machine learning purposes.
+
+  ```py
+  from bnlp.glove_wordvector import BN_Glove
+  glove_path = "bn_glove.39M.100d.txt"
+  word = "গ্রাম"
+  bng = BN_Glove()
+  res = bng.closest_word(glove_path, word)
+  print(res)
+  vec = bng.word2vec(glove_path, word)
+  print(vec)
+
+  ```
 
 ## Issue
 * if `ModuleNotFoundError: No module named 'fasttext'` problem arise please do the next line
