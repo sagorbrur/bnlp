@@ -208,9 +208,9 @@ nltk.download("punkt")
 ```
 
 
-## Developer Guide
+## Contributor Guide
 
-Check [CONTRIBUTING](https://github.com/sagorbrur/bnlp/blob/master/CONTRIBUTING.md) page for details.
+Check [CONTRIBUTING.md](https://github.com/sagorbrur/bnlp/blob/master/CONTRIBUTING.md) page for details.
 
 
 ## Thanks To
