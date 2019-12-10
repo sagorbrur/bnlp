@@ -11,7 +11,13 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
 ## Current Features
 * [Bengali Tokenization](#tokenization)
+  - SentencePiece Tokenizer
+  - Basic Tokenizer
+  - NLTK Tokenizer
 * [Bengali Word Embedding](#word-embedding)
+  - Bengali Word2Vec
+  - Bengali Fasttext
+  - Bengali GloVe
 
 
 ## Installation
