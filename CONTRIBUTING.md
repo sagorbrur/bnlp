@@ -35,17 +35,16 @@ We hosted our code repositories in Github for better management of issues and de
 - Clone your forked repository locally
   (`git clone https://github.com/<your-github-username>/bnlp.git`);
 - Run `cd bnlp` to get to the root directory of the `bnlp` code base;
-- Install the dependencies (`pip install -r requirement.txt`);
+- Install the dependencies (`pip install -r requirement.txt` or `python setup.py install`);
 - Download the pretrianed models for running tests
   (you can find the pretrained model details [here](https://github.com/sagorbrur/bnlp) in Readme
 
-## Doing Changes
+## Approaches
 
-* Modify or Add your code inside `bnlp/bnlp`
-* Test your code again 
-* Send Pull Request
+* To add new feature inside [bnlp/bnlp](https://github.com/sagorbrur/bnlp/tree/master/bnlp) create your objective script with proper testing.
+* To modify any script please do modification with proper testing and send pull request.
 
-## Discussion
-NB: Under Develpement
+## Discussion/Reporting
+* Use [issue](https://github.com/sagorbrur/bnlp/issues) tab for issue, bug reporting or discussion.
 
 Thanks and Happy coding!
