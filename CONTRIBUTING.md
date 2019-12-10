@@ -5,6 +5,19 @@ Hi, thanks for your interest. We know, we always suffer from scarcity of good to
 Your contribution can make this initiative more powerful and also help millions of Bengali developer to process Bengali language
 more efficiently. 
 
+## Current Features
+* Bengali Tokenization
+* Bengali Word Embedding
+
+**To make this tool more effective you can add below features as well as other features too**
+
+* **Bengali POS Tagging**
+* **Bengali Name Entity Recognition**
+* **Bengali Lemmatization**
+* so on.................. 
+
+
+
 In this document, we summarize everything, so that you can contribute easily and make this tool more powerful.
 
 # Code and Issues
