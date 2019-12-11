@@ -2,4 +2,6 @@ nltk
 sentencepiece
 gensim
 fasttext
+numpy
+scipy
 
