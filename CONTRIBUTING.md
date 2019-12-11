@@ -24,13 +24,13 @@ In this document, we summarize everything, so that you can contribute easily and
 
 We hosted our code repositories in Github for better management of issues and development.
 
-* [bnlp/bnlp](https://github.com/sagorbrur/bnlp/tree/master/bnlp) is the main repository with code related library
+* [bnlp](https://github.com/sagorbrur/bnlp) is the main repository with code related library
 
 # Detail Approaches
 
 ## Environment Setup
 
-- Fork the [bnlp/bnlp](https://github.com/sagorbrur/bnlp) repository on GitHub
+- Fork the [bnlp](https://github.com/sagorbrur/bnlp) repository on GitHub
   to your account;
 - Clone your forked repository locally
   (`git clone https://github.com/<your-github-username>/bnlp.git`);
