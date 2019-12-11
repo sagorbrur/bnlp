@@ -47,13 +47,20 @@ if __name__ == "__main__":
     # tokens = basic_t.tokenize(raw_text)
     # print(tokens)
     
-    glove_path = "bn_glove.39M.100d.txt"
-    word = "গ্রাম"
-    bng = BN_Glove()
-    res = bng.closest_word(glove_path, word)
-    print(res)
-    vec = bng.word2vec(glove_path, word)
-    print(vec)
-
+#     glove_path = "bn_glove.39M.100d.txt"
+#     word = "গ্রাম"
+#     bng = BN_Glove()
+#     res = bng.closest_word(glove_path, word)
+#     print(res)
+#     vec = bng.word2vec(glove_path, word)
+#     print(vec)
+    spm = SP_Tokenizer()
+    model_path = "model/bn_spm.model"
+    tokens = spm.tokenize(model_path, "আমি ভাত খাই।")
+    print(tokens)
+    ids = spm.text2id(model_path, "আমি ভাত খাই।")
+    print(ids)
+    text = spm.id2text(model_path, ids)
+    print(text)
 
     
