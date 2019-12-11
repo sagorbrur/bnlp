@@ -35,6 +35,18 @@ class SP_Tokenizer(object):
         tokens = model.EncodeAsPieces(text)
 
         return tokens
+    
+    def text2id(self, model_path, text):
+        model = bsp.SentencePieceProcessor()
+        model.Load(model_path)
+        ids = model.EncodeAsIds(text)
+        return ids
+    def id2text(self, model_path, ids):
+        model = bsp.SentencePieceProcessor()
+        model.Load(model_path)
+        text = model.DecodeIds(ids)
+        return text
+
 
 
 
