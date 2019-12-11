@@ -39,9 +39,9 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   
 * Local
   ```
-  git clone https://github.com/sagorbrur/bnlp.git
-  cd bnlp
-  python setup.py install
+  $git clone https://github.com/sagorbrur/bnlp.git
+  $cd bnlp
+  $python setup.py install
   ```
 
 
