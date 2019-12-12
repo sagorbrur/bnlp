@@ -59,7 +59,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 * All three model trained with **Bengali Wikipedia Dump Dataset**
   - [Bengali Wiki Dump](https://dumps.wikimedia.org/bnwiki/latest/)
 * SentencePiece Training Vocab Size=50000
-* Fasttext vocab size = 1171011, training loss = 0.318668, epoch=50, embedding dimension = 300
+* Fasttext trained with total words = 20M, vocab size = 1171011, epoch=50, embedding dimension = 300 and the training loss = 0.318668,
 * Word2Vec word embedding dimension = 300
 * To Know Bengali GloVe Wordvector and training process follow [this](https://github.com/sagorbrur/GloVe-Bengali) repository
 
