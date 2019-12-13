@@ -45,7 +45,7 @@ Installation
 * 
   Local
 
-  .. code-block::
+  .. code-block:: py
 
      $git clone https://github.com/sagorbrur/bnlp.git
      $cd bnlp
