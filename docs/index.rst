@@ -1,356 +1,308 @@
+
 Bengali Natural Language Processing(BNLP)
 =========================================
 
-[![Build Status](https://travis-ci.org/sagorbrur/bnlp.svg?branch=master)](https://travis-ci.org/sagorbrur/bnlp)
 
-[![PyPI version](https://img.shields.io/pypi/v/bnlp_toolkit)](https://pypi.org/project/bnlp-toolkit/)
+.. image:: https://travis-ci.org/sagorbrur/bnlp.svg?branch=master
+   :target: https://travis-ci.org/sagorbrur/bnlp
+   :alt: Build Status
 
-[![release version](https://img.shields.io/github/v/release/sagorbrur/bnlp)](https://github.com/sagorbrur/bnlp/releases/tag/1.1.0)
 
-[![Support Python Version](https://img.shields.io/badge/python-3.6%7C3.7-brightgreen)](https://pypi.org/project/bnlp-toolkit/)
+.. image:: https://img.shields.io/pypi/v/bnlp_toolkit
+   :target: https://pypi.org/project/bnlp-toolkit/
+   :alt: PyPI version
 
-[![pypi Downloads](https://img.shields.io/pypi/dw/bnlp_toolkit?color=green)](https://pypi.org/project/bnlp-toolkit/)
 
-BNLP is a natural language processing toolkit for Bengali Language. This tool will help you to **tokenize Bengali text**, **Embedding Bengali words**, **construct neural model** for Bengali NLP purposes.
+.. image:: https://img.shields.io/github/v/release/sagorbrur/bnlp
+   :target: https://github.com/sagorbrur/bnlp/releases/tag/1.1.0
+   :alt: release version
 
+
+.. image:: https://img.shields.io/badge/python-3.6%7C3.7-brightgreen
+   :target: https://pypi.org/project/bnlp-toolkit/
+   :alt: Support Python Version
+
+
+.. image:: https://img.shields.io/pypi/dw/bnlp_toolkit?color=green
+   :target: https://pypi.org/project/bnlp-toolkit/
+   :alt: pypi Downloads
+
+
+BNLP is a natural language processing toolkit for Bengali Language. This tool will help you to **tokenize Bengali text**\ , **Embedding Bengali words**\ , **construct neural model** for Bengali NLP purposes.
 
 Contents
 ========
-- `Current Features <#current-features>`_
-- `Installation <#installation>`_
-- `Pretrained Model <#pretrained-model>`_
-- `Tokenization <#tokenization>`_
-- `Embedding <#word-embedding>`_
-- `Issue <#issue>`_
-- `Contributor Guide <#contributor-guide>`_
-- `Contributor List <#contributor-list>`_
 
+
+* `Current Features <#current-features>`_
+* `Installation <#installation>`_
+* `Pretrained Model <#pretrained-model>`_
+* `Tokenization <#tokenization>`_
+* `Embedding <#word-embedding>`_
+* `Issue <#issue>`_
+* `Contributor Guide <#contributor-guide>`_
+* `Contributor List <#contributor-list>`_
 
 Current Features
-==================
+----------------
+
 
 * `Bengali Tokenization <#tokenization>`_
 
-  - SentencePiece Tokenizer
+  * SentencePiece Tokenizer
+  * Basic Tokenizer
+  * NLTK Tokenizer
 
-  - Basic Tokenizer
-
-  - NLTK Tokenizer
 * `Bengali Word Embedding <#word-embedding>`_
 
-  - Bengali Word2Vec
-
-  - Bengali Fasttext
-
-  - Bengali GloVe
-
+  * Bengali Word2Vec
+  * Bengali Fasttext
+  * Bengali GloVe
 
 Installation
-==============
-
-* pypi package installer(python 3.6, 3.7 tested okay)
-
-  ```pip install bnlp_toolkit```
-  
-* Local
-
-  ```
-
-  $git clone https://github.com/sagorbrur/bnlp.git
-
-  $cd bnlp
-
-  $python setup.py install
-
-  ```
+------------
 
 
+* 
+  pypi package installer(python 3.6, 3.7 tested okay)
+
+  ``pip install bnlp_toolkit``
+
+* 
+  Local
+
+  .. code-block::
+
+     $git clone https://github.com/sagorbrur/bnlp.git
+     $cd bnlp
+     $python setup.py install
 
 Pretrained Model
-==================
+----------------
 
 Download Link
-================
+^^^^^^^^^^^^^
+
 
 * `Bengali SentencePiece <https://github.com/sagorbrur/bnlp/tree/master/model>`_
-
 * `Bengali Word2Vec <https://drive.google.com/open?id=1DxR8Vw61zRxuUm17jzFnOX97j7QtNW7U>`_
-
 * `Bengali FastText <https://drive.google.com/open?id=1CFA-SluRyz3s5gmGScsFUcs7AjLfscm2>`_
-
 * `Bengali GloVe Wordvectors <https://github.com/sagorbrur/GloVe-Bengali>`_
 
 Training Details
-===================
+^^^^^^^^^^^^^^^^
+
 
 * All three model trained with **Bengali Wikipedia Dump Dataset**
 
-  - `Bengali Wiki Dump <https://dumps.wikimedia.org/bnwiki/latest/>`_
+  * `Bengali Wiki Dump <https://dumps.wikimedia.org/bnwiki/latest/>`_
+
 * SentencePiece Training Vocab Size=50000
-
 * Fasttext trained with total words = 20M, vocab size = 1171011, epoch=50, embedding dimension = 300 and the training loss = 0.318668,
-
 * Word2Vec word embedding dimension = 300
-
 * To Know Bengali GloVe Wordvector and training process follow `this <https://github.com/sagorbrur/GloVe-Bengali>`_ repository
 
-
 Tokenization
-==============
+------------
 
-* **Bengali SentencePiece Tokenization**
 
-  - tokenization using trained model
+* 
+  **Bengali SentencePiece Tokenization**
 
-	```py
 
-	from bnlp.sentencepiece\_tokenizer import SP\_Tokenizer
+  * 
+    tokenization using trained model
 
-	bsp = SP\_Tokenizer()
+    .. code-block:: py
 
-	model\_path = "./model/bn\_spm.model"
+       from bnlp.sentencepiece_tokenizer import SP_Tokenizer
 
-	input\_text = "আমি ভাত খাই। সে বাজারে যায়।"
+       bsp = SP_Tokenizer()
+       model_path = "./model/bn_spm.model"
+       input_text = "আমি ভাত খাই। সে বাজারে যায়।"
+       tokens = bsp.tokenize(model_path, input_text)
+       print(tokens)
 
-	tokens = bsp.tokenize(model\_path, input\_text)
+  * 
+    Training SentencePiece
 
-	print(tokens)
+    .. code-block:: py
 
-	```
+       from bnlp.sentencepiece_tokenizer import SP_Tokenizer
 
-  - Training SentencePiece
+       bsp = SP_Tokenizer(is_train=True)
+       data = "test.txt"
+       model_prefix = "test"
+       vocab_size = 5
+       bsp.train_bsp(data, model_prefix, vocab_size)
 
-	```py
+* 
+  **Basic Tokenizer**
 
-	from bnlp.sentencepiece\_tokenizer import SP\_Tokenizer
-	
-	bsp = SP\_Tokenizer(is\_train=True)
+.. code-block:: py
 
-	data = "test.txt"
+     from bnlp.basic_tokenizer import BasicTokenizer
+     basic_t = BasicTokenizer(False)
+     raw_text = "আমি বাংলায় গান গাই।"
+     tokens = basic_t.tokenize(raw_text)
+     print(tokens)
 
-	model\_prefix = "test"
+     # output: ["আমি", "বাংলায়", "গান", "গাই", "।"]
 
-	vocab\_size = 5
 
-	bsp.train\_bsp(data, model\_prefix, vocab\_size) 
+* 
+  **NLTK Tokenization**
 
-	```
+  .. code-block:: py
 
-* **Basic Tokenizer**
+     from bnlp.nltk_tokenizer import NLTK_Tokenizer
 
- 
+     text = "আমি ভাত খাই। সে বাজারে যায়। তিনি কি সত্যিই ভালো মানুষ?"
+     bnltk = NLTK_Tokenizer(text)
+     word_tokens = bnltk.word_tokenize()
+     sentence_tokens = bnltk.sentence_tokenize()
+     print(word_tokens)
+     print(sentence_tokens)
 
-  ```py
-
-  from bnlp.basic_tokenizer import BasicTokenizer
-
-  basic_t = BasicTokenizer(False)
-
-  raw_text = "আমি বাংলায় গান গাই।"
-
-  tokens = basic*t.tokenize(raw*text)
-
-  print(tokens)
-  
-  # output: ["আমি", "বাংলায়", "গান", "গাই", "।"]
-
-  ```
-
-* **NLTK Tokenization**
-
-  ```py
-
-  from bnlp.nltk*tokenizer import NLTK*Tokenizer
-
-  text = "আমি ভাত খাই। সে বাজারে যায়। তিনি কি সত্যিই ভালো মানুষ?"
-
-  bnltk = NLTK_Tokenizer(text)
-
-  word*tokens = bnltk.word*tokenize()
-
-  sentence*tokens = bnltk.sentence*tokenize()
-
-  print(word_tokens)
-
-  print(sentence_tokens)
-  
-  # output
-
-  # word_token: ["আমি", "ভাত", "খাই", "।", "সে", "বাজারে", "যায়", "।", "তিনি", "কি", "সত্যিই", "ভালো", "মানুষ", "?"]
-
-  # sentence_token: ["আমি ভাত খাই।", "সে বাজারে যায়।", "তিনি কি সত্যিই ভালো মানুষ?"]
-
-  ```
-
+     # output
+     # word_token: ["আমি", "ভাত", "খাই", "।", "সে", "বাজারে", "যায়", "।", "তিনি", "কি", "সত্যিই", "ভালো", "মানুষ", "?"]
+     # sentence_token: ["আমি ভাত খাই।", "সে বাজারে যায়।", "তিনি কি সত্যিই ভালো মানুষ?"]
 
 Word Embedding
-================
-
-* **Bengali Word2Vec**
-
-  - Generate Vector using pretrain model
-
-	```py
-
-	from bnlp.bengali\_word2vec import Bengali\_Word2Vec
-
-	bwv = Bengali\_Word2Vec()
-
-	model\_path = "model/bengali\_word2vec.model"
-
-	word = 'আমার'
-
-	vector = bwv.generate\_word\_vector(model\_path, word)
-
-	print(vector.shape)
-
-	print(vector)
-
-	```
-
-  - Find Most Similar Word Using Pretrained Model
-
-	```py
-
-	from bnlp.bengali\_word2vec import Bengali\_Word2Vec
-
-	bwv = Bengali\_Word2Vec()
-
-	model\_path = "model/bengali\_word2vec.model"
-
-	word = 'আমার'
-
-	similar = bwv.most\_similar(model\_path, word)
-
-	print(similar)
-
-	```
-
-  - Train Bengali Word2Vec with your own data
-
-	```py
-
-	from bnlp.bengali\_word2vec import Bengali\_Word2Vec
-
-	bwv = Bengali\_Word2Vec(is\_train=True)
-
-	data\_file = "test.txt"
-
-	model\_name = "test\_model.model"
-
-	vector\_name = "test\_vector.vector"
-
-	bwv.train\_word2vec(data\_file, model\_name, vector\_name)
+--------------
 
 
-	```
-	
- * **Bengali FastText**
- 
-
-	\- Generate Vector Using Pretrained Model
-	  
-
-	  ```py
-
-	  from bnlp.bengali\_fasttext import Bengali\_Fasttext
-
-	  bft = Bengali\_Fasttext()
-
-	  word = "গ্রাম"
-
-	  model\_path = "model/bengali\_fasttext.bin"
-
-	  word\_vector = bft.generate\_word\_vector(model\_path, word)
-
-	  print(word\_vector.shape)
-
-	  print(word\_vector)
+* 
+  **Bengali Word2Vec**
 
 
-	  ```
+  * 
+    Generate Vector using pretrain model
 
-	\- Train Bengali FastText Model
+    .. code-block:: py
 
-	  ```py
+       from bnlp.bengali_word2vec import Bengali_Word2Vec
 
-	  from bnlp.bengali\_fasttext import Bengali\_Fasttext
+       bwv = Bengali_Word2Vec()
+       model_path = "model/bengali_word2vec.model"
+       word = 'আমার'
+       vector = bwv.generate_word_vector(model_path, word)
+       print(vector.shape)
+       print(vector)
 
-	  bft = Bengali\_Fasttext(is\_train=True)
+  * 
+    Find Most Similar Word Using Pretrained Model
 
-	  data = "data.txt"
+    .. code-block:: py
 
-	  model\_name = "saved\_model.bin"
+       from bnlp.bengali_word2vec import Bengali_Word2Vec
 
-	  bft.train\_fasttext(data, model\_name)
+       bwv = Bengali_Word2Vec()
+       model_path = "model/bengali_word2vec.model"
+       word = 'আমার'
+       similar = bwv.most_similar(model_path, word)
+       print(similar)
 
-	  ```
+  * 
+    Train Bengali Word2Vec with your own data
 
-* **Bengali GloVe Word Vectors**
+    ```py
+    from bnlp.bengali_word2vec import Bengali_Word2Vec
+    bwv = Bengali_Word2Vec(is_train=True)
+    data_file = "test.txt"
+    model_name = "test_model.model"
+    vector_name = "test_vector.vector"
+    bwv.train_word2vec(data_file, model_name, vector_name)
+
+.. code-block::
+
+   ```
+
+
+
+* **Bengali FastText**
+
+.. code-block::
+
+   - Generate Vector Using Pretrained Model
+
+
+     ```py
+     from bnlp.bengali_fasttext import Bengali_Fasttext
+
+     bft = Bengali_Fasttext()
+     word = "গ্রাম"
+     model_path = "model/bengali_fasttext.bin"
+     word_vector = bft.generate_word_vector(model_path, word)
+     print(word_vector.shape)
+     print(word_vector)
+
+
+     ```
+   - Train Bengali FastText Model
+
+     ```py
+     from bnlp.bengali_fasttext import Bengali_Fasttext
+
+     bft = Bengali_Fasttext(is_train=True)
+     data = "data.txt"
+     model_name = "saved_model.bin"
+     bft.train_fasttext(data, model_name)
+
+     ```
+
+
+
+* 
+  **Bengali GloVe Word Vectors**
 
   We trained glove model with bengali data(wiki+news articles) and published bengali glove word vectors</br>
-
   You can download and use it on your different machine learning purposes.
 
-  ```py
+  .. code-block:: py
 
-  from bnlp.glove*wordvector import BN*Glove
-
-  glove*path = "bn*glove.39M.100d.txt"
-
-  word = "গ্রাম"
-
-  bng = BN_Glove()
-
-  res = bng.closest*word(glove*path, word)
-
-  print(res)
-
-  vec = bng.word2vec(glove_path, word)
-
-  print(vec)
-
-  ```
+     from bnlp.glove_wordvector import BN_Glove
+     glove_path = "bn_glove.39M.100d.txt"
+     word = "গ্রাম"
+     bng = BN_Glove()
+     res = bng.closest_word(glove_path, word)
+     print(res)
+     vec = bng.word2vec(glove_path, word)
+     print(vec)
 
 Issue
-=======
+-----
 
-* if `ModuleNotFoundError: No module named 'fasttext'` problem arise please do the next line
 
-```pip install fasttext```
+* if ``ModuleNotFoundError: No module named 'fasttext'`` problem arise please do the next line
 
-* if `nltk` issue arise please do the following line before importing `bnlp`
+``pip install fasttext``
 
-```py
 
-import nltk
+* if ``nltk`` issue arise please do the following line before importing ``bnlp``
 
-nltk.download("punkt")
+.. code-block:: py
 
-```
-
+   import nltk
+   nltk.download("punkt")
 
 Contributor Guide
-===================
+-----------------
 
 Check `CONTRIBUTING.md <https://github.com/sagorbrur/bnlp/blob/master/CONTRIBUTING.md>`_ page for details.
 
-
 Thanks To
-===========
+---------
+
 
 * `Semantics Lab <http://semanticslab.net/>`_
 
 Contributor List
-==================
+----------------
+
 
 * `Sagor Sarker <https://github.com/sagorbrur>`_
-
 * `Faruk Ahmad <https://github.com/faruk-ahmad>`_
-
 * `Mehadi Hasan Menon <https://github.com/menon92>`_
-
 * `Kazal Chandra Barman <https://github.com/kazalbrur>`_
-
 * `Md Ibrahim <https://github.com/iriad11>`_
-
