@@ -3,31 +3,6 @@ Bengali Natural Language Processing(BNLP)
 =========================================
 
 
-.. image:: https://travis-ci.org/sagorbrur/bnlp.svg?branch=master
-   :target: https://travis-ci.org/sagorbrur/bnlp
-   :alt: Build Status
-
-
-.. image:: https://img.shields.io/pypi/v/bnlp_toolkit
-   :target: https://pypi.org/project/bnlp-toolkit/
-   :alt: PyPI version
-
-
-.. image:: https://img.shields.io/github/v/release/sagorbrur/bnlp
-   :target: https://github.com/sagorbrur/bnlp/releases/tag/1.1.0
-   :alt: release version
-
-
-.. image:: https://img.shields.io/badge/python-3.6%7C3.7-brightgreen
-   :target: https://pypi.org/project/bnlp-toolkit/
-   :alt: Support Python Version
-
-
-.. image:: https://img.shields.io/pypi/dw/bnlp_toolkit?color=green
-   :target: https://pypi.org/project/bnlp-toolkit/
-   :alt: pypi Downloads
-
-
 BNLP is a natural language processing toolkit for Bengali Language. This tool will help you to **tokenize Bengali text**\ , **Embedding Bengali words**\ , **construct neural model** for Bengali NLP purposes.
 
 
