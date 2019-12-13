@@ -30,37 +30,11 @@ Bengali Natural Language Processing(BNLP)
 
 BNLP is a natural language processing toolkit for Bengali Language. This tool will help you to **tokenize Bengali text**\ , **Embedding Bengali words**\ , **construct neural model** for Bengali NLP purposes.
 
-Contents
-========
 
 
-* `Current Features <#current-features>`_
-* `Installation <#installation>`_
-* `Pretrained Model <#pretrained-model>`_
-* `Tokenization <#tokenization>`_
-* `Embedding <#word-embedding>`_
-* `Issue <#issue>`_
-* `Contributor Guide <#contributor-guide>`_
-* `Contributor List <#contributor-list>`_
-
-Current Features
-----------------
-
-
-* `Bengali Tokenization <#tokenization>`_
-
-  * SentencePiece Tokenizer
-  * Basic Tokenizer
-  * NLTK Tokenizer
-
-* `Bengali Word Embedding <#word-embedding>`_
-
-  * Bengali Word2Vec
-  * Bengali Fasttext
-  * Bengali GloVe
 
 Installation
-------------
+============
 
 
 * 
@@ -78,7 +52,7 @@ Installation
      $python setup.py install
 
 Pretrained Model
-----------------
+================
 
 Download Link
 ^^^^^^^^^^^^^
@@ -103,7 +77,7 @@ Training Details
 * To Know Bengali GloVe Wordvector and training process follow `this <https://github.com/sagorbrur/GloVe-Bengali>`_ repository
 
 Tokenization
-------------
+============
 
 
 * 
@@ -169,7 +143,7 @@ Tokenization
      # sentence_token: ["আমি ভাত খাই।", "সে বাজারে যায়।", "তিনি কি সত্যিই ভালো মানুষ?"]
 
 Word Embedding
---------------
+==============
 
 
 * 
@@ -271,7 +245,7 @@ Word Embedding
      print(vec)
 
 Issue
------
+=====
 
 
 * if ``ModuleNotFoundError: No module named 'fasttext'`` problem arise please do the next line
@@ -287,22 +261,8 @@ Issue
    nltk.download("punkt")
 
 Contributor Guide
------------------
+=================
 
 Check `CONTRIBUTING.md <https://github.com/sagorbrur/bnlp/blob/master/CONTRIBUTING.md>`_ page for details.
 
-Thanks To
----------
 
-
-* `Semantics Lab <http://semanticslab.net/>`_
-
-Contributor List
-----------------
-
-
-* `Sagor Sarker <https://github.com/sagorbrur>`_
-* `Faruk Ahmad <https://github.com/faruk-ahmad>`_
-* `Mehadi Hasan Menon <https://github.com/menon92>`_
-* `Kazal Chandra Barman <https://github.com/kazalbrur>`_
-* `Md Ibrahim <https://github.com/iriad11>`_
