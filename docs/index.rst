@@ -179,53 +179,46 @@ Word Embedding
   * 
     Train Bengali Word2Vec with your own data
 
-    ```py
-    from bnlp.bengali_word2vec import Bengali_Word2Vec
-    bwv = Bengali_Word2Vec(is_train=True)
-    data_file = "test.txt"
-    model_name = "test_model.model"
-    vector_name = "test_vector.vector"
-    bwv.train_word2vec(data_file, model_name, vector_name)
+    .. code-block:: py
 
-.. code-block::
-
-   ```
+       from bnlp.bengali_word2vec import Bengali_Word2Vec
+       bwv = Bengali_Word2Vec(is_train=True)
+       data_file = "test.txt"
+       model_name = "test_model.model"
+       vector_name = "test_vector.vector"
+       bwv.train_word2vec(data_file, model_name, vector_name)
 
 
+* 
+ **Bengali FastText**
 
-* **Bengali FastText**
-
-.. code-block::
+     
 
    - Generate Vector Using Pretrained Model
 
 
-     ```py
-     from bnlp.bengali_fasttext import Bengali_Fasttext
+     .. code-block:: py
 
-     bft = Bengali_Fasttext()
-     word = "গ্রাম"
-     model_path = "model/bengali_fasttext.bin"
-     word_vector = bft.generate_word_vector(model_path, word)
-     print(word_vector.shape)
-     print(word_vector)
+        from bnlp.bengali_fasttext import Bengali_Fasttext
+        bft = Bengali_Fasttext()
+        word = "গ্রাম"
+        model_path = "model/bengali_fasttext.bin"
+        word_vector = bft.generate_word_vector(model_path, word)
+        print(word_vector.shape)
+        print(word_vector)
 
 
-     ```
    - Train Bengali FastText Model
 
-     ```py
-     from bnlp.bengali_fasttext import Bengali_Fasttext
+     .. code-block:: py
 
-     bft = Bengali_Fasttext(is_train=True)
-     data = "data.txt"
-     model_name = "saved_model.bin"
-     epoch = 50
-     bft.train_fasttext(data, model_name, epoch) # epoch not implement in pypi yet
-     # bft.train_fasttext(data, model_name) in pypi now
+        from bnlp.bengali_fasttext import Bengali_Fasttext
 
-     ```
-
+        bft = Bengali_Fasttext(is_train=True)
+        data = "data.txt"
+        model_name = "saved_model.bin"
+        epoch = 50
+        bft.train_fasttext(data, model_name, epoch) 
 
 
 * 
