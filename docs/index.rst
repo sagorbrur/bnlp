@@ -13,7 +13,7 @@ Installation
 
 
 * 
-  pypi package installer(python 3.6, 3.7 tested okay)
+  pypi package installer(python 3.5, 3.6, 3.7 tested okay)
 
   ``pip install bnlp_toolkit``
 
@@ -196,7 +196,8 @@ Word Embedding
      bft = Bengali_Fasttext(is_train=True)
      data = "data.txt"
      model_name = "saved_model.bin"
-     bft.train_fasttext(data, model_name)
+     epoch = 50
+     bft.train_fasttext(data, model_name, epoch)
 
      ```
 
