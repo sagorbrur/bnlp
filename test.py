@@ -1,5 +1,3 @@
-#! /usr/bin/env python
-# -*- coding: utf-8 -*-
 import unittest
 from bnlp.sentencepiece_tokenizer import SP_Tokenizer
 from bnlp.nltk_tokenizer import NLTK_Tokenizer
