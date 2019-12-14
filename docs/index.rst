@@ -3,8 +3,32 @@ Bengali Natural Language Processing(BNLP)
 =========================================
 
 
-BNLP is a natural language processing toolkit for Bengali Language. This tool will help you to **tokenize Bengali text**\ , **Embedding Bengali words**\ , **construct neural model** for Bengali NLP purposes.
+.. image:: https://travis-ci.org/sagorbrur/bnlp.svg?branch=master
+   :target: https://travis-ci.org/sagorbrur/bnlp
+   :alt: Build Status
 
+
+.. image:: https://img.shields.io/pypi/v/bnlp_toolkit
+   :target: https://pypi.org/project/bnlp-toolkit/
+   :alt: PyPI version
+
+
+.. image:: https://img.shields.io/github/v/release/sagorbrur/bnlp
+   :target: https://github.com/sagorbrur/bnlp/releases/tag/1.1.0
+   :alt: release version
+
+
+.. image:: https://img.shields.io/badge/python-3.5%7C3.6%7C3.7-brightgreen
+   :target: https://pypi.org/project/bnlp-toolkit/
+   :alt: Support Python Version
+
+
+.. image:: https://img.shields.io/pypi/dw/bnlp_toolkit?color=green
+   :target: https://pypi.org/project/bnlp-toolkit/
+   :alt: pypi Downloads
+
+
+BNLP is a natural language processing toolkit for Bengali Language. This tool will help you to **tokenize Bengali text**\ , **Embedding Bengali words**\ , **construct neural model** for Bengali NLP purposes.
 
 
 
@@ -20,7 +44,7 @@ Installation
 * 
   Local
 
-  .. code-block:: py
+  .. code-block::
 
      $git clone https://github.com/sagorbrur/bnlp.git
      $cd bnlp
@@ -197,7 +221,8 @@ Word Embedding
      data = "data.txt"
      model_name = "saved_model.bin"
      epoch = 50
-     bft.train_fasttext(data, model_name, epoch)
+     bft.train_fasttext(data, model_name, epoch) # epoch not implement in pypi yet
+     # bft.train_fasttext(data, model_name) in pypi now
 
      ```
 
@@ -240,5 +265,3 @@ Contributor Guide
 =================
 
 Check `CONTRIBUTING.md <https://github.com/sagorbrur/bnlp/blob/master/CONTRIBUTING.md>`_ page for details.
-
-
