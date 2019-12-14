@@ -17,8 +17,3 @@ class Bengali_Fasttext(object):
         return word_vector
     
     
-  if __name__ == "__main__":
-    bft = Bengali_Fasttext(is_train=True)
-    data = "data.txt"
-    model_name = "saved_model.bin"
-    bft.train_fasttext(data, model_name, epoch=10)
