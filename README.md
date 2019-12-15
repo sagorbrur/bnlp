@@ -15,6 +15,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 - [Pretrained Model](#pretrained-model)
 - [Tokenization](#tokenization)
 - [Embedding](#word-embedding)
+- [POS Tagging](#bengali-pos-tagging)
 - [Issue](#issue)
 - [Contributor Guide](#contributor-guide)
 - [Contributor List](#contributor-list)
@@ -29,6 +30,8 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - Bengali Word2Vec
   - Bengali Fasttext
   - Bengali GloVe
+  
+* [Bengali POS Tagging](#bengali-pos-tagging)
 
 
 ## Installation
