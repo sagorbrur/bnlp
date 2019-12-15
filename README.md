@@ -220,7 +220,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 ## Bengali POS Tagging
 * **Bengali CRF POS Tagging** 
 
-NB:  not in pypi yet. comming in next version
+  NB:  not in pypi yet. comming in next version
 
   - Find Pos Tag Using Pretrained Model
 
