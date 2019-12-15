@@ -10,7 +10,7 @@ Contributor:
 import pickle
 from sklearn_crfsuite import CRF
 from nltk.tag.util import untag
-from basic_tokenizer import BasicTokenizer
+from bnlp.basic_tokenizer import BasicTokenizer
 
 def features(sentence, index):
         """ sentence: [w1, w2, ...], index: the index of the word """
