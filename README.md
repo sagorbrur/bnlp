@@ -279,3 +279,4 @@ Check [CONTRIBUTING.md](https://github.com/sagorbrur/bnlp/blob/master/CONTRIBUTI
 * [Mehadi Hasan Menon](https://github.com/menon92)
 * [Kazal Chandra Barman](https://github.com/kazalbrur)
 * [Md Ibrahim](https://github.com/iriad11)
+* [Abdullah Al Loman](https://github.com/aaloman)
