@@ -10,6 +10,7 @@ Contributor:
 
 import pickle
 from sklearn_crfsuite import CRF
+from sklearn_crfsuite import metrics
 from nltk.tag.util import untag
 from bnlp.basic_tokenizer import BasicTokenizer
 
@@ -75,5 +76,11 @@ class BN_CRF_POS(object):
         model = CRF()
         model.fit(X_train, y_train)
         print("Training Finished!")
+        
+        print("Evaluating with Test Data...")
+        y_pred = model.predict(X_test)
+        print("Accuracy is: ")
+        print(metrics.flat_accuracy_score(y_test, y_pred))
+        
         pickle.dump(model, open(model_name, 'wb'))
         print("Model Saved!")
