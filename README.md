@@ -217,6 +217,34 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
   ```
 
+## Bengali POS Tagging
+* **Bengali CRF POS Tagging** 
+
+NB:  not in pypi yet. comming in next version
+
+  - Find Pos Tag Using Pretrained Model
+
+    ```py
+    from bnlp.bengali_pos import BN_CRF_POS
+    bn_pos = BN_CRF_POS()
+    model_path = "bn_pos_model.pkl"
+    text = "আমি ভাত খাই।"
+    res = bn_pos.pos_tag(model_path, text)
+    print(res)
+
+    ```
+  - Train POS Tag Model
+  
+    ```py
+    from bnlp.bengali_pos import BN_CRF_POS
+    bn_pos = BN_CRF_POS()
+    model_name = "pos_model.pkl"
+    tagged_sentences = [[('রপ্তানি', 'JJ'), ('দ্রব্য', 'NC'), ('-', 'PU'), ('তাজা', 'JJ'), ('ও', 'CCD'), ('শুকনা', 'JJ'), ('ফল', 'NC'), (',', 'PU'), ('আফিম', 'NC'), (',', 'PU'), ('পশুচর্ম', 'NC'), ('ও', 'CCD'), ('পশম', 'NC'), ('এবং', 'CCD'),('কার্পেট', 'NC'), ('৷', 'PU')]]
+
+    bn_pos.training(model_name, tagged_sentences)
+
+    ```
+
 ## Issue
 * if `ModuleNotFoundError: No module named 'fasttext'` problem arise please do the next line
 
