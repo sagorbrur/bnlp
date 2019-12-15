@@ -1,3 +1,5 @@
+<img align="left" height="70" src="bnlp.svg" alt="bnlp"/>
+
 # Bengali Natural Language Processing(BNLP)
 
 [![Build Status](https://travis-ci.org/sagorbrur/bnlp.svg?branch=master)](https://travis-ci.org/sagorbrur/bnlp)
