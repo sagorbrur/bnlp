@@ -57,6 +57,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 * [Bengali Word2Vec](https://drive.google.com/open?id=1DxR8Vw61zRxuUm17jzFnOX97j7QtNW7U)
 * [Bengali FastText](https://drive.google.com/open?id=1CFA-SluRyz3s5gmGScsFUcs7AjLfscm2)
 * [Bengali GloVe Wordvectors](https://github.com/sagorbrur/GloVe-Bengali)
+* [Bengali POS Tag model](https://github.com/sagorbrur/bnlp/blob/master/model/bn_pos_model.pkl)
 
 ### Training Details
 * All three model trained with **Bengali Wikipedia Dump Dataset**
@@ -65,6 +66,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 * Fasttext trained with total words = 20M, vocab size = 1171011, epoch=50, embedding dimension = 300 and the training loss = 0.318668,
 * Word2Vec word embedding dimension = 300
 * To Know Bengali GloVe Wordvector and training process follow [this](https://github.com/sagorbrur/GloVe-Bengali) repository
+* Bengali CRF POS Tagging was training with [nltr](https://github.com/abhishekgupta92/bangla_pos_tagger/tree/master/data) dataset with 80% accuracy. 
 
 
 ## Tokenization
