@@ -97,17 +97,3 @@ class BN_CRF_POS(object):
         print("Training Finished!")
         pickle.dump(model, open(model_name, 'wb'))
         print("Model Saved!")
-
-
-
-if __name__ == "__main__":
-    # bn_pos = BN_CRF_POS()
-    # bn_pos.training("mm_test.pkl", tagged_sentences)
-
-    # model_path = "bn_pos_final.pkl"
-    # text = "আমি ভাত খাই।"
-    # # bn_pos = BN_CRF_POS()
-    # res = bn_pos.pos_tag(model_path, text)
-    # print(res)
-
-
