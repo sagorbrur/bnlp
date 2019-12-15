@@ -198,9 +198,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
       data = "data.txt"
       model_name = "saved_model.bin"
       epoch = 50
-      bft.train_fasttext(data, model_name, epoch) # epoch not implement in pypi yet
-      # bft.train_fasttext(data, model_name) in pypi now
-
+      bft.train_fasttext(data, model_name, epoch)
       ```
 
 * **Bengali GloVe Word Vectors**
