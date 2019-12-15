@@ -1,5 +1,6 @@
 """
-tool: skelarn crf_suite for bengali pos tagging
+tool: We used sklearn crf_suite for bengali pos tagging
+https://sklearn-crfsuite.readthedocs.io/en/latest/
 
 Contributor: 
 * Sagor Sarker
