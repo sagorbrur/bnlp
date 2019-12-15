@@ -232,6 +232,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     text = "আমি ভাত খাই।"
     res = bn_pos.pos_tag(model_path, text)
     print(res)
+    # [('আমি', 'PPR'), ('ভাত', 'NC'), ('খাই', 'VM'), ('।', 'PU')]
 
     ```
   - Train POS Tag Model
