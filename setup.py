@@ -26,5 +26,6 @@ setuptools.setup(
         "fasttext",
         "numpy",
         "scipy",
+        "sklearn-crfsuite",
     ],
 )
