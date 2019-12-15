@@ -228,7 +228,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     ```py
     from bnlp.bengali_pos import BN_CRF_POS
     bn_pos = BN_CRF_POS()
-    model_path = "bn_pos_model.pkl"
+    model_path = "model/bn_pos_model.pkl"
     text = "আমি ভাত খাই।"
     res = bn_pos.pos_tag(model_path, text)
     print(res)
