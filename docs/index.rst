@@ -1,3 +1,8 @@
+.. role:: raw-html-m2r(raw)
+   :format: html
+
+
+:raw-html-m2r:`<img align="left" height="70" src="../bnlp.svg" alt="bnlp"/>`
 
 Bengali Natural Language Processing(BNLP)
 =========================================
@@ -28,7 +33,8 @@ Bengali Natural Language Processing(BNLP)
    :alt: pypi Downloads
 
 
-BNLP is a natural language processing toolkit for Bengali Language. This tool will help you to **tokenize Bengali text**\ , **Embedding Bengali words**\ , **construct neural model** for Bengali NLP purposes.
+BNLP is a natural language processing toolkit for Bengali Language. This tool will help you to **tokenize Bengali text**\ , **Embedding Bengali words**\ , **Bengali POS Tagging**\ , **Construct Neural Model** for Bengali NLP purposes.
+
 
 
 
@@ -61,12 +67,13 @@ Download Link
 * `Bengali Word2Vec <https://drive.google.com/open?id=1DxR8Vw61zRxuUm17jzFnOX97j7QtNW7U>`_
 * `Bengali FastText <https://drive.google.com/open?id=1CFA-SluRyz3s5gmGScsFUcs7AjLfscm2>`_
 * `Bengali GloVe Wordvectors <https://github.com/sagorbrur/GloVe-Bengali>`_
+* `Bengali POS Tag model <https://github.com/sagorbrur/bnlp/blob/master/model/bn_pos_model.pkl>`_
 
 Training Details
 ^^^^^^^^^^^^^^^^
 
 
-* All three model trained with **Bengali Wikipedia Dump Dataset**
+* Sentencepiece, Word2Vec, Fasttext, GloVe model trained with **Bengali Wikipedia Dump Dataset**
 
   * `Bengali Wiki Dump <https://dumps.wikimedia.org/bnwiki/latest/>`_
 
@@ -74,6 +81,7 @@ Training Details
 * Fasttext trained with total words = 20M, vocab size = 1171011, epoch=50, embedding dimension = 300 and the training loss = 0.318668,
 * Word2Vec word embedding dimension = 300
 * To Know Bengali GloVe Wordvector and training process follow `this <https://github.com/sagorbrur/GloVe-Bengali>`_ repository
+* Bengali CRF POS Tagging was training with `nltr <https://github.com/abhishekgupta92/bangla_pos_tagger/tree/master/data>`_ dataset with 80% accuracy. 
 
 Tokenization
 ============
@@ -142,7 +150,7 @@ Tokenization
      # sentence_token: ["আমি ভাত খাই।", "সে বাজারে যায়।", "তিনি কি সত্যিই ভালো মানুষ?"]
 
 Word Embedding
-==============
+--------------
 
 
 * 
@@ -189,10 +197,10 @@ Word Embedding
        bwv.train_word2vec(data_file, model_name, vector_name)
 
 
-* 
- **Bengali FastText**
 
-     
+
+* 
+  **Bengali FastText**
 
    - Generate Vector Using Pretrained Model
 
@@ -200,6 +208,7 @@ Word Embedding
      .. code-block:: py
 
         from bnlp.bengali_fasttext import Bengali_Fasttext
+   
         bft = Bengali_Fasttext()
         word = "গ্রাম"
         model_path = "model/bengali_fasttext.bin"
@@ -213,12 +222,13 @@ Word Embedding
      .. code-block:: py
 
         from bnlp.bengali_fasttext import Bengali_Fasttext
-
+   
         bft = Bengali_Fasttext(is_train=True)
         data = "data.txt"
         model_name = "saved_model.bin"
         epoch = 50
-        bft.train_fasttext(data, model_name, epoch) 
+        bft.train_fasttext(data, model_name, epoch)
+
 
 
 * 
@@ -237,6 +247,38 @@ Word Embedding
      print(res)
      vec = bng.word2vec(glove_path, word)
      print(vec)
+
+Bengali POS Tagging
+===================
+
+
+* **Bengali CRF POS Tagging** 
+
+
+* 
+  Find Pos Tag Using Pretrained Model
+
+  .. code-block:: py
+
+     from bnlp.bengali_pos import BN_CRF_POS
+     bn_pos = BN_CRF_POS()
+     model_path = "model/bn_pos_model.pkl"
+     text = "আমি ভাত খাই।"
+     res = bn_pos.pos_tag(model_path, text)
+     print(res)
+     # [('আমি', 'PPR'), ('ভাত', 'NC'), ('খাই', 'VM'), ('।', 'PU')]
+
+* 
+  Train POS Tag Model
+
+  .. code-block:: py
+
+     from bnlp.bengali_pos import BN_CRF_POS
+     bn_pos = BN_CRF_POS()
+     model_name = "pos_model.pkl"
+     tagged_sentences = [[('রপ্তানি', 'JJ'), ('দ্রব্য', 'NC'), ('-', 'PU'), ('তাজা', 'JJ'), ('ও', 'CCD'), ('শুকনা', 'JJ'), ('ফল', 'NC'), (',', 'PU'), ('আফিম', 'NC'), (',', 'PU'), ('পশুচর্ম', 'NC'), ('ও', 'CCD'), ('পশম', 'NC'), ('এবং', 'CCD'),('কার্পেট', 'NC'), ('৷', 'PU')], [('মাটি', 'NC'), ('থেকে', 'PP'), ('বড়জোর', 'JQ'), ('চার', 'JQ'), ('পাঁচ', 'JQ'), ('ফুট', 'CCL'), ('উঁচু', 'JJ'), ('হবে', 'VM'), ('৷', 'PU')]]
+
+     bn_pos.training(model_name, tagged_sentences)
 
 Issue
 =====
@@ -258,3 +300,4 @@ Contributor Guide
 =================
 
 Check `CONTRIBUTING.md <https://github.com/sagorbrur/bnlp/blob/master/CONTRIBUTING.md>`_ page for details.
+
