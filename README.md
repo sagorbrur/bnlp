@@ -84,6 +84,10 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     input_text = "আমি ভাত খাই। সে বাজারে যায়।"
     tokens = bsp.tokenize(model_path, input_text)
     print(tokens)
+    text2id = bsp.text2id(model_path, input_text)
+    print(text2id)
+    id2text = bsp.id2text(model_path, text2id)
+    print(id2text)
 
     ```
   - Training SentencePiece
