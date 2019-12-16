@@ -1,8 +1,3 @@
-.. role:: raw-html-m2r(raw)
-   :format: html
-
-
-:raw-html-m2r:`<img align="left" height="70" src="../bnlp.svg" alt="bnlp"/>`
 
 Bengali Natural Language Processing(BNLP)
 =========================================
