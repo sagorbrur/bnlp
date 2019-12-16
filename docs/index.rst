@@ -1,4 +1,3 @@
-
 Bengali Natural Language Processing(BNLP)
 =========================================
 
@@ -145,7 +144,7 @@ Tokenization
      # sentence_token: ["আমি ভাত খাই।", "সে বাজারে যায়।", "তিনি কি সত্যিই ভালো মানুষ?"]
 
 Word Embedding
---------------
+==============
 
 
 * 
