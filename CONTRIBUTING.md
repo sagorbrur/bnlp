@@ -8,6 +8,7 @@ more efficiently.
 ## Current Features
 * Bengali Tokenization
 * Bengali Word Embedding
+* Bengali POS Tagging
 
 **To make this tool more effective you can add below features as well as other features too**
 
