@@ -22,7 +22,7 @@ Bengali Natural Language Processing(BNLP)
    :alt: Support Python Version
 
 
-.. image:: https://img.shields.io/pypi/dw/bnlp_toolkit?color=green
+.. image:: https://img.shields.io/pypi/dw/bnlp_toolkit
    :target: https://pypi.org/project/bnlp-toolkit/
    :alt: pypi Downloads
 
