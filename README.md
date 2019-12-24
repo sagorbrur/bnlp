@@ -6,7 +6,6 @@
 [![PyPI version](https://img.shields.io/pypi/v/bnlp_toolkit)](https://pypi.org/project/bnlp-toolkit/)
 [![release version](https://img.shields.io/github/v/release/sagorbrur/bnlp)](https://github.com/sagorbrur/bnlp/releases/tag/2.0.0)
 [![Support Python Version](https://img.shields.io/badge/python-3.5%7C3.6%7C3.7-brightgreen)](https://pypi.org/project/bnlp-toolkit/)
-[![pypi Downloads](https://img.shields.io/pypi/dw/bnlp_toolkit)](https://pypi.org/project/bnlp-toolkit/)
 [![Documentation Status](https://readthedocs.org/projects/bnlp/badge/?version=latest)](https://bnlp.readthedocs.io/en/latest/?badge=latest)
 [![Gitter](https://badges.gitter.im/bnlp_toolkit/community.svg)](https://gitter.im/bnlp_toolkit/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
