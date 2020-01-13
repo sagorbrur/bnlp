@@ -39,11 +39,11 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
 ## Installation
 
-* pypi package installer(python 3.5, 3.6, 3.7 tested okay)
+### PIP installer(python 3.5, 3.6, 3.7 tested okay)
 
   ```pip install bnlp_toolkit```
-  
-* Local
+
+### Local Installer
   ```
   $git clone https://github.com/sagorbrur/bnlp.git
   $cd bnlp
