@@ -109,7 +109,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
   ```py
   from bnlp.basic_tokenizer import BasicTokenizer
-  basic_t = BasicTokenizer(False)
+  basic_t = BasicTokenizer(False) # Here do_lower_case=False
   raw_text = "আমি বাংলায় গান গাই।"
   tokens = basic_t.tokenize(raw_text)
   print(tokens)
