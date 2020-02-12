@@ -3,14 +3,7 @@ import sentencepiece as bsp
 
 
 class SP_Tokenizer(object):
-    def __init__(self, is_train=False):
-        self.is_train = is_train
-        """
-        :is_train: boolean value to choose training option
-
-        """
-
-
+    
     def train_bsp(self, data, model_prefix, vocab_size):
         """
         :data: (str) data path with extension
@@ -18,11 +11,9 @@ class SP_Tokenizer(object):
         :vocab_size: (int) size of train vocabulary
 
         """
-        if self.is_train:
-            train_args = "--model_prefix="+model_prefix+" --input="+data+" --vocab_size="+str(vocab_size)
-            # print(train_args)
-            bsp.SentencePieceTrainer.train(train_args)
-            print("%s.model and %s.vocab is saved on your current directory"%(model_prefix, model_prefix))
+        train_args = "--model_prefix="+model_prefix+" --input="+data+" --vocab_size="+str(vocab_size)
+        bsp.SentencePieceTrainer.train(train_args)
+        print("%s.model and %s.vocab is saved on your current directory"%(model_prefix, model_prefix))
 
     def tokenize(self, model_path, text):
         """

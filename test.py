@@ -9,7 +9,7 @@ from bnlp.bengali_pos import BN_CRF_POS
 class TestBNLP(unittest.TestCase):
 
     def test_BT(self):
-        bt = BasicTokenizer(False)
+        bt = BasicTokenizer()
         text = "আমি ভাত খাই।"
         tokens = bt.tokenize(text)
         self.assertEqual(tokens, ["আমি", "ভাত", "খাই", "।"])
@@ -42,12 +42,12 @@ class TestBNLP(unittest.TestCase):
          "বাসিন্দা", "রাত", "জেগে", "পালাক্রমে", "এই", "কাজ", "করছেন", "গত", "২৮", "নভেম্বর", "থেকে", "।"]
 
         gt_sen_tokens = ["আমি ভাত খাই।", "সে বাজারে যায়।", "কী বলছো এসব?"]
-        nl = NLTK_Tokenizer(text1)
-        out_word_tokens = nl.word_tokenize()
+        nl = NLTK_Tokenizer()
+        out_word_tokens = nl.word_tokenize(text1)
         self.assertEqual(out_word_tokens, gt_word_tokens)
 
-        nl2 = NLTK_Tokenizer(text2)
-        out_sen_tokens = nl2.sentence_tokenize()
+        nl2 = NLTK_Tokenizer()
+        out_sen_tokens = nl2.sentence_tokenize(text2)
         self.assertEqual(out_sen_tokens, gt_sen_tokens)
 
 

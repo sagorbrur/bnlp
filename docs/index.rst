@@ -100,7 +100,7 @@ Tokenization
 
        from bnlp.sentencepiece_tokenizer import SP_Tokenizer
 
-       bsp = SP_Tokenizer(is_train=True)
+       bsp = SP_Tokenizer()
        data = "test.txt"
        model_prefix = "test"
        vocab_size = 5
@@ -112,7 +112,7 @@ Tokenization
 .. code-block:: py
 
      from bnlp.basic_tokenizer import BasicTokenizer
-     basic_t = BasicTokenizer(False)
+     basic_t = BasicTokenizer()
      raw_text = "আমি বাংলায় গান গাই।"
      tokens = basic_t.tokenize(raw_text)
      print(tokens)
@@ -128,9 +128,9 @@ Tokenization
      from bnlp.nltk_tokenizer import NLTK_Tokenizer
 
      text = "আমি ভাত খাই। সে বাজারে যায়। তিনি কি সত্যিই ভালো মানুষ?"
-     bnltk = NLTK_Tokenizer(text)
-     word_tokens = bnltk.word_tokenize()
-     sentence_tokens = bnltk.sentence_tokenize()
+     bnltk = NLTK_Tokenizer()
+     word_tokens = bnltk.word_tokenize(text)
+     sentence_tokens = bnltk.sentence_tokenize(text)
      print(word_tokens)
      print(sentence_tokens)
 
@@ -179,7 +179,7 @@ Word Embedding
     .. code-block:: py
 
        from bnlp.bengali_word2vec import Bengali_Word2Vec
-       bwv = Bengali_Word2Vec(is_train=True)
+       bwv = Bengali_Word2Vec()
        data_file = "test.txt"
        model_name = "test_model.model"
        vector_name = "test_vector.vector"
@@ -212,7 +212,7 @@ Word Embedding
 
         from bnlp.bengali_fasttext import Bengali_Fasttext
    
-        bft = Bengali_Fasttext(is_train=True)
+        bft = Bengali_Fasttext()
         data = "data.txt"
         model_name = "saved_model.bin"
         epoch = 50

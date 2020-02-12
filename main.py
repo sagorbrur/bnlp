@@ -13,9 +13,9 @@ if __name__ == "__main__":
 
     # # nltk testing
     # text = "আমি ভাত খাই। সে বাজারে যায়। তিনি কি সত্যিই ভালো মানুষ?"
-    # nlt = NLTK_Tokenizer(text)
-    # nl_tokens = nlt.word_tokenize()
-    # nl_sen = nlt.sentence_tokenize()
+    # nlt = NLTK_Tokenizer()
+    # nl_tokens = nlt.word_tokenize(text)
+    # nl_sen = nlt.sentence_tokenize(text)
     # print(nl_tokens)
     # print(nl_sen)
 
@@ -24,12 +24,12 @@ if __name__ == "__main__":
     # path = "./model/bn_spm.model"
     # token = spp.tokenize(path, "আমি বাংলায়।")
     # print(token)
-    # tr = SP_Tokenizer(is_train=True)
+    # tr = SP_Tokenizer()
     # data = "test.txt"
-    # tr.train_bsp(data, "test", 5) 
+    # tr.train_bsp(data, "test", 41) 
 
     # word2vec testing
-    # bwv = Bengali_Word2Vec(is_train=True)
+    # bwv = Bengali_Word2Vec()
     # data_file = "test.txt"
     # model_name = "test_model.model"
     # vector_name = "test_vector.vector"
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     # vector = bwv.generate_word_vector(model_path, word)
     # print(vector.shape)
     # print(vector)
-    # basic_t = BasicTokenizer(False)
+    # basic_t = BasicTokenizer()
     # raw_text = "আমি বাংলায় গান গাই।"
     # tokens = basic_t.tokenize(raw_text)
     # print(tokens)
@@ -63,10 +63,10 @@ if __name__ == "__main__":
 #     print(ids)
 #     text = spm.id2text(model_path, ids)
 #     print(text)
-    bn_pos = BN_CRF_POS()
-    model_path = "bn_pos_model.pkl"
-    text = "আমি ভাত খাই।"
-    res = bn_pos.pos_tag(model_path, text)
-    print(res)
+    # bn_pos = BN_CRF_POS()
+    # model_path = "bn_pos_model.pkl"
+    # text = "আমি ভাত খাই।"
+    # res = bn_pos.pos_tag(model_path, text)
+    # print(res)
 
     

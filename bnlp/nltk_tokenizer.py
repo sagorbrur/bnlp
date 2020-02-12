@@ -8,15 +8,9 @@ except LookupError:
 
 
 class NLTK_Tokenizer(object):
-    def __init__(self, text):
-        self.text = text
-        """
-        :text: (str) input text for tokenization
-
-        """
-
-    def word_tokenize(self):
-        tokens = nltk.word_tokenize(self.text)
+    
+    def word_tokenize(self, text):
+        tokens = nltk.word_tokenize(text)
         new_tokens = []
         for token in tokens:
             if token[-1] == "।" and len(token)>1:
@@ -28,8 +22,8 @@ class NLTK_Tokenizer(object):
               new_tokens.append(token)
         return new_tokens
     
-    def sentence_tokenize(self):
-        text = self.text.replace("।", ".")
+    def sentence_tokenize(self, text):
+        text = text.replace("।", ".")
         tokens = nltk.tokenize.sent_tokenize(text)
         new_tokens = []
         for token in tokens:
@@ -37,7 +31,6 @@ class NLTK_Tokenizer(object):
                 token = token[:-2] + token[-2:].replace(".","।")
             new_tokens.append(token)
         return new_tokens
-
 
 
 

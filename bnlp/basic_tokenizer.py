@@ -55,14 +55,6 @@ def _is_punctuation(char):
 class BasicTokenizer(object):
   """Runs basic tokenization (punctuation splitting, lower casing, etc.)."""
 
-  def __init__(self, do_lower_case=False):
-    """Constructs a BasicTokenizer.
-
-    Args:
-      do_lower_case: Whether to lower case the input.
-    """
-    self.do_lower_case = do_lower_case
-
   def tokenize(self, text):
     """Tokenizes a piece of text."""
     text = convert_to_unicode(text)
@@ -72,9 +64,9 @@ class BasicTokenizer(object):
     # print("original tokens: ", orig_tokens)
     split_tokens = []
     for token in orig_tokens:
-      if self.do_lower_case:
-        token = token.lower()
-        token = self._run_strip_accents(token)
+      # if self.do_lower_case:
+      #   token = token.lower()
+      #   token = self._run_strip_accents(token)
       split_tokens.extend(self._run_split_on_punc(token))
 
     # print("split tokens: ", split_tokens)
@@ -111,5 +103,8 @@ class BasicTokenizer(object):
       i += 1
 
     return ["".join(x) for x in output]
+
+
+
 
  
