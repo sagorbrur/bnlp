@@ -278,9 +278,8 @@ Check [CONTRIBUTING.md](https://github.com/sagorbrur/bnlp/blob/master/CONTRIBUTI
 
 ## Contributor List
 
-* [Sagor Sarker](https://github.com/sagorbrur)
-* [Faruk Ahmad](https://github.com/faruk-ahmad)
+[![](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/images/0)](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/links/0)[![](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/images/1)](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/links/1)[![](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/images/2)](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/links/2)[![](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/images/3)](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/links/3)[![](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/images/4)](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/links/4)[![](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/images/5)](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/links/5)[![](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/images/6)](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/links/6)[![](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/images/7)](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/links/7)
+
+### Extra Contributor
 * [Mehadi Hasan Menon](https://github.com/menon92)
 * [Kazal Chandra Barman](https://github.com/kazalbrur)
-* [Md Ibrahim](https://github.com/iriad11)
-* [Abdullah Al Loman](https://github.com/aaloman)
