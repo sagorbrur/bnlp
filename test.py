@@ -49,10 +49,13 @@ class TestBNLP(unittest.TestCase):
         nl2 = NLTK_Tokenizer()
         out_sen_tokens = nl2.sentence_tokenize(text2)
         self.assertEqual(out_sen_tokens, gt_sen_tokens)
-
-
-
     
+    def test_POS(self):
+        bn_pos = BN_CRF_POS()
+        model_path = "model/bn_pos_model.pkl"
+        text = "আমি ভাত খাই।"
+        res = bn_pos.pos_tag(model_path, text)
+        self.assertEqual(res, [('আমি', 'PPR'), ('ভাত', 'NC'), ('খাই', 'VM'), ('।', 'PU')])    
 
 if __name__ == '__main__':
     unittest.main()

@@ -53,12 +53,14 @@ class BN_CRF_POS(object):
         self.is_training = is_training
 
     def pos_tag(self, model_path, text):
-        model = pickle.load(open(model_path, 'rb'))
-        basic_t = BasicTokenizer(False)
-        tokens = basic_t.tokenize(text)
-        sentence_features = [features(tokens, index) for index in range(len(tokens))]
-        result = list(zip(tokens, model.predict([sentence_features])[0]))
-        return result
+        with open(model_path, 'rb') as pkl_model:
+            model = pickle.load(pkl_model)
+            basic_t = BasicTokenizer()
+            tokens = basic_t.tokenize(text)
+            sentence_features = [features(tokens, index) for index in range(len(tokens))]
+            result = list(zip(tokens, model.predict([sentence_features])[0]))
+            pkl_model.close()
+            return result
 
     def training(self, model_name, tagged_sentences):
         # Split the dataset for training and testing
