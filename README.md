@@ -22,6 +22,8 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 - [Issue](#issue)
 - [Contributor Guide](#contributor-guide)
 - [Contributor List](#contributor-list)
+- [Documentation](https://bnlp.readthedocs.io/en/latest/)
+- [Notebook](https://github.com/sagorbrur/bnlp/tree/master/notebook)
 
 
 ## Current Features
