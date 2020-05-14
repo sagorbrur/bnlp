@@ -11,6 +11,8 @@
 
 BNLP is a natural language processing toolkit for Bengali Language. This tool will help you to **tokenize Bengali text**, **Embedding Bengali words**, **Bengali POS Tagging**, **Construct Neural Model** for Bengali NLP purposes.
 
+**NB: Any Researcher who refer this tool in his/her paper please let us know, we will include paper link here**</br>
+**Contact Mail: brursagor@gmail.com**
 
 # Contents
 - [Current Features](#current-features)
