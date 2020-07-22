@@ -53,14 +53,14 @@ class TestBNLP(unittest.TestCase):
     
     def test_POS(self):
         bn_pos = POS()
-        model_path = "model/bn_pos_model.pkl"
+        model_path = "model/bn_pos.pkl"
         text = "আমি ভাত খাই।"
         res = bn_pos.tag(model_path, text)
         self.assertEqual(res, [('আমি', 'PPR'), ('ভাত', 'NC'), ('খাই', 'VM'), ('।', 'PU')])    
 
     def test_NER(self):
         bn_ner = NER()
-        model_path = "model/bn_pos_model.pkl"
+        model_path = "model/bn_ner.pkl"
         text = "সে ঢাকায় থাকে।"
         res = bn_ner.tag(model_path, text)
         self.assertEqual(res, [('সে', 'O'), ('ঢাকায়', 'S-LOC'), ('থাকে', 'O')])    
