@@ -249,11 +249,11 @@ Bengali POS Tagging
 
   .. code-block:: py
 
-     from bnlp.bengali_pos import BN_CRF_POS
-     bn_pos = BN_CRF_POS()
+     from bnlp.pos import POS
+     bn_pos = POS()
      model_path = "model/bn_pos_model.pkl"
      text = "আমি ভাত খাই।"
-     res = bn_pos.pos_tag(model_path, text)
+     res = bn_pos.tag(model_path, text)
      print(res)
      # [('আমি', 'PPR'), ('ভাত', 'NC'), ('খাই', 'VM'), ('।', 'PU')]
 
@@ -262,12 +262,45 @@ Bengali POS Tagging
 
   .. code-block:: py
 
-     from bnlp.bengali_pos import BN_CRF_POS
-     bn_pos = BN_CRF_POS()
+     from bnlp.pos import POS
+     bn_pos = POS()
      model_name = "pos_model.pkl"
      tagged_sentences = [[('রপ্তানি', 'JJ'), ('দ্রব্য', 'NC'), ('-', 'PU'), ('তাজা', 'JJ'), ('ও', 'CCD'), ('শুকনা', 'JJ'), ('ফল', 'NC'), (',', 'PU'), ('আফিম', 'NC'), (',', 'PU'), ('পশুচর্ম', 'NC'), ('ও', 'CCD'), ('পশম', 'NC'), ('এবং', 'CCD'),('কার্পেট', 'NC'), ('৷', 'PU')], [('মাটি', 'NC'), ('থেকে', 'PP'), ('বড়জোর', 'JQ'), ('চার', 'JQ'), ('পাঁচ', 'JQ'), ('ফুট', 'CCL'), ('উঁচু', 'JJ'), ('হবে', 'VM'), ('৷', 'PU')]]
 
-     bn_pos.training(model_name, tagged_sentences)
+     bn_pos.train(model_name, tagged_sentences)
+
+
+Bengali NER
+===========
+
+
+* **Bengali CRF NER** 
+
+
+* 
+  Find NER Tag Using Pretrained Model
+
+  .. code-block:: py
+
+     from bnlp.ner import ner
+     bn_ner = NER()
+     model_path = "model/bn_pos_model.pkl"
+     text = "সে ঢাকায় থাকে।"
+     res = bn_ner.tag(model_path, text)
+     print(res)
+     # [('সে', 'O'), ('ঢাকায়', 'S-LOC'), ('থাকে', 'O')]
+
+* 
+  Train NER Model
+
+  .. code-block:: py
+
+     from bnlp.ner import NER
+     bn_ner = NER()
+     model_name = "ner_model.pkl"
+     tagged_sentences = [[('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')]]
+
+     bn_ner.train(model_name, tagged_sentences)
 
 Issue
 =====

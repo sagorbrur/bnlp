@@ -4,7 +4,7 @@ import setuptools
 
 setuptools.setup(
     name="bnlp_toolkit",
-    version="2.1",
+    version="2.3",
     author="Sagor Sarker",
     author_email="sagorhem3532@gmail.com",
     description="BNLP is a natural language processing toolkit for Bengali Language",

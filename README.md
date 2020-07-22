@@ -20,6 +20,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 - [Tokenization](#tokenization)
 - [Embedding](#word-embedding)
 - [POS Tagging](#bengali-pos-tagging)
+- [NER](#bengali-ner)
 - [Issue](#issue)
 - [Contributor Guide](#contributor-guide)
 - [Contributor List](#contributor-list)
@@ -38,6 +39,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - Bengali GloVe
   
 * [Bengali POS Tagging](#bengali-pos-tagging)
+* [Bengali Name Entity Recognition](#bengali-ner)
 
 
 ## Installation
@@ -63,7 +65,8 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 * [Bengali Word2Vec](https://drive.google.com/open?id=1DxR8Vw61zRxuUm17jzFnOX97j7QtNW7U)
 * [Bengali FastText](https://drive.google.com/open?id=1CFA-SluRyz3s5gmGScsFUcs7AjLfscm2)
 * [Bengali GloVe Wordvectors](https://github.com/sagorbrur/GloVe-Bengali)
-* [Bengali POS Tag model](https://github.com/sagorbrur/bnlp/blob/master/model/bn_pos_model.pkl)
+* [Bengali POS Tag model](https://github.com/sagorbrur/bnlp/blob/master/model/bn_pos.pkl)
+* [Bengali NER model](https://github.com/sagorbrur/bnlp/blob/master/model/bn_ner.pkl)
 
 ### Training Details
 * Sentencepiece, Word2Vec, Fasttext, GloVe model trained with **Bengali Wikipedia Dump Dataset**
@@ -73,6 +76,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 * Word2Vec word embedding dimension = 300
 * To Know Bengali GloVe Wordvector and training process follow [this](https://github.com/sagorbrur/GloVe-Bengali) repository
 * Bengali CRF POS Tagging was training with [nltr](https://github.com/abhishekgupta92/bangla_pos_tagger/tree/master/data) dataset with 80% accuracy. 
+* Bengali CRF NER Tagging was train with [this](https://github.com/MISabic/NER-Bangla-Dataset) data with 90% accuracy.
 
 
 ## Tokenization
@@ -237,11 +241,11 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - Find Pos Tag Using Pretrained Model
 
     ```py
-    from bnlp.bengali_pos import BN_CRF_POS
-    bn_pos = BN_CRF_POS()
-    model_path = "model/bn_pos_model.pkl"
+    from bnlp.pos import POS
+    bn_pos = POS()
+    model_path = "model/bn_pos.pkl"
     text = "আমি ভাত খাই।"
-    res = bn_pos.pos_tag(model_path, text)
+    res = bn_pos.tag(model_path, text)
     print(res)
     # [('আমি', 'PPR'), ('ভাত', 'NC'), ('খাই', 'VM'), ('।', 'PU')]
 
@@ -249,14 +253,43 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - Train POS Tag Model
   
     ```py
-    from bnlp.bengali_pos import BN_CRF_POS
-    bn_pos = BN_CRF_POS()
+    from bnlp.pos import POS
+    bn_pos = POS()
     model_name = "pos_model.pkl"
     tagged_sentences = [[('রপ্তানি', 'JJ'), ('দ্রব্য', 'NC'), ('-', 'PU'), ('তাজা', 'JJ'), ('ও', 'CCD'), ('শুকনা', 'JJ'), ('ফল', 'NC'), (',', 'PU'), ('আফিম', 'NC'), (',', 'PU'), ('পশুচর্ম', 'NC'), ('ও', 'CCD'), ('পশম', 'NC'), ('এবং', 'CCD'),('কার্পেট', 'NC'), ('৷', 'PU')], [('মাটি', 'NC'), ('থেকে', 'PP'), ('বড়জোর', 'JQ'), ('চার', 'JQ'), ('পাঁচ', 'JQ'), ('ফুট', 'CCL'), ('উঁচু', 'JJ'), ('হবে', 'VM'), ('৷', 'PU')]]
 
-    bn_pos.training(model_name, tagged_sentences)
+    bn_pos.train(model_name, tagged_sentences)
 
     ```
+
+## Bengali NER
+* **Bengali CRF NER** 
+
+
+  - Find NER Tag Using Pretrained Model
+
+    ```py
+    from bnlp.ner import NER
+    bn_ner = NER()
+    model_path = "model/bn_ner.pkl"
+    text = "সে ঢাকায় থাকে।"
+    result = bn_ner.tag(model_path, text)
+    print(result)
+    # [('সে', 'O'), ('ঢাকায়', 'S-LOC'), ('থাকে', 'O')]
+
+    ```
+  - Train NER Tag Model
+  
+    ```py
+    from bnlp.ner import NER
+    bn_ner = NER()
+    model_name = "ner_model.pkl"
+    tagged_sentences = [[('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')], [('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')], [('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')]]
+
+    bn_per.train(model_name, tagged_sentences)
+
+    ```
+
 
 ## Issue
 * if `ModuleNotFoundError: No module named 'fasttext'` problem arise please do the next line

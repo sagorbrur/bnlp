@@ -4,7 +4,8 @@ from bnlp.nltk_tokenizer import NLTK_Tokenizer
 from bnlp.bengali_word2vec import Bengali_Word2Vec
 from bnlp.basic_tokenizer import BasicTokenizer
 from bnlp.glove_wordvector import BN_Glove
-from bnlp.bengali_pos import BN_CRF_POS
+from bnlp.pos import POS
+from bnlp.ner import NER
 
 
 
@@ -63,10 +64,10 @@ if __name__ == "__main__":
 #     print(ids)
 #     text = spm.id2text(model_path, ids)
 #     print(text)
-    # bn_pos = BN_CRF_POS()
+    # bn_pos = POS()
     # model_path = "bn_pos_model.pkl"
     # text = "আমি ভাত খাই।"
-    # res = bn_pos.pos_tag(model_path, text)
+    # res = bn_pos.tag(model_path, text)
     # print(res)
 
     

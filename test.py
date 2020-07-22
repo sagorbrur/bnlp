@@ -4,7 +4,8 @@ from bnlp.nltk_tokenizer import NLTK_Tokenizer
 from bnlp.basic_tokenizer import BasicTokenizer
 from bnlp.bengali_word2vec import Bengali_Word2Vec
 from bnlp.bengali_fasttext import Bengali_Fasttext
-from bnlp.bengali_pos import BN_CRF_POS
+from bnlp.pos import POS
+from bnlp.ner import NER
 
 class TestBNLP(unittest.TestCase):
 
@@ -51,11 +52,18 @@ class TestBNLP(unittest.TestCase):
         self.assertEqual(out_sen_tokens, gt_sen_tokens)
     
     def test_POS(self):
-        bn_pos = BN_CRF_POS()
+        bn_pos = POS()
         model_path = "model/bn_pos_model.pkl"
         text = "আমি ভাত খাই।"
-        res = bn_pos.pos_tag(model_path, text)
+        res = bn_pos.tag(model_path, text)
         self.assertEqual(res, [('আমি', 'PPR'), ('ভাত', 'NC'), ('খাই', 'VM'), ('।', 'PU')])    
+
+    def test_NER(self):
+        bn_ner = NER()
+        model_path = "model/bn_pos_model.pkl"
+        text = "সে ঢাকায় থাকে।"
+        res = bn_ner.tag(model_path, text)
+        self.assertEqual(res, [('সে', 'O'), ('ঢাকায়', 'S-LOC'), ('থাকে', 'O')])    
 
 if __name__ == '__main__':
     unittest.main()

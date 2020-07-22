@@ -8,7 +8,8 @@ from bnlp.basic_tokenizer import BasicTokenizer
 from bnlp.bengali_word2vec import Bengali_Word2Vec
 from bnlp.bengali_fasttext import Bengali_Fasttext
 from bnlp.glove_wordvector import BN_Glove
-from bnlp.bengali_pos import BN_CRF_POS
+from bnlp.pos import POS
+from bnlp.ner import NER
 
 
 
