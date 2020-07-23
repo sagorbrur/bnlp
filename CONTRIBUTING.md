@@ -9,10 +9,10 @@ more efficiently.
 * Bengali Tokenization
 * Bengali Word Embedding
 * Bengali POS Tagging
+* Bengali NER
 
 **To make this tool more effective you can add below features as well as other features too**
 
-* **Bengali Name Entity Recognition**
 * **Bengali Lemmatization**
 * **Bengali Spell Checker**
 * so on.................. 
