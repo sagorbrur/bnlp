@@ -56,7 +56,8 @@ Download Link
 * `Bengali Word2Vec <https://drive.google.com/open?id=1DxR8Vw61zRxuUm17jzFnOX97j7QtNW7U>`_
 * `Bengali FastText <https://drive.google.com/open?id=1CFA-SluRyz3s5gmGScsFUcs7AjLfscm2>`_
 * `Bengali GloVe Wordvectors <https://github.com/sagorbrur/GloVe-Bengali>`_
-* `Bengali POS Tag model <https://github.com/sagorbrur/bnlp/blob/master/model/bn_pos_model.pkl>`_
+* `Bengali POS Tag model <https://github.com/sagorbrur/bnlp/blob/master/model/bn_pos.pkl>`_
+* `Bengali NER model <https://github.com/sagorbrur/bnlp/blob/master/model/bn_ner.pkl>`_
 
 Training Details
 ^^^^^^^^^^^^^^^^
@@ -71,6 +72,8 @@ Training Details
 * Word2Vec word embedding dimension = 300
 * To Know Bengali GloVe Wordvector and training process follow `this <https://github.com/sagorbrur/GloVe-Bengali>`_ repository
 * Bengali CRF POS Tagging was training with `nltr <https://github.com/abhishekgupta92/bangla_pos_tagger/tree/master/data>`_ dataset with 80% accuracy. 
+* Bengali CRF NER Tagging was train with `this <https://github.com/MISabic/NER-Bangla-Dataset>`_ data with 90% accuracy.
+
 
 Tokenization
 ============
