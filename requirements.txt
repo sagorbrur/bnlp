@@ -1,4 +1,4 @@
-nltk==3.2.5
+nltk==3.4.5
 sentencepiece==0.1.91
 gensim==3.6.0
 fasttext==0.9.2
