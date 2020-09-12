@@ -319,12 +319,3 @@ Check [CONTRIBUTING.md](https://github.com/sagorbrur/bnlp/blob/master/CONTRIBUTI
 ### Extra Contributor
 * [Mehadi Hasan Menon](https://github.com/menon92)
 * [Kazal Chandra Barman](https://github.com/kazalbrur)
-
-## Citation
-* NER Dataset Citation
-```
-Karim, Redwanul & Islam, M. A. & Simanto, Sazid & Chowdhury, Saif & Roy, Kalyan & Neon, Adnan & Hasan, Md & Firoze, Adnan & Rahman, Mohammad. (2019).</br> 
-A step towards information extraction: Named entity recognition in Bangla using deep learning. Journal of Intelligent & Fuzzy Systems.</br> 
-37. 1-13. 10.3233/JIFS-179349.
-
-```
