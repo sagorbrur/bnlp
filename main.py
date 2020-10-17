@@ -1,13 +1,15 @@
 
-from bnlp.sentencepiece_tokenizer import SP_Tokenizer
-from bnlp.nltk_tokenizer import NLTK_Tokenizer
-from bnlp.bengali_word2vec import Bengali_Word2Vec
-from bnlp.basic_tokenizer import BasicTokenizer
-from bnlp.glove_wordvector import BN_Glove
-from bnlp.pos import POS
-from bnlp.ner import NER
+# from bnlp.sentencepiece_tokenizer import SP_Tokenizer
+# from bnlp.nltk_tokenizer import NLTK_Tokenizer
+# from bnlp.bengali_word2vec import Bengali_Word2Vec
+# from bnlp.basic_tokenizer import BasicTokenizer
+# from bnlp.glove_wordvector import BN_Glove
+# from bnlp.pos import POS
+# from bnlp.ner import NER
 
-
+from bnlp.corpus import stopwords
+from bnlp.corpus import punctuations
+from bnlp.corpus.util import remove_stopwords
 
 
 if __name__ == "__main__":
@@ -69,5 +71,12 @@ if __name__ == "__main__":
     # text = "আমি ভাত খাই।"
     # res = bn_pos.tag(model_path, text)
     # print(res)
+
+    bnstopwords = stopwords()
+    # print(bnstopwords)
+    res = remove_stopwords('অথচ আমি কিন্তু এটা করিনি।', bnstopwords)
+    print(res)
+    # punc = punctuations
+    # print(punc)
 
     
