@@ -6,7 +6,7 @@ from scipy import spatial
 
 
 
-class BN_Glove(object):
+class BengaliGlove:
   
   def word2vec(self, glove_path, test_word):
       embeddings_dict = {}

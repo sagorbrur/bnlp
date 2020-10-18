@@ -1,11 +1,11 @@
 import unittest
-from bnlp.sentencepiece_tokenizer import SP_Tokenizer
-from bnlp.nltk_tokenizer import NLTK_Tokenizer
-from bnlp.basic_tokenizer import BasicTokenizer
-from bnlp.bengali_word2vec import Bengali_Word2Vec
-from bnlp.bengali_fasttext import Bengali_Fasttext
-from bnlp.pos import POS
-from bnlp.ner import NER
+from bnlp import POS
+from bnlp import NER
+from bnlp import NLTKTokenizer
+from bnlp import BasicTokenizer
+from bnlp import SentencepieceTokenizer
+from bnlp import BengaliWord2Vec
+from bnlp import BengaliFasttext
 
 class TestBNLP(unittest.TestCase):
 
@@ -43,11 +43,11 @@ class TestBNLP(unittest.TestCase):
          "বাসিন্দা", "রাত", "জেগে", "পালাক্রমে", "এই", "কাজ", "করছেন", "গত", "২৮", "নভেম্বর", "থেকে", "।"]
 
         gt_sen_tokens = ["আমি ভাত খাই।", "সে বাজারে যায়।", "কী বলছো এসব?"]
-        nl = NLTK_Tokenizer()
+        nl = NLTKTokenizer()
         out_word_tokens = nl.word_tokenize(text1)
         self.assertEqual(out_word_tokens, gt_word_tokens)
 
-        nl2 = NLTK_Tokenizer()
+        nl2 = NLTKTokenizer()
         out_sen_tokens = nl2.sentence_tokenize(text2)
         self.assertEqual(out_sen_tokens, gt_sen_tokens)
     

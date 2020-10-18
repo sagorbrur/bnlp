@@ -9,7 +9,7 @@ import string
 from sklearn_crfsuite import CRF
 from sklearn_crfsuite import metrics
 from nltk.tag.util import untag
-from bnlp.basic_tokenizer import BasicTokenizer
+from bnlp.tokenizer.basic import BasicTokenizer
 
 def features(sentence, index):
         """ sentence: [w1, w2, ...], index: the index of the word """
@@ -47,7 +47,7 @@ def transform_to_dataset(tagged_sentences):
 
 
 
-class NER(object):
+class NER:
     def tag(self, model_path, text):
         punctuations = string.punctuation+'।'
         with open(model_path, 'rb') as pkl_model:

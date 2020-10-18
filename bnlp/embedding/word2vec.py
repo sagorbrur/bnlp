@@ -6,23 +6,14 @@ from __future__ import print_function
 import os
 import sys
 import multiprocessing
-
 from gensim.models import Word2Vec
 from gensim.models.word2vec import LineSentence
 
 
 
 
-class Bengali_Word2Vec(object):
-    def __init__(self, is_train=False):
-        self.is_train = is_train
-
-        """
-        :is_train: boolean value to choose training option
-
-        """
-
-    def train_word2vec(self, data_file, model_name, vector_name):
+class BengaliWord2Vec:
+    def train(self, data_file, model_name, vector_name):
 
         """
         :data_file: (str) input text data file with name and extension
@@ -30,14 +21,12 @@ class Bengali_Word2Vec(object):
         :vector_name: (str) vector path with file name and extension
 
         """
-        
-        if self.is_train:
-            model = Word2Vec(LineSentence(data_file), size=300, window=5, min_count=1,
-                        workers=multiprocessing.cpu_count()) # size = 200
+        model = Word2Vec(LineSentence(data_file), size=300, window=5, min_count=1,
+                    workers=multiprocessing.cpu_count()) # size = 200
 
-            model.save(model_name)
-            model.wv.save_word2vec_format(vector_name, binary=False)
-            print("%s and %s saved in your current directory."%(model_name, vector_name))
+        model.save(model_name)
+        model.wv.save_word2vec_format(vector_name, binary=False)
+        print("%s and %s saved in your current directory."%(model_name, vector_name))
 
     def generate_word_vector(self, model_path, input_word):
         """
@@ -59,5 +48,4 @@ class Bengali_Word2Vec(object):
         similar_word = model.most_similar(word)
         return similar_word
 
-    def generate_text2vector(self, model_path, input_text):
-        pass
+

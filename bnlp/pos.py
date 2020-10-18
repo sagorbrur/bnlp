@@ -7,7 +7,7 @@ import pickle
 from sklearn_crfsuite import CRF
 from sklearn_crfsuite import metrics
 from nltk.tag.util import untag
-from bnlp.basic_tokenizer import BasicTokenizer
+from bnlp.tokenizer.basic import BasicTokenizer
 
 def features(sentence, index):
         """ sentence: [w1, w2, ...], index: the index of the word """
@@ -43,7 +43,7 @@ def transform_to_dataset(tagged_sentences):
  
     return X, y
 
-class POS(object):
+class POS:
     def tag(self, model_path, text):
         with open(model_path, 'rb') as pkl_model:
             model = pickle.load(pkl_model)

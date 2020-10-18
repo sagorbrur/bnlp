@@ -2,9 +2,9 @@ import os
 import sentencepiece as bsp
 
 
-class SP_Tokenizer(object):
+class SentencepieceTokenizer:
     
-    def train_bsp(self, data, model_prefix, vocab_size):
+    def train(self, data, model_prefix, vocab_size):
         """
         :data: (str) data path with extension
         :model_prefix: (str) model name prefix
