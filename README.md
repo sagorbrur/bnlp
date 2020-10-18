@@ -188,8 +188,9 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     ```
     
  * **Bengali FastText**
- To use `fasttext` you need to install fasttext manually by `pip install fasttext==0.9.2`
- NB: it will not work in `windows`, it will only work in `linux`
+ 
+    To use `fasttext` you need to install fasttext manually by `pip install fasttext==0.9.2`
+    NB: it will not work in `windows`, it will only work in `linux`
 
     - Generate Vector Using Pretrained Model
       
@@ -302,6 +303,19 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   print(punctuations)
 
   ```
+
+* Remove stopwords from Text
+
+    ```py
+    from bnlp.corpus import stopwords
+    from bnlp.corpus.util import remove_stopwords
+
+    stopwords = stopwords()
+    raw_text = 'আমি ভাত খাই।' 
+    result = remove_stopwords(raw_text, stopwords)
+    print(result)
+    # ['ভাত', 'খাই', '।']
+    ```
 
 ## Issue
 * if `ModuleNotFoundError: No module named 'fasttext'` problem arise please do the next line
