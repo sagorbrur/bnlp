@@ -154,7 +154,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     from bnlp import BengaliWord2Vec
 
     bwv = BengaliWord2Vec()
-    model_path = "model/bengali_word2vec.model"
+    model_path = "bengali_word2vec.model"
     word = 'আমার'
     vector = bwv.generate_word_vector(model_path, word)
     print(vector.shape)
@@ -168,8 +168,8 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     from bnlp import BengaliWord2Vec
 
     bwv = BengaliWord2Vec()
-    model_path = "model/bengali_word2vec.model"
-    word = 'আমার'
+    model_path = "bengali_word2vec.model"
+    word = 'গ্রাম'
     similar = bwv.most_similar(model_path, word)
     print(similar)
 
@@ -182,23 +182,24 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     data_file = "test.txt"
     model_name = "test_model.model"
     vector_name = "test_vector.vector"
-    bwv.train_word2vec(data_file, model_name, vector_name)
+    bwv.train(data_file, model_name, vector_name)
 
 
     ```
     
  * **Bengali FastText**
- 
+ To use `fasttext` you need to install fasttext manually by `pip install fasttext==0.9.2`
+ NB: it will not work in `windows`, it will only work in `linux`
 
     - Generate Vector Using Pretrained Model
       
 
       ```py
-      from bnlp import BengaliFasttext
+      from bnlp.embedding.fasttext import BengaliFasttext
 
       bft = BengaliFasttext()
       word = "গ্রাম"
-      model_path = "model/bengali_fasttext.bin"
+      model_path = "bengali_fasttext_wiki.bin"
       word_vector = bft.generate_word_vector(model_path, word)
       print(word_vector.shape)
       print(word_vector)
@@ -208,7 +209,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     - Train Bengali FastText Model
 
       ```py
-      from bnlp import BengaliFasttext
+      from bnlp.embedding.fasttext import BengaliFasttext
 
       bft = BengaliFasttext()
       data = "data.txt"
@@ -241,7 +242,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - Find Pos Tag Using Pretrained Model
 
     ```py
-    from bnlp.pos import POS
+    from bnlp import POS
     bn_pos = POS()
     model_path = "model/bn_pos.pkl"
     text = "আমি ভাত খাই।"
@@ -253,7 +254,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - Train POS Tag Model
   
     ```py
-    from bnlp.pos import POS
+    from bnlp import POS
     bn_pos = POS()
     model_name = "pos_model.pkl"
     tagged_sentences = [[('রপ্তানি', 'JJ'), ('দ্রব্য', 'NC'), ('-', 'PU'), ('তাজা', 'JJ'), ('ও', 'CCD'), ('শুকনা', 'JJ'), ('ফল', 'NC'), (',', 'PU'), ('আফিম', 'NC'), (',', 'PU'), ('পশুচর্ম', 'NC'), ('ও', 'CCD'), ('পশম', 'NC'), ('এবং', 'CCD'),('কার্পেট', 'NC'), ('৷', 'PU')], [('মাটি', 'NC'), ('থেকে', 'PP'), ('বড়জোর', 'JQ'), ('চার', 'JQ'), ('পাঁচ', 'JQ'), ('ফুট', 'CCL'), ('উঁচু', 'JJ'), ('হবে', 'VM'), ('৷', 'PU')]]
@@ -269,7 +270,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - Find NER Tag Using Pretrained Model
 
     ```py
-    from bnlp.ner import NER
+    from bnlp import NER
     bn_ner = NER()
     model_path = "model/bn_ner.pkl"
     text = "সে ঢাকায় থাকে।"
@@ -281,7 +282,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - Train NER Tag Model
   
     ```py
-    from bnlp.ner import NER
+    from bnlp import NER
     bn_ner = NER()
     model_name = "ner_model.pkl"
     tagged_sentences = [[('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')], [('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')], [('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')]]
@@ -290,6 +291,17 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
     ```
 
+## Bengali Corpus Class
+
+* Stopwords and Punctuations
+  ```py
+  from bnlp.corpus import stopwords, punctuations
+
+  stopwords = stopwords() 
+  print(stopwords)
+  print(punctuations)
+
+  ```
 
 ## Issue
 * if `ModuleNotFoundError: No module named 'fasttext'` problem arise please do the next line

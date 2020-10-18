@@ -23,9 +23,10 @@ setuptools.setup(
         "sentencepiece",
         "gensim",
         "nltk",
-        "fasttext",
         "numpy",
         "scipy",
         "sklearn-crfsuite",
     ],
 )
+
+#         "fasttext",

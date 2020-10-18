@@ -8,8 +8,8 @@ from bnlp.tokenizer.nltk import NLTKTokenizer
 from bnlp.tokenizer.basic import BasicTokenizer
 from bnlp.tokenizer.sentencepiece import SentencepieceTokenizer
 from bnlp.embedding.word2vec import BengaliWord2Vec
-from bnlp.embedding.fasttext import BengaliFasttext
 from bnlp.embedding.glove import BengaliGlove
+
 
 
 
