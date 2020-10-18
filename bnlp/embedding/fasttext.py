@@ -1,5 +1,7 @@
-import fasttext
-
+try:
+    import fasttext
+except ImportError:
+    print("fasttext not installed. Install it by pip install fasttext==0.9.2")
 
 class BengaliFasttext:
     

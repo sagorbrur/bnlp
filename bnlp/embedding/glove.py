@@ -36,11 +36,3 @@ class BengaliGlove:
     return result
 
 
-# if __name__=="__main__":
-#     glove_path = "bn_glove.39M.100d.txt"
-#     word = "গ্রাম"
-#     bng = BN_Glove()
-#     res = bng.closest_word(glove_path, word)
-#     print(res)
-#     vec = bng.word2vec(glove_path, word)
-#     print(vec)
