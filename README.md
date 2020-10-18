@@ -85,9 +85,9 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
   - tokenization using trained model
     ```py
-    from bnlp.sentencepiece_tokenizer import SP_Tokenizer
+    from bnlp import SentencepieceTokenizer
 
-    bsp = SP_Tokenizer()
+    bsp = SentencepieceTokenizer()
     model_path = "./model/bn_spm.model"
     input_text = "আমি ভাত খাই। সে বাজারে যায়।"
     tokens = bsp.tokenize(model_path, input_text)
@@ -100,13 +100,13 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     ```
   - Training SentencePiece
     ```py
-    from bnlp.sentencepiece_tokenizer import SP_Tokenizer
+    from bnlp import SentencepieceTokenizer
     
-    bsp = SP_Tokenizer()
+    bsp = SentencepieceTokenizer()
     data = "test.txt"
     model_prefix = "test"
     vocab_size = 5
-    bsp.train_bsp(data, model_prefix, vocab_size) 
+    bsp.train(data, model_prefix, vocab_size) 
 
     ```
 
@@ -115,10 +115,10 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
  
 
   ```py
-  from bnlp.basic_tokenizer import BasicTokenizer
-  basic_t = BasicTokenizer()
+  from bnlp import BasicTokenizer
+  basic_tokenizer = BasicTokenizer()
   raw_text = "আমি বাংলায় গান গাই।"
-  tokens = basic_t.tokenize(raw_text)
+  tokens = basic_tokenizer.tokenize(raw_text)
   print(tokens)
   
   # output: ["আমি", "বাংলায়", "গান", "গাই", "।"]
@@ -128,10 +128,10 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 * **NLTK Tokenization**
 
   ```py
-  from bnlp.nltk_tokenizer import NLTK_Tokenizer
+  from bnlp import NLTKTokenizer
 
   text = "আমি ভাত খাই। সে বাজারে যায়। তিনি কি সত্যিই ভালো মানুষ?"
-  bnltk = NLTK_Tokenizer()
+  bnltk = NLTKTokenizer()
   word_tokens = bnltk.word_tokenize(text)
   sentence_tokens = bnltk.sentence_tokenize(text)
   print(word_tokens)
@@ -151,9 +151,9 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - Generate Vector using pretrain model
 
     ```py
-    from bnlp.bengali_word2vec import Bengali_Word2Vec
+    from bnlp import BengaliWord2Vec
 
-    bwv = Bengali_Word2Vec()
+    bwv = BengaliWord2Vec()
     model_path = "model/bengali_word2vec.model"
     word = 'আমার'
     vector = bwv.generate_word_vector(model_path, word)
@@ -165,9 +165,9 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - Find Most Similar Word Using Pretrained Model
 
     ```py
-    from bnlp.bengali_word2vec import Bengali_Word2Vec
+    from bnlp import BengaliWord2Vec
 
-    bwv = Bengali_Word2Vec()
+    bwv = BengaliWord2Vec()
     model_path = "model/bengali_word2vec.model"
     word = 'আমার'
     similar = bwv.most_similar(model_path, word)
@@ -177,8 +177,8 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - Train Bengali Word2Vec with your own data
 
     ```py
-    from bnlp.bengali_word2vec import Bengali_Word2Vec
-    bwv = Bengali_Word2Vec(True)
+    from bnlp import BengaliWord2Vec
+    bwv = BengaliWord2Vec()
     data_file = "test.txt"
     model_name = "test_model.model"
     vector_name = "test_vector.vector"
@@ -194,9 +194,9 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
       
 
       ```py
-      from bnlp.bengali_fasttext import Bengali_Fasttext
+      from bnlp import BengaliFasttext
 
-      bft = Bengali_Fasttext()
+      bft = BengaliFasttext()
       word = "গ্রাম"
       model_path = "model/bengali_fasttext.bin"
       word_vector = bft.generate_word_vector(model_path, word)
@@ -208,13 +208,13 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     - Train Bengali FastText Model
 
       ```py
-      from bnlp.bengali_fasttext import Bengali_Fasttext
+      from bnlp import BengaliFasttext
 
-      bft = Bengali_Fasttext()
+      bft = BengaliFasttext()
       data = "data.txt"
       model_name = "saved_model.bin"
       epoch = 50
-      bft.train_fasttext(data, model_name, epoch)
+      bft.train(data, model_name, epoch)
       ```
 
 * **Bengali GloVe Word Vectors**
@@ -223,7 +223,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   You can download and use it on your different machine learning purposes.
 
   ```py
-  from bnlp.glove_wordvector import BN_Glove
+  from bnlp import BengaliGlove
   glove_path = "bn_glove.39M.100d.txt"
   word = "গ্রাম"
   bng = BN_Glove()
