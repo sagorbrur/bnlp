@@ -179,7 +179,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     ```py
     from bnlp import BengaliWord2Vec
     bwv = BengaliWord2Vec()
-    data_file = "test.txt"
+    data_file = "sample.txt"
     model_name = "test_model.model"
     vector_name = "test_vector.vector"
     bwv.train(data_file, model_name, vector_name)
@@ -190,6 +190,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
  * **Bengali FastText**
  
     To use `fasttext` you need to install fasttext manually by `pip install fasttext==0.9.2`
+    
     NB: it will not work in `windows`, it will only work in `linux`
 
     - Generate Vector Using Pretrained Model
@@ -213,7 +214,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
       from bnlp.embedding.fasttext import BengaliFasttext
 
       bft = BengaliFasttext()
-      data = "data.txt"
+      data = "sample.txt"
       model_name = "saved_model.bin"
       epoch = 50
       bft.train(data, model_name, epoch)
