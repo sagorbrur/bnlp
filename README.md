@@ -13,40 +13,14 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
 **NB: Any Researcher who refer this tool in his/her paper please let us know, we will include paper link here**</br>
 
-# Contents
-- [Current Features](#current-features)
-- [Installation](#installation)
-- [Pretrained Model](#pretrained-model)
-- [Tokenization](#tokenization)
-- [Embedding](#word-embedding)
-- [POS Tagging](#bengali-pos-tagging)
-- [NER](#bengali-ner)
-- [Issue](#issue)
-- [Contributor Guide](#contributor-guide)
-- [Contributor List](#contributor-list)
-- [Documentation](https://bnlp.readthedocs.io/en/latest/)
-- [Notebook](https://github.com/sagorbrur/bnlp/tree/master/notebook)
-
-
-## Current Features
-* [Bengali Tokenization](#tokenization)
-  - SentencePiece Tokenizer
-  - Basic Tokenizer
-  - NLTK Tokenizer
-* [Bengali Word Embedding](#word-embedding)
-  - Bengali Word2Vec
-  - Bengali Fasttext
-  - Bengali GloVe
-  
-* [Bengali POS Tagging](#bengali-pos-tagging)
-* [Bengali Name Entity Recognition](#bengali-ner)
-
 
 ## Installation
 
 ### PIP installer(python 3.5, 3.6, 3.7 tested okay)
 
-  ```pip install bnlp_toolkit```
+  ```
+  pip install bnlp_toolkit
+  ```
 
 ### Local Installer
   ```
@@ -81,35 +55,6 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
 ## Tokenization
 
-* **Bengali SentencePiece Tokenization**
-
-  - tokenization using trained model
-    ```py
-    from bnlp import SentencepieceTokenizer
-
-    bsp = SentencepieceTokenizer()
-    model_path = "./model/bn_spm.model"
-    input_text = "আমি ভাত খাই। সে বাজারে যায়।"
-    tokens = bsp.tokenize(model_path, input_text)
-    print(tokens)
-    text2id = bsp.text2id(model_path, input_text)
-    print(text2id)
-    id2text = bsp.id2text(model_path, text2id)
-    print(id2text)
-
-    ```
-  - Training SentencePiece
-    ```py
-    from bnlp import SentencepieceTokenizer
-    
-    bsp = SentencepieceTokenizer()
-    data = "test.txt"
-    model_prefix = "test"
-    vocab_size = 5
-    bsp.train(data, model_prefix, vocab_size) 
-
-    ```
-
 * **Basic Tokenizer**
 
  
@@ -142,6 +87,37 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   # sentence_token: ["আমি ভাত খাই।", "সে বাজারে যায়।", "তিনি কি সত্যিই ভালো মানুষ?"]
 
   ```
+
+
+* **Bengali SentencePiece Tokenization**
+
+  - tokenization using trained model
+    ```py
+    from bnlp import SentencepieceTokenizer
+
+    bsp = SentencepieceTokenizer()
+    model_path = "./model/bn_spm.model"
+    input_text = "আমি ভাত খাই। সে বাজারে যায়।"
+    tokens = bsp.tokenize(model_path, input_text)
+    print(tokens)
+    text2id = bsp.text2id(model_path, input_text)
+    print(text2id)
+    id2text = bsp.id2text(model_path, text2id)
+    print(id2text)
+
+    ```
+  - Training SentencePiece
+    ```py
+    from bnlp import SentencepieceTokenizer
+    
+    bsp = SentencepieceTokenizer()
+    data = "test.txt"
+    model_prefix = "test"
+    vocab_size = 5
+    bsp.train(data, model_prefix, vocab_size) 
+
+    ```
+
 
 
 ## Word Embedding
@@ -191,7 +167,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
  
     To use `fasttext` you need to install fasttext manually by `pip install fasttext==0.9.2`
     
-    NB: it will not work in `windows`, it will only work in `linux`
+    NB: `fasttext` may not be worked in `windows`, it will only work in `linux`
 
     - Generate Vector Using Pretrained Model
       
@@ -229,7 +205,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   from bnlp import BengaliGlove
   glove_path = "bn_glove.39M.100d.txt"
   word = "গ্রাম"
-  bng = BN_Glove()
+  bng = BengaliGlove()
   res = bng.closest_word(glove_path, word)
   print(res)
   vec = bng.word2vec(glove_path, word)
@@ -317,17 +293,6 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     print(result)
     # ['ভাত', 'খাই', '।']
     ```
-
-## Issue
-* if `ModuleNotFoundError: No module named 'fasttext'` problem arise please do the next line
-
-```pip install fasttext```
-* if `nltk` issue arise please do the following line before importing `bnlp`
-
-```py
-import nltk
-nltk.download("punkt")
-```
 
 
 ## Contributor Guide
