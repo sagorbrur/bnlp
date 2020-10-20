@@ -1,9 +1,11 @@
-import fasttext
+try:
+    import fasttext
+except ImportError:
+    print("fasttext not installed. Install it by pip install fasttext")
 
-
-class Bengali_Fasttext(object):
+class BengaliFasttext:
     
-    def train_fasttext(self, data, model_name, epoch):
+    def train(self, data, model_name, epoch):
         model = fasttext.train_unsupervised(data, model='skipgram', minCount=1, epoch=epoch)
         model.save_model(model_name)
 

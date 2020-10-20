@@ -13,42 +13,14 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
 **NB: Any Researcher who refer this tool in his/her paper please let us know, we will include paper link here**</br>
 
-**BNLP 3.0 dev build successfully**. Check it out [here](https://pypi.org/project/bnlp-toolkit/3.0.0.dev3/)
-
-# Contents
-- [Current Features](#current-features)
-- [Installation](#installation)
-- [Pretrained Model](#pretrained-model)
-- [Tokenization](#tokenization)
-- [Embedding](#word-embedding)
-- [POS Tagging](#bengali-pos-tagging)
-- [NER](#bengali-ner)
-- [Issue](#issue)
-- [Contributor Guide](#contributor-guide)
-- [Contributor List](#contributor-list)
-- [Documentation](https://bnlp.readthedocs.io/en/latest/)
-- [Notebook](https://github.com/sagorbrur/bnlp/tree/master/notebook)
-
-
-## Current Features
-* [Bengali Tokenization](#tokenization)
-  - SentencePiece Tokenizer
-  - Basic Tokenizer
-  - NLTK Tokenizer
-* [Bengali Word Embedding](#word-embedding)
-  - Bengali Word2Vec
-  - Bengali Fasttext
-  - Bengali GloVe
-  
-* [Bengali POS Tagging](#bengali-pos-tagging)
-* [Bengali Name Entity Recognition](#bengali-ner)
-
 
 ## Installation
 
 ### PIP installer(python 3.5, 3.6, 3.7 tested okay)
 
-  ```pip install bnlp_toolkit```
+  ```
+  pip install bnlp_toolkit
+  ```
 
 ### Local Installer
   ```
@@ -83,44 +55,15 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
 ## Tokenization
 
-* **Bengali SentencePiece Tokenization**
-
-  - tokenization using trained model
-    ```py
-    from bnlp.sentencepiece_tokenizer import SP_Tokenizer
-
-    bsp = SP_Tokenizer()
-    model_path = "./model/bn_spm.model"
-    input_text = "আমি ভাত খাই। সে বাজারে যায়।"
-    tokens = bsp.tokenize(model_path, input_text)
-    print(tokens)
-    text2id = bsp.text2id(model_path, input_text)
-    print(text2id)
-    id2text = bsp.id2text(model_path, text2id)
-    print(id2text)
-
-    ```
-  - Training SentencePiece
-    ```py
-    from bnlp.sentencepiece_tokenizer import SP_Tokenizer
-    
-    bsp = SP_Tokenizer()
-    data = "test.txt"
-    model_prefix = "test"
-    vocab_size = 5
-    bsp.train_bsp(data, model_prefix, vocab_size) 
-
-    ```
-
 * **Basic Tokenizer**
 
  
 
   ```py
-  from bnlp.basic_tokenizer import BasicTokenizer
-  basic_t = BasicTokenizer()
+  from bnlp import BasicTokenizer
+  basic_tokenizer = BasicTokenizer()
   raw_text = "আমি বাংলায় গান গাই।"
-  tokens = basic_t.tokenize(raw_text)
+  tokens = basic_tokenizer.tokenize(raw_text)
   print(tokens)
   
   # output: ["আমি", "বাংলায়", "গান", "গাই", "।"]
@@ -130,10 +73,10 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 * **NLTK Tokenization**
 
   ```py
-  from bnlp.nltk_tokenizer import NLTK_Tokenizer
-
+  from bnlp import NLTKTokenizer
+  
+  bnltk = NLTKTokenizer()
   text = "আমি ভাত খাই। সে বাজারে যায়। তিনি কি সত্যিই ভালো মানুষ?"
-  bnltk = NLTK_Tokenizer()
   word_tokens = bnltk.word_tokenize(text)
   sentence_tokens = bnltk.sentence_tokenize(text)
   print(word_tokens)
@@ -146,6 +89,37 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   ```
 
 
+* **Bengali SentencePiece Tokenization**
+
+  - tokenization using trained model
+    ```py
+    from bnlp import SentencepieceTokenizer
+
+    bsp = SentencepieceTokenizer()
+    model_path = "./model/bn_spm.model"
+    input_text = "আমি ভাত খাই। সে বাজারে যায়।"
+    tokens = bsp.tokenize(model_path, input_text)
+    print(tokens)
+    text2id = bsp.text2id(model_path, input_text)
+    print(text2id)
+    id2text = bsp.id2text(model_path, text2id)
+    print(id2text)
+
+    ```
+  - Training SentencePiece
+    ```py
+    from bnlp import SentencepieceTokenizer
+    
+    bsp = SentencepieceTokenizer()
+    data = "test.txt"
+    model_prefix = "test"
+    vocab_size = 5
+    bsp.train(data, model_prefix, vocab_size) 
+
+    ```
+
+
+
 ## Word Embedding
 
 * **Bengali Word2Vec**
@@ -153,10 +127,10 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - Generate Vector using pretrain model
 
     ```py
-    from bnlp.bengali_word2vec import Bengali_Word2Vec
+    from bnlp import BengaliWord2Vec
 
-    bwv = Bengali_Word2Vec()
-    model_path = "model/bengali_word2vec.model"
+    bwv = BengaliWord2Vec()
+    model_path = "bengali_word2vec.model"
     word = 'আমার'
     vector = bwv.generate_word_vector(model_path, word)
     print(vector.shape)
@@ -167,11 +141,11 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - Find Most Similar Word Using Pretrained Model
 
     ```py
-    from bnlp.bengali_word2vec import Bengali_Word2Vec
+    from bnlp import BengaliWord2Vec
 
-    bwv = Bengali_Word2Vec()
-    model_path = "model/bengali_word2vec.model"
-    word = 'আমার'
+    bwv = BengaliWord2Vec()
+    model_path = "bengali_word2vec.model"
+    word = 'গ্রাম'
     similar = bwv.most_similar(model_path, word)
     print(similar)
 
@@ -179,28 +153,31 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - Train Bengali Word2Vec with your own data
 
     ```py
-    from bnlp.bengali_word2vec import Bengali_Word2Vec
-    bwv = Bengali_Word2Vec(True)
-    data_file = "test.txt"
+    from bnlp import BengaliWord2Vec
+    bwv = BengaliWord2Vec()
+    data_file = "sample.txt"
     model_name = "test_model.model"
     vector_name = "test_vector.vector"
-    bwv.train_word2vec(data_file, model_name, vector_name)
+    bwv.train(data_file, model_name, vector_name)
 
 
     ```
     
  * **Bengali FastText**
  
+    To use `fasttext` you need to install fasttext manually by `pip install fasttext==0.9.2`
+    
+    NB: `fasttext` may not be worked in `windows`, it will only work in `linux`
 
     - Generate Vector Using Pretrained Model
       
 
       ```py
-      from bnlp.bengali_fasttext import Bengali_Fasttext
+      from bnlp.embedding.fasttext import BengaliFasttext
 
-      bft = Bengali_Fasttext()
+      bft = BengaliFasttext()
       word = "গ্রাম"
-      model_path = "model/bengali_fasttext.bin"
+      model_path = "bengali_fasttext_wiki.bin"
       word_vector = bft.generate_word_vector(model_path, word)
       print(word_vector.shape)
       print(word_vector)
@@ -210,13 +187,13 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     - Train Bengali FastText Model
 
       ```py
-      from bnlp.bengali_fasttext import Bengali_Fasttext
+      from bnlp.embedding.fasttext import BengaliFasttext
 
-      bft = Bengali_Fasttext()
-      data = "data.txt"
+      bft = BengaliFasttext()
+      data = "sample.txt"
       model_name = "saved_model.bin"
       epoch = 50
-      bft.train_fasttext(data, model_name, epoch)
+      bft.train(data, model_name, epoch)
       ```
 
 * **Bengali GloVe Word Vectors**
@@ -225,10 +202,10 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   You can download and use it on your different machine learning purposes.
 
   ```py
-  from bnlp.glove_wordvector import BN_Glove
+  from bnlp import BengaliGlove
   glove_path = "bn_glove.39M.100d.txt"
   word = "গ্রাম"
-  bng = BN_Glove()
+  bng = BengaliGlove()
   res = bng.closest_word(glove_path, word)
   print(res)
   vec = bng.word2vec(glove_path, word)
@@ -243,7 +220,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - Find Pos Tag Using Pretrained Model
 
     ```py
-    from bnlp.pos import POS
+    from bnlp import POS
     bn_pos = POS()
     model_path = "model/bn_pos.pkl"
     text = "আমি ভাত খাই।"
@@ -255,7 +232,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - Train POS Tag Model
   
     ```py
-    from bnlp.pos import POS
+    from bnlp import POS
     bn_pos = POS()
     model_name = "pos_model.pkl"
     tagged_sentences = [[('রপ্তানি', 'JJ'), ('দ্রব্য', 'NC'), ('-', 'PU'), ('তাজা', 'JJ'), ('ও', 'CCD'), ('শুকনা', 'JJ'), ('ফল', 'NC'), (',', 'PU'), ('আফিম', 'NC'), (',', 'PU'), ('পশুচর্ম', 'NC'), ('ও', 'CCD'), ('পশম', 'NC'), ('এবং', 'CCD'),('কার্পেট', 'NC'), ('৷', 'PU')], [('মাটি', 'NC'), ('থেকে', 'PP'), ('বড়জোর', 'JQ'), ('চার', 'JQ'), ('পাঁচ', 'JQ'), ('ফুট', 'CCL'), ('উঁচু', 'JJ'), ('হবে', 'VM'), ('৷', 'PU')]]
@@ -271,7 +248,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - Find NER Tag Using Pretrained Model
 
     ```py
-    from bnlp.ner import NER
+    from bnlp import NER
     bn_ner = NER()
     model_path = "model/bn_ner.pkl"
     text = "সে ঢাকায় থাকে।"
@@ -283,7 +260,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - Train NER Tag Model
   
     ```py
-    from bnlp.ner import NER
+    from bnlp import NER
     bn_ner = NER()
     model_name = "ner_model.pkl"
     tagged_sentences = [[('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')], [('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')], [('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')]]
@@ -292,17 +269,30 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
     ```
 
+## Bengali Corpus Class
 
-## Issue
-* if `ModuleNotFoundError: No module named 'fasttext'` problem arise please do the next line
+* Stopwords and Punctuations
+  ```py
+  from bnlp.corpus import stopwords, punctuations
 
-```pip install fasttext```
-* if `nltk` issue arise please do the following line before importing `bnlp`
+  stopwords = stopwords() 
+  print(stopwords)
+  print(punctuations)
 
-```py
-import nltk
-nltk.download("punkt")
-```
+  ```
+
+* Remove stopwords from Text
+
+    ```py
+    from bnlp.corpus import stopwords
+    from bnlp.corpus.util import remove_stopwords
+
+    stopwords = stopwords()
+    raw_text = 'আমি ভাত খাই।' 
+    result = remove_stopwords(raw_text, stopwords)
+    print(result)
+    # ['ভাত', 'খাই', '।']
+    ```
 
 
 ## Contributor Guide

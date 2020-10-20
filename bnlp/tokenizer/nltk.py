@@ -7,8 +7,7 @@ except LookupError:
     nltk.download('punkt')
 
 
-class NLTK_Tokenizer(object):
-    
+class NLTKTokenizer:
     def word_tokenize(self, text):
         tokens = nltk.word_tokenize(text)
         new_tokens = []

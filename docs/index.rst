@@ -80,41 +80,11 @@ Tokenization
 
 
 * 
-  **Bengali SentencePiece Tokenization**
-
-
-  * 
-    tokenization using trained model
-
-    .. code-block:: py
-
-       from bnlp.sentencepiece_tokenizer import SP_Tokenizer
-
-       bsp = SP_Tokenizer()
-       model_path = "./model/bn_spm.model"
-       input_text = "আমি ভাত খাই। সে বাজারে যায়।"
-       tokens = bsp.tokenize(model_path, input_text)
-       print(tokens)
-
-  * 
-    Training SentencePiece
-
-    .. code-block:: py
-
-       from bnlp.sentencepiece_tokenizer import SP_Tokenizer
-
-       bsp = SP_Tokenizer()
-       data = "test.txt"
-       model_prefix = "test"
-       vocab_size = 5
-       bsp.train_bsp(data, model_prefix, vocab_size)
-
-* 
   **Basic Tokenizer**
 
 .. code-block:: py
 
-     from bnlp.basic_tokenizer import BasicTokenizer
+     from bnlp import BasicTokenizer
      basic_t = BasicTokenizer()
      raw_text = "আমি বাংলায় গান গাই।"
      tokens = basic_t.tokenize(raw_text)
@@ -128,10 +98,12 @@ Tokenization
 
   .. code-block:: py
 
-     from bnlp.nltk_tokenizer import NLTK_Tokenizer
+     from bnlp import NLTKTokenizer
+
+     bnltk = NLTKTokenizer()
 
      text = "আমি ভাত খাই। সে বাজারে যায়। তিনি কি সত্যিই ভালো মানুষ?"
-     bnltk = NLTK_Tokenizer()
+     
      word_tokens = bnltk.word_tokenize(text)
      sentence_tokens = bnltk.sentence_tokenize(text)
      print(word_tokens)
@@ -140,6 +112,38 @@ Tokenization
      # output
      # word_token: ["আমি", "ভাত", "খাই", "।", "সে", "বাজারে", "যায়", "।", "তিনি", "কি", "সত্যিই", "ভালো", "মানুষ", "?"]
      # sentence_token: ["আমি ভাত খাই।", "সে বাজারে যায়।", "তিনি কি সত্যিই ভালো মানুষ?"]
+
+
+* 
+  **Bengali SentencePiece Tokenization**
+
+
+  * 
+    tokenization using trained model
+
+    .. code-block:: py
+
+       from bnlp import SentencepieceTokenizer
+
+       bsp = SentencepieceTokenizer()
+       model_path = "./model/bn_spm.model"
+       input_text = "আমি ভাত খাই। সে বাজারে যায়।"
+       tokens = bsp.tokenize(model_path, input_text)
+       print(tokens)
+
+  * 
+    Training SentencePiece
+
+    .. code-block:: py
+
+       from bnlp import SentencepieceTokenizer
+
+       bsp = SentencepieceTokenizer()
+       data = "sample.txt"
+       model_prefix = "test"
+       vocab_size = 5
+       bsp.train(data, model_prefix, vocab_size)
+
 
 Word Embedding
 ==============
@@ -154,9 +158,9 @@ Word Embedding
 
     .. code-block:: py
 
-       from bnlp.bengali_word2vec import Bengali_Word2Vec
+       from bnlp import BengaliWord2Vec
 
-       bwv = Bengali_Word2Vec()
+       bwv = BengaliWord2Vec()
        model_path = "model/bengali_word2vec.model"
        word = 'আমার'
        vector = bwv.generate_word_vector(model_path, word)
@@ -168,9 +172,9 @@ Word Embedding
 
     .. code-block:: py
 
-       from bnlp.bengali_word2vec import Bengali_Word2Vec
+       from bnlp import BengaliWord2Vec
 
-       bwv = Bengali_Word2Vec()
+       bwv = BengaliWord2Vec()
        model_path = "model/bengali_word2vec.model"
        word = 'আমার'
        similar = bwv.most_similar(model_path, word)
@@ -181,27 +185,28 @@ Word Embedding
 
     .. code-block:: py
 
-       from bnlp.bengali_word2vec import Bengali_Word2Vec
-       bwv = Bengali_Word2Vec(True)
+       from bnlp import BengaliWord2Vec
+       bwv = BengaliWord2Vec()
        data_file = "test.txt"
        model_name = "test_model.model"
        vector_name = "test_vector.vector"
-       bwv.train_word2vec(data_file, model_name, vector_name)
+       bwv.train(data_file, model_name, vector_name)
 
 
 
 
 * 
   **Bengali FastText**
+   Install fasttext first by pip install fasttext
 
    - Generate Vector Using Pretrained Model
 
 
      .. code-block:: py
 
-        from bnlp.bengali_fasttext import Bengali_Fasttext
+        from bnlp import BengaliFasttext
    
-        bft = Bengali_Fasttext()
+        bft = BengaliFasttext()
         word = "গ্রাম"
         model_path = "model/bengali_fasttext.bin"
         word_vector = bft.generate_word_vector(model_path, word)
@@ -213,13 +218,13 @@ Word Embedding
 
      .. code-block:: py
 
-        from bnlp.bengali_fasttext import Bengali_Fasttext
+        from bnlp import BengaliFasttext
    
-        bft = Bengali_Fasttext()
+        bft = BengaliFasttext()
         data = "data.txt"
         model_name = "saved_model.bin"
         epoch = 50
-        bft.train_fasttext(data, model_name, epoch)
+        bft.train(data, model_name, epoch)
 
 
 
@@ -231,10 +236,11 @@ Word Embedding
 
   .. code-block:: py
 
-     from bnlp.glove_wordvector import BN_Glove
+     from bnlp import BengaliGlove
+
+     bng = BengaliGlove()
      glove_path = "bn_glove.39M.100d.txt"
      word = "গ্রাম"
-     bng = BN_Glove()
      res = bng.closest_word(glove_path, word)
      print(res)
      vec = bng.word2vec(glove_path, word)
@@ -252,7 +258,7 @@ Bengali POS Tagging
 
   .. code-block:: py
 
-     from bnlp.pos import POS
+     from bnlp import POS
      bn_pos = POS()
      model_path = "model/bn_pos_model.pkl"
      text = "আমি ভাত খাই।"
@@ -265,7 +271,7 @@ Bengali POS Tagging
 
   .. code-block:: py
 
-     from bnlp.pos import POS
+     from bnlp import POS
      bn_pos = POS()
      model_name = "pos_model.pkl"
      tagged_sentences = [[('রপ্তানি', 'JJ'), ('দ্রব্য', 'NC'), ('-', 'PU'), ('তাজা', 'JJ'), ('ও', 'CCD'), ('শুকনা', 'JJ'), ('ফল', 'NC'), (',', 'PU'), ('আফিম', 'NC'), (',', 'PU'), ('পশুচর্ম', 'NC'), ('ও', 'CCD'), ('পশম', 'NC'), ('এবং', 'CCD'),('কার্পেট', 'NC'), ('৷', 'PU')], [('মাটি', 'NC'), ('থেকে', 'PP'), ('বড়জোর', 'JQ'), ('চার', 'JQ'), ('পাঁচ', 'JQ'), ('ফুট', 'CCL'), ('উঁচু', 'JJ'), ('হবে', 'VM'), ('৷', 'PU')]]
@@ -285,7 +291,7 @@ Bengali NER
 
   .. code-block:: py
 
-     from bnlp.ner import ner
+     from bnlp import ner
      bn_ner = NER()
      model_path = "model/bn_pos_model.pkl"
      text = "সে ঢাকায় থাকে।"
@@ -298,28 +304,13 @@ Bengali NER
 
   .. code-block:: py
 
-     from bnlp.ner import NER
+     from bnlp import NER
      bn_ner = NER()
      model_name = "ner_model.pkl"
      tagged_sentences = [[('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')]]
 
      bn_ner.train(model_name, tagged_sentences)
 
-Issue
-=====
-
-
-* if ``ModuleNotFoundError: No module named 'fasttext'`` problem arise please do the next line
-
-``pip install fasttext``
-
-
-* if ``nltk`` issue arise please do the following line before importing ``bnlp``
-
-.. code-block:: py
-
-   import nltk
-   nltk.download("punkt")
 
 Contributor Guide
 =================

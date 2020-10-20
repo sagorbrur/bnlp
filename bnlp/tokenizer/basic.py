@@ -52,7 +52,7 @@ def _is_punctuation(char):
     return True
   return False
 
-class BasicTokenizer(object):
+class BasicTokenizer:
   """Runs basic tokenization (punctuation splitting, lower casing, etc.)."""
 
   def tokenize(self, text):
