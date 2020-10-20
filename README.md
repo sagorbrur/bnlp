@@ -74,9 +74,9 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
   ```py
   from bnlp import NLTKTokenizer
-
-  text = "আমি ভাত খাই। সে বাজারে যায়। তিনি কি সত্যিই ভালো মানুষ?"
+  
   bnltk = NLTKTokenizer()
+  text = "আমি ভাত খাই। সে বাজারে যায়। তিনি কি সত্যিই ভালো মানুষ?"
   word_tokens = bnltk.word_tokenize(text)
   sentence_tokens = bnltk.sentence_tokenize(text)
   print(word_tokens)
