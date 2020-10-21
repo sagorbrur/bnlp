@@ -317,6 +317,7 @@ Bengali Corpus Class
   Stopwords and Punctuations
 
   .. code-block:: py
+  
      from bnlp.corpus import stopwords, punctuations
 
      stopwords = stopwords() 
@@ -328,6 +329,7 @@ Bengali Corpus Class
   Remove Stopwords from text
 
   .. code-block:: py
+  
       from bnlp.corpus import stopwords
       from bnlp.corpus.util import remove_stopwords
 
