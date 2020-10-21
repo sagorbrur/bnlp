@@ -36,14 +36,11 @@ Installation
 
   ``pip install bnlp_toolkit``
 
-* 
-  Local
+  or Upgrade
 
-  .. code-block:: py
+  ``pip install -U bnlp_toolkit``
 
-     $git clone https://github.com/sagorbrur/bnlp.git
-     $cd bnlp
-     $python setup.py install
+
 
 Pretrained Model
 ================
@@ -204,7 +201,7 @@ Word Embedding
 
      .. code-block:: py
 
-        from bnlp import BengaliFasttext
+        from bnlp.embedding.fasttext import BengaliFasttext
    
         bft = BengaliFasttext()
         word = "গ্রাম"
@@ -218,12 +215,12 @@ Word Embedding
 
      .. code-block:: py
 
-        from bnlp import BengaliFasttext
+        from bnlp.embedding.fasttext import BengaliFasttext
    
         bft = BengaliFasttext()
         data = "data.txt"
-        model_name = "saved_model.bin"
-        epoch = 50
+        model_name = "saved_model_wiki.bin"
+        epoch = 10
         bft.train(data, model_name, epoch)
 
 
@@ -310,6 +307,37 @@ Bengali NER
      tagged_sentences = [[('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')]]
 
      bn_ner.train(model_name, tagged_sentences)
+
+
+
+Bengali Corpus Class
+====================
+
+*
+  Stopwords and Punctuations
+
+  .. code-block:: py
+     from bnlp.corpus import stopwords, punctuations
+
+     stopwords = stopwords() 
+     print(stopwords)
+     print(punctuations)
+
+  
+*
+  Remove Stopwords from text
+
+  .. code-block:: py
+      from bnlp.corpus import stopwords
+      from bnlp.corpus.util import remove_stopwords
+
+      stopwords = stopwords()
+      raw_text = 'আমি ভাত খাই।' 
+      result = remove_stopwords(raw_text, stopwords)
+      print(result)
+      # ['ভাত', 'খাই', '।']
+    
+
 
 
 Contributor Guide

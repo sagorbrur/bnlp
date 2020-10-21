@@ -21,12 +21,11 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   ```
   pip install bnlp_toolkit
   ```
+  **or Upgrade**
 
-### Local Installer
   ```
-  $git clone https://github.com/sagorbrur/bnlp.git
-  $cd bnlp
-  $python setup.py install
+  pip install -U bnlp_toolkit
+
   ```
 
 
@@ -111,7 +110,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     from bnlp import SentencepieceTokenizer
     
     bsp = SentencepieceTokenizer()
-    data = "test.txt"
+    data = "raw_text.txt"
     model_prefix = "test"
     vocab_size = 5
     bsp.train(data, model_prefix, vocab_size) 
@@ -155,7 +154,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     ```py
     from bnlp import BengaliWord2Vec
     bwv = BengaliWord2Vec()
-    data_file = "sample.txt"
+    data_file = "raw_text.txt"
     model_name = "test_model.model"
     vector_name = "test_vector.vector"
     bwv.train(data_file, model_name, vector_name)
@@ -190,7 +189,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
       from bnlp.embedding.fasttext import BengaliFasttext
 
       bft = BengaliFasttext()
-      data = "sample.txt"
+      data = "raw_text.txt"
       model_name = "saved_model.bin"
       epoch = 50
       bft.train(data, model_name, epoch)
