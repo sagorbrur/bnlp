@@ -7,6 +7,7 @@ language: python
 # os
 os:
   - linux
+  - osx
 # Set the python version to 3.6, 3.7
 python:
   - "3.5"
@@ -18,7 +19,6 @@ install:
   - pip install sentencepiece
   - pip install gensim
   - pip install nltk
-  - pip install fasttext
   - pip install numpy
   - pip install scipy
   - pip install sklearn-crfsuite
