@@ -14,6 +14,8 @@ python:
   - "3.6"
   - "3.7"
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 # Install the pip dependency
 install:
   - pip install sentencepiece
