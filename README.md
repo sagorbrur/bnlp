@@ -5,18 +5,17 @@
 [![Build Status](https://travis-ci.org/sagorbrur/bnlp.svg?branch=master)](https://travis-ci.org/sagorbrur/bnlp)
 [![PyPI version](https://img.shields.io/pypi/v/bnlp_toolkit)](https://pypi.org/project/bnlp-toolkit/)
 [![release version](https://img.shields.io/github/v/release/sagorbrur/bnlp)](https://github.com/sagorbrur/bnlp/releases/tag/2.0.0)
-[![Support Python Version](https://img.shields.io/badge/python-3.5%7C3.6%7C3.7-brightgreen)](https://pypi.org/project/bnlp-toolkit/)
+[![Support Python Version](https://img.shields.io/badge/python-3.5%7C3.6%7C3.7%7C3.8-brightgreen)](https://pypi.org/project/bnlp-toolkit/)
 [![Documentation Status](https://readthedocs.org/projects/bnlp/badge/?version=latest)](https://bnlp.readthedocs.io/en/latest/?badge=latest)
 [![Gitter](https://badges.gitter.im/bnlp_toolkit/community.svg)](https://gitter.im/bnlp_toolkit/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 BNLP is a natural language processing toolkit for Bengali Language. This tool will help you to **tokenize Bengali text**, **Embedding Bengali words**, **Bengali POS Tagging**, **Bengali Name Entity Recognition**, **Construct Neural Model** for Bengali NLP purposes.
 
-**NB: Any Researcher who refer this tool in his/her paper please let us know, we will include paper link here**</br>
 
 
 ## Installation
 
-### PIP installer(python 3.5, 3.6, 3.7 tested okay)
+### PIP installer(Python: 3.5, 3.6, 3.7, 3.8 tested okay, OS: linux, windows tested okay )
 
   ```
   pip install bnlp_toolkit
