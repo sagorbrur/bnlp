@@ -13,6 +13,7 @@ python:
   - "3.5"
   - "3.6"
   - "3.7"
+  - "3.8"
 
 # Install the pip dependency
 install:
@@ -22,11 +23,7 @@ install:
   - pip install numpy
   - pip install scipy
   - pip install sklearn-crfsuite
-  - pip install codecov
 
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash) -t 47bffd97-db08-4bf5-a0e3-7ea1c8cb86c0
 # Run the unit test
 script:
   - python test.py
