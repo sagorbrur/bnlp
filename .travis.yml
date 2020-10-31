@@ -22,7 +22,7 @@ install:
   - pip install numpy
   - pip install scipy
   - pip install sklearn-crfsuite
-  - pip install --user codecov
+  - pip install codecov
 
 
 after_success:
