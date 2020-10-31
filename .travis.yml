@@ -26,7 +26,7 @@ install:
 
 
 after_success:
-  - codecov
+  - bash <(curl -s https://codecov.io/bash) -t 47bffd97-db08-4bf5-a0e3-7ea1c8cb86c0
 # Run the unit test
 script:
   - python test.py
