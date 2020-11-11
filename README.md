@@ -271,11 +271,12 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
 * Stopwords and Punctuations
   ```py
-  from bnlp.corpus import stopwords, punctuations
+  from bnlp.corpus import stopwords, punctuations, letters, digits
 
-  stopwords = stopwords() 
   print(stopwords)
   print(punctuations)
+  print(letters)
+  print(digits)
 
   ```
 
@@ -285,7 +286,6 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     from bnlp.corpus import stopwords
     from bnlp.corpus.util import remove_stopwords
 
-    stopwords = stopwords()
     raw_text = 'আমি ভাত খাই।' 
     result = remove_stopwords(raw_text, stopwords)
     print(result)
