@@ -9,11 +9,8 @@ import multiprocessing
 from gensim.models import Word2Vec
 from gensim.models.word2vec import LineSentence
 
-
-
-
 class BengaliWord2Vec:
-    def train(self, data_file, model_name, vector_name):
+    def train(self, data_file, model_name, vector_name, vector_size=300, window=1, min_count=1, max_vocab_size=None, workers=3, epochs=5, compute_loss=True):
 
         """
         :data_file: (str) input text data file with name and extension
@@ -21,8 +18,13 @@ class BengaliWord2Vec:
         :vector_name: (str) vector path with file name and extension
 
         """
-        model = Word2Vec(LineSentence(data_file), size=300, window=5, min_count=1,
-                    workers=multiprocessing.cpu_count()) # size = 200
+        model = Word2Vec(
+            LineSentence(data_file), 
+            size=vector_size, # vector_size = 200
+            window=window, min_count=min_count, 
+            max_vocab_size=max_vocab_size, workers=workers,
+            iter=epochs, compute_loss=compute_loss
+        ) 
 
         model.save(model_name)
         model.wv.save_word2vec_format(vector_name, binary=False)
