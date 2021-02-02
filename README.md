@@ -3,7 +3,7 @@
 # Bengali Natural Language Processing(BNLP)
 
 [![Build Status](https://travis-ci.org/sagorbrur/bnlp.svg?branch=master)](https://travis-ci.org/sagorbrur/bnlp)
-[![arXiv](https://img.shields.io/badge/arXiv-arXiv%3A2102.00405-b31b1b)](https://arxiv.org/abs/2102.00405)
+[![arXiv](https://img.shields.io/badge/arXiv-2102.00405-b31b1b)](https://arxiv.org/abs/2102.00405)
 [![PyPI version](https://img.shields.io/pypi/v/bnlp_toolkit)](https://pypi.org/project/bnlp-toolkit/)
 [![release version](https://img.shields.io/github/v/release/sagorbrur/bnlp)](https://github.com/sagorbrur/bnlp/releases/tag/2.0.0)
 [![Support Python Version](https://img.shields.io/badge/python-3.5%7C3.6%7C3.7%7C3.8-brightgreen)](https://pypi.org/project/bnlp-toolkit/)
