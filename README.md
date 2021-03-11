@@ -40,6 +40,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 * [Bengali GloVe Wordvectors](https://github.com/sagorbrur/GloVe-Bengali)
 * [Bengali POS Tag model](https://github.com/sagorbrur/bnlp/blob/master/model/bn_pos.pkl)
 * [Bengali NER model](https://github.com/sagorbrur/bnlp/blob/master/model/bn_ner.pkl)
+* [Bengali Sentiment Analysis]()
 
 ### Training Details
 * Sentencepiece, Word2Vec, Fasttext, GloVe model trained with **Bengali Wikipedia Dump Dataset**
@@ -50,6 +51,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 * To Know Bengali GloVe Wordvector and training process follow [this](https://github.com/sagorbrur/GloVe-Bengali) repository
 * Bengali CRF POS Tagging was training with [nltr](https://github.com/abhishekgupta92/bangla_pos_tagger/tree/master/data) dataset with 80% accuracy. 
 * Bengali CRF NER Tagging was train with [this](https://github.com/MISabic/NER-Bangla-Dataset) data with 90% accuracy.
+* Bengali Sentiment Analysis was train with [socian sentiment dataset(4000)](https://github.com/socian-ai/socian-bangla-sentiment-dataset-labeled) with 76% accuracy with random forest model
 
 
 ## Tokenization
@@ -267,6 +269,47 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     bn_ner.train(model_name, tagged_sentences)
 
     ```
+
+## Bengali Sentiment Analysis
+
+- Analyze sentiment from given sentence
+  ```py
+  from bnlp import SentimentAnalysis
+
+  sa = SentimentAnalysis()
+  model = 'model/sentiment_model.pkl'
+  vector = 'model/sentiment_vector.pkl'
+  sentence = ''
+  result = sa.sentiment(model, vector, sentence)
+
+  ```
+
+- Training sentiment analysis model with Logistic Regression, SVM, Random Forest, KNN, Adaboost and saving the best model among them
+- Data should be in csv format with one column `text` and another column `label`
+  ```py
+  import pandas as pd
+  from bnlp import SentimentAnalysis
+
+  sa = SentimentAnalysis()
+  data_path = 'data.csv'
+  df = pd.read_csv(data_path)
+  sa.train(df)
+
+  """
+  Output Should be like this: 
+  
+  Train Vector saved as 'vectors.pkl' for prediction
+  svm accuracy: 0.75125
+  knn accuracy: 0.66625
+  logistic regression accuracy: 0.7525
+  random forest accuracy: 0.76375
+  adaboost accuracy: 0.69
+
+  ==================================================
+  best model: Random Forest, best accuracy: 0.76375
+  Best model saved as 'sentiment_model.pkl'
+  """
+  ```
 
 ## Bengali Corpus Class
 

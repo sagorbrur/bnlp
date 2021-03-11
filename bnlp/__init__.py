@@ -9,6 +9,7 @@ from bnlp.tokenizer.basic import BasicTokenizer
 from bnlp.tokenizer.sentencepiece import SentencepieceTokenizer
 from bnlp.embedding.word2vec import BengaliWord2Vec
 from bnlp.embedding.glove import BengaliGlove
+from bnlp.sentiment_analysis import SentimentAnalysis
 
 
 
