@@ -22,11 +22,13 @@ class NLTKTokenizer:
         return new_tokens
     
     def sentence_tokenize(self, text):
+        text = text.replace(".", "<dummy_bangla_token>") # to deal with abbreviations
         text = text.replace("।", ".")
         tokens = nltk.tokenize.sent_tokenize(text)
         new_tokens = []
         for token in tokens:
             if token[-1] == ".":
+                token = token.replace("<dummy_bangla_token>",".")
                 token = token[:-2] + token[-2:].replace(".","।")
             new_tokens.append(token)
         return new_tokens
