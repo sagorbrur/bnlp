@@ -27,9 +27,8 @@ class NLTKTokenizer:
         tokens = nltk.tokenize.sent_tokenize(text)
         new_tokens = []
         for token in tokens:
-            if token[-1] == ".":
-                token = token.replace("<dummy_bangla_token>",".")
-                token = token[:-2] + token[-2:].replace(".","।")
+            token = token.replace(".","।") # do operation in reverse order
+            token = token.replace("<dummy_bangla_token>",".")
             new_tokens.append(token)
         return new_tokens
 
