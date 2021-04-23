@@ -21,11 +21,12 @@ setuptools.setup(
     python_requires='>=3.5',
     install_requires=[
         "sentencepiece",
-        "gensim==3.8.3",
+        "gensim==4.0.1",
         "nltk",
         "numpy",
         "scipy",
         "sklearn-crfsuite",
         "wasabi",
+        "python-Levenshtein",
     ],
 )
