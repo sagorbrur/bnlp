@@ -18,7 +18,7 @@ python:
 # Install the pip dependency
 install:
   - pip install sentencepiece
-  - pip install gensim
+  - pip install gensim==4.0.1
   - pip install nltk
   - pip install numpy
   - pip install scipy
