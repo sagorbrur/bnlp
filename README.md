@@ -35,7 +35,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 ### Download Link
 
 * [Bengali SentencePiece](https://github.com/sagorbrur/bnlp/tree/master/model)
-* [Bengali Word2Vec](https://drive.google.com/open?id=1DxR8Vw61zRxuUm17jzFnOX97j7QtNW7U)
+* [Bengali Word2Vec](https://drive.google.com/file/d/1cQ8AoSdiX5ATYOzcTjCqpLCV1efB9QzT/view?usp=sharing)
 * [Bengali FastText](https://drive.google.com/open?id=1CFA-SluRyz3s5gmGScsFUcs7AjLfscm2)
 * [Bengali GloVe Wordvectors](https://github.com/sagorbrur/GloVe-Bengali)
 * [Bengali POS Tag model](https://github.com/sagorbrur/bnlp/blob/master/model/bn_pos.pkl)
