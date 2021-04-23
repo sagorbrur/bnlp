@@ -23,6 +23,8 @@ install:
   - pip install numpy
   - pip install scipy
   - pip install sklearn-crfsuite
+  - pip install wasabi
+  - pip install python-Levenshtein
 
 # Run the unit test
 script:

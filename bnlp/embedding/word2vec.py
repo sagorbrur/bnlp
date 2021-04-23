@@ -86,13 +86,11 @@ class BengaliWord2Vec:
         training_loss = model.get_latest_training_loss()
 
         msg.good('train completed successfully')
-        # msg.good(f"trianing loss: {training_loss}")
-        print("training loss: ", training_loss)
+        msg.good(f"trianing loss: {training_loss}")
         msg.info(f"model and vector saving...")
         model.save(model_name)
         model.wv.save_word2vec_format(vector_name, binary=False)
-        # msg.good(f"model and vector saved as {model_name} and {vector_name}")
-        print(f"model and vector saved as {model_name} and {vector_name}")
+        msg.good(f"model and vector saved as {model_name} and {vector_name}")
 
     def pretrain(self, model_path, new_sentences, output_model_name, 
         output_vector_name, epochs=5):
@@ -122,13 +120,11 @@ class BengaliWord2Vec:
         training_loss = model.get_latest_training_loss()
 
         msg.good('pre-train completed successfully')
-        # msg.good(f"pre-trianing loss: {training_loss}")
-        print(f"pre-training loss: {training_loss}")
+        msg.good(f"pre-trianing loss: {training_loss}")
         msg.info(f"model and vector saving...")
         model.save(output_model_name)
         model.wv.save_word2vec_format(output_vector_name, binary=False)
-        # msg.good(f"model and vector saved as {output_model_name} and {output_vector_name}")
-        print(f"model and vector saved as {output_model_name} and {output_vector_name}")
+        msg.good(f"model and vector saved as {output_model_name} and {output_vector_name}")
 
     def generate_word_vector(self, model_path, input_word):
         """
