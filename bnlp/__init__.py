@@ -1,4 +1,4 @@
-__version__="3.0.0"
+__version__="3.1.0"
 
 
 import os
@@ -9,6 +9,7 @@ from bnlp.tokenizer.basic import BasicTokenizer
 from bnlp.tokenizer.sentencepiece import SentencepieceTokenizer
 from bnlp.embedding.word2vec import BengaliWord2Vec
 from bnlp.embedding.glove import BengaliGlove
+
 
 
 
