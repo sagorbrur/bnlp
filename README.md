@@ -6,7 +6,7 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2102.00405-b31b1b)](https://arxiv.org/abs/2102.00405)
 [![PyPI version](https://img.shields.io/pypi/v/bnlp_toolkit)](https://pypi.org/project/bnlp-toolkit/)
 [![release version](https://img.shields.io/github/v/release/sagorbrur/bnlp)](https://github.com/sagorbrur/bnlp/releases/tag/2.0.0)
-[![Support Python Version](https://img.shields.io/badge/python-3.5%7C3.6%7C3.7%7C3.8-brightgreen)](https://pypi.org/project/bnlp-toolkit/)
+[![Support Python Version](https://img.shields.io/badge/python-3.6%7C3.7%7C3.8-brightgreen)](https://pypi.org/project/bnlp-toolkit/)
 [![Documentation Status](https://readthedocs.org/projects/bnlp/badge/?version=latest)](https://bnlp.readthedocs.io/en/latest/?badge=latest)
 [![Gitter](https://badges.gitter.im/bnlp_toolkit/community.svg)](https://gitter.im/bnlp_toolkit/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
@@ -16,7 +16,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
 ## Installation
 
-### PIP installer(Python: 3.5, 3.6, 3.7, 3.8 tested okay, OS: linux, windows tested okay )
+### PIP installer(Python: 3.6, 3.7, 3.8 tested okay, OS: linux, windows tested okay )
 
   ```
   pip install bnlp_toolkit
@@ -46,7 +46,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   - [Bengali Wiki Dump](https://dumps.wikimedia.org/bnwiki/latest/)
 * SentencePiece Training Vocab Size=50000
 * Fasttext trained with total words = 20M, vocab size = 1171011, epoch=50, embedding dimension = 300 and the training loss = 0.318668,
-* Word2Vec word embedding dimension = 300
+* Word2Vec word embedding dimension = 100, min_count=5, window=5, epochs=10
 * To Know Bengali GloVe Wordvector and training process follow [this](https://github.com/sagorbrur/GloVe-Bengali) repository
 * Bengali CRF POS Tagging was training with [nltr](https://github.com/abhishekgupta92/bangla_pos_tagger/tree/master/data) dataset with 80% accuracy. 
 * Bengali CRF NER Tagging was train with [this](https://github.com/MISabic/NER-Bangla-Dataset) data with 90% accuracy.
@@ -130,7 +130,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
     bwv = BengaliWord2Vec()
     model_path = "bengali_word2vec.model"
-    word = 'আমার'
+    word = 'গ্রাম'
     vector = bwv.generate_word_vector(model_path, word)
     print(vector.shape)
     print(vector)
@@ -157,7 +157,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     ```
     sentences = [['আমি', 'ভাত', 'খাই', '।'], ['সে', 'বাজারে', 'যায়', '।']]
     ```
-    Check [documentation]() for details of training parameter
+    Check [gensim word2vec api](https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.Word2Vec) for details of training parameter
 
     ```py
     from bnlp import BengaliWord2Vec
@@ -171,7 +171,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     ```
   - Pre-train or resume word2vec training with same or new corpus or tokenized sentences
 
-    Check [documentation]() for details of training parameter
+    Check [gensim word2vec api](https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.Word2Vec) for details of training parameter
 
     ```py
     from bnlp import BengaliWord2Vec
@@ -208,7 +208,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
       ```
     - Train Bengali FastText Model
 
-      Check [documentation]() for details of training parameter
+      Check [fasttext documentation](https://fasttext.cc/docs/en/options.html) for details of training parameter
 
       ```py
       from bnlp.embedding.fasttext import BengaliFasttext

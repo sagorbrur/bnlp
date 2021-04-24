@@ -17,7 +17,7 @@ Bengali Natural Language Processing(BNLP)
    :alt: release version
 
 
-.. image:: https://img.shields.io/badge/python-3.5%7C3.6%7C3.7-brightgreen
+.. image:: https://img.shields.io/badge/python-3.6%7C3.7%7C3.8-brightgreen
    :target: https://pypi.org/project/bnlp-toolkit/
    :alt: Support Python Version
 
@@ -32,7 +32,7 @@ Installation
 
 
 * 
-  pypi package installer(python 3.5, 3.6, 3.7 tested okay)
+  pypi package installer(python 3.6, 3.7 tested okay)
 
   ``pip install bnlp_toolkit``
 
@@ -50,7 +50,7 @@ Download Link
 
 
 * `Bengali SentencePiece <https://github.com/sagorbrur/bnlp/tree/master/model>`_
-* `Bengali Word2Vec <https://drive.google.com/open?id=1DxR8Vw61zRxuUm17jzFnOX97j7QtNW7U>`_
+* `Bengali Word2Vec <https://drive.google.com/file/d/1cQ8AoSdiX5ATYOzcTjCqpLCV1efB9QzT/view?usp=sharing>`_
 * `Bengali FastText <https://drive.google.com/open?id=1CFA-SluRyz3s5gmGScsFUcs7AjLfscm2>`_
 * `Bengali GloVe Wordvectors <https://github.com/sagorbrur/GloVe-Bengali>`_
 * `Bengali POS Tag model <https://github.com/sagorbrur/bnlp/blob/master/model/bn_pos.pkl>`_
@@ -66,7 +66,7 @@ Training Details
 
 * SentencePiece Training Vocab Size=50000
 * Fasttext trained with total words = 20M, vocab size = 1171011, epoch=50, embedding dimension = 300 and the training loss = 0.318668,
-* Word2Vec word embedding dimension = 300
+* Word2Vec word embedding dimension = 100, min_count=5, window=5, epochs=10
 * To Know Bengali GloVe Wordvector and training process follow `this <https://github.com/sagorbrur/GloVe-Bengali>`_ repository
 * Bengali CRF POS Tagging was training with `nltr <https://github.com/abhishekgupta92/bangla_pos_tagger/tree/master/data>`_ dataset with 80% accuracy. 
 * Bengali CRF NER Tagging was train with `this <https://github.com/MISabic/NER-Bangla-Dataset>`_ data with 90% accuracy.
@@ -159,7 +159,7 @@ Word Embedding
 
        bwv = BengaliWord2Vec()
        model_path = "model/bengali_word2vec.model"
-       word = 'আমার'
+       word = 'গ্রাম'
        vector = bwv.generate_word_vector(model_path, word)
        print(vector.shape)
        print(vector)
