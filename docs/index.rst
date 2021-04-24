@@ -173,12 +173,17 @@ Word Embedding
 
        bwv = BengaliWord2Vec()
        model_path = "model/bengali_word2vec.model"
-       word = 'আমার'
-       similar = bwv.most_similar(model_path, word)
+       word = 'গ্রাম'
+       similar = bwv.most_similar(model_path, word, topn=10)
        print(similar)
 
   * 
     Train Bengali Word2Vec with your own data
+    Train Bengali word2vec with your custom raw data or tokenized sentences.
+    custom tokenized sentence format example:
+    ``sentences = [['আমি', 'ভাত', 'খাই', '।'], ['সে', 'বাজারে', 'যায়', '।']]``
+
+    Check `gensim word2vec api <https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.Word2Vec>`_ for details of training parameter
 
     .. code-block:: py
 
@@ -189,7 +194,21 @@ Word Embedding
        vector_name = "test_vector.vector"
        bwv.train(data_file, model_name, vector_name)
 
+  * 
+    Pre-train or resume word2vec training with same or new corpus or tokenized sentences
 
+    Check `gensim word2vec api <https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.Word2Vec>`_ for details of training parameter
+
+    .. code-block:: py
+
+       from bnlp import BengaliWord2Vec
+       bwv = BengaliWord2Vec()
+
+       trained_model_path = "mytrained_model.model"
+       data_file = "raw_text.txt"
+       model_name = "test_model.model"
+       vector_name = "test_vector.vector"
+       bwv.pretrain(trained_model_path, data_file, model_name, vector_name, epochs=5)
 
 
 * 
@@ -212,7 +231,9 @@ Word Embedding
 
 
    - Train Bengali FastText Model
-
+     
+     Check `fasttext documentation <https://fasttext.cc/docs/en/options.html>`_ for details of training parameter
+     
      .. code-block:: py
 
         from bnlp.embedding.fasttext import BengaliFasttext
@@ -222,8 +243,18 @@ Word Embedding
         model_name = "saved_model_wiki.bin"
         epoch = 10
         bft.train(data, model_name, epoch)
+   
+   - Generate Vector File from Fasttext Binary Model
+     
+     .. code-block:: py
 
+        from bnlp.embedding.fasttext import BengaliFasttext
 
+        bft = BengaliFasttext()
+
+        model_path = "mymodel.bin"
+        out_vector_name = "myvector.txt"
+        bft.bin2vec(model_path, out_vector_name)
 
 * 
   **Bengali GloVe Word Vectors**
