@@ -165,7 +165,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
     data_file = "raw_text.txt" # or you can pass custom sentence tokens as list of list
     model_name = "test_model.model"
     vector_name = "test_vector.vector"
-    bwv.train(data_file, model_name, vector_name)
+    bwv.train(data_file, model_name, vector_name, epochs=5)
 
 
     ```
