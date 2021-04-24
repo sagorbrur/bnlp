@@ -32,7 +32,7 @@ Installation
 
 
 * 
-  pypi package installer(python 3.6, 3.7 tested okay)
+  pypi package installer(python 3.6, 3.7, 3.8 tested okay)
 
   ``pip install bnlp_toolkit``
 
@@ -79,15 +79,15 @@ Tokenization
 * 
   **Basic Tokenizer**
 
-.. code-block:: py
+  .. code-block:: py
 
-     from bnlp import BasicTokenizer
-     basic_t = BasicTokenizer()
-     raw_text = "আমি বাংলায় গান গাই।"
-     tokens = basic_t.tokenize(raw_text)
-     print(tokens)
+      from bnlp import BasicTokenizer
+      basic_t = BasicTokenizer()
+      raw_text = "আমি বাংলায় গান গাই।"
+      tokens = basic_t.tokenize(raw_text)
+      print(tokens)
 
-     # output: ["আমি", "বাংলায়", "গান", "গাই", "।"]
+      # output: ["আমি", "বাংলায়", "গান", "গাই", "।"]
 
 
 * 
