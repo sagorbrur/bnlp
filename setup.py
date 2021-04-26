@@ -27,6 +27,5 @@ setuptools.setup(
         "scipy",
         "sklearn-crfsuite",
         "wasabi",
-        "python-Levenshtein",
     ],
 )
