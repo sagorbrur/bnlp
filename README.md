@@ -338,11 +338,7 @@ Check [CONTRIBUTING.md](https://github.com/sagorbrur/bnlp/blob/master/CONTRIBUTI
 
 ## Thanks To
 
-* [Semantics Lab](http://semanticslab.net/)
-
-## Contributor List
-
-[![](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/images/0)](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/links/0)[![](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/images/1)](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/links/1)[![](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/images/2)](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/links/2)[![](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/images/3)](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/links/3)[![](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/images/4)](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/links/4)[![](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/images/5)](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/links/5)[![](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/images/6)](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/links/6)[![](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/images/7)](https://sourcerer.io/fame/sagorbrur/sagorbrur/bnlp/links/7)
+* [Semantics Lab]()
 
 ### Extra Contributor
 * [Mehadi Hasan Menon](https://github.com/menon92)
