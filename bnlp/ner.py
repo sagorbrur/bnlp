@@ -52,22 +52,21 @@ class NER:
         punctuations = string.punctuation+'।'
         with open(model_path, 'rb') as pkl_model:
             model = pickle.load(pkl_model)
-            basic_t = BasicTokenizer()
-            tokens = basic_t.tokenize(text)
-            tokens = [x for x in tokens if x not in punctuations]
+            if not isinstance(text, list):
+                basic_t = BasicTokenizer()
+                tokens = basic_t.tokenize(text)
+                tokens = [x for x in tokens if x not in punctuations]
+            else:
+                tokens = text
             sentence_features = [features(tokens, index) for index in range(len(tokens))]
             result = list(zip(tokens, model.predict([sentence_features])[0]))
             pkl_model.close()
             return result
 
-    def train(self, model_name, tagged_sentences):
-        # Split the dataset for training and testing
-        cutoff = int(.75 * len(tagged_sentences))
-        training_sentences = tagged_sentences[:cutoff]
-        test_sentences = tagged_sentences[cutoff:]
-
-        X_train, y_train = transform_to_dataset(training_sentences)
-        X_test, y_test = transform_to_dataset(test_sentences)
+    def train(self, model_name, train_data, test_data, average="micro"):
+        
+        X_train, y_train = transform_to_dataset(train_data)
+        X_test, y_test = transform_to_dataset(test_data)
         print(len(X_train))
         print(len(X_test))
 
@@ -82,6 +81,8 @@ class NER:
         y_pred = model.predict(X_test)
         print("Accuracy is: ")
         print(metrics.flat_accuracy_score(y_test, y_pred))
+        print(f"F1 Score({average}) is: ")
+        print(metrics.flat_f1_score(y_test, y_pred, average=average))
         
         pickle.dump(model, open(model_name, 'wb'))
         print("Model Saved!")
