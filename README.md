@@ -37,7 +37,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 * [Bengali SentencePiece](https://github.com/sagorbrur/bnlp/tree/master/model)
 * [Bengali Word2Vec](https://huggingface.co/sagorsarker/bangla_word2vec)
 * [Bengali FastText](https://huggingface.co/sagorsarker/bangla-fasttext)
-* [Bengali GloVe Wordvectors](https://github.com/sagorbrur/GloVe-Bengali)
+* [Bengali GloVe Wordvectors](https://huggingface.co/sagorsarker/bangla-glove-vectors)
 * [Bengali POS Tag model](https://github.com/sagorbrur/bnlp/blob/master/model/bn_pos.pkl)
 * [Bengali NER model](https://github.com/sagorbrur/bnlp/blob/master/model/bn_ner.pkl)
 
