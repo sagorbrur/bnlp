@@ -2,20 +2,55 @@ from scipy import spatial
 from gensim.models.doc2vec import Doc2Vec
 from bnlp.tokenizer.basic import BasicTokenizer
 
+default_tokenizer = BasicTokenizer()
 
 class BengaliDoc2vec:
     def __init__(self, tokenizer=None):
-        if not tokenizer:
-            self.tokenizer = BasicTokenizer()
-        
-    def news_article_similarity(self, model_path, article_1, article_2):
-        article_1_tokens = self.tokenizer.tokenize(article_1)
-        article_2_tokens = self.tokenizer.tokenize(article_2)
+        self.tokenizer = tokenizer
+
+    def get_document_vector(self, model_path, document):
+        """Get document vector using trained doc2vec model
+
+        Args:
+            model_path (bin): trained doc2vec model path
+            document (str): input documents
+
+        Returns:
+            ndarray: generated vector 
+        """
+        model = Doc2Vec.load(model_path)
+        if self.tokenizer:
+            tokens = self.tokenizer(document)
+        else:
+            tokens = default_tokenizer.tokenize(document)
+
+        vector = model.infer_vector(tokens)
+
+        return vector
+
+    def get_document_similarity(self, model_path, document_1, document_2):
+        """Get document similarity score from input two document using pretrained doc2vec model
+
+        Args:
+            model_path (bin): pretrained doc2vec
+            document_1 (str): input document
+            document_2 (str): input document
+
+        Returns:
+            float: output similarity score
+        """
+        if self.tokenizer:
+            document_1_tokens = self.tokenizer(document_1)
+            document_2_tokens = self.tokenizer(document_2)
+        else:
+            document_1_tokens = default_tokenizer.tokenize(document_1)
+            document_2_tokens = default_tokenizer.tokenize(document_2)
+
         model = Doc2Vec.load(model_path)
 
-        article_1_vector = model.infer_vector(article_1_tokens)
-        article_2_vector = model.infer_vector(article_2_tokens)
+        document_1_vector = model.infer_vector(document_1_tokens)
+        document_2_vector = model.infer_vector(document_2_tokens)
 
-        similarity = 1 - spatial.distance.cosine(article_1_vector, article_2_vector)
+        similarity = round(1 - spatial.distance.cosine(document_1_vector, document_2_vector), 2)
 
         return similarity
