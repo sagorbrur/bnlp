@@ -1,8 +1,23 @@
+import os
+import glob
+import gensim
+from tqdm import tqdm
 from scipy import spatial
 from gensim.models.doc2vec import Doc2Vec
 from bnlp.tokenizer.basic import BasicTokenizer
 
 default_tokenizer = BasicTokenizer()
+
+def read_corpus(files, tokenizer=None):
+    for i, file in tqdm(enumerate(files)):
+      with open(file) as f:
+        text = f.read()
+        if tokenizer:
+            tokens = tokenizer(text)
+        else:
+            tokens = default_tokenizer.tokenize(text)
+        yield gensim.models.doc2vec.TaggedDocument(tokens, [i])
+          
 
 class BengaliDoc2vec:
     def __init__(self, tokenizer=None):
@@ -54,3 +69,18 @@ class BengaliDoc2vec:
         similarity = round(1 - spatial.distance.cosine(document_1_vector, document_2_vector), 2)
 
         return similarity
+
+    def train_doc2vec(self, text_files, checkpoint_path='ckpt', vector_size=100, min_count=2, epochs=10):
+        text_files = glob.glob(text_files + '/*.txt')
+        if self.tokenizer:
+            train_corpus = list(read_corpus(text_files, self.tokenizer))
+        else:
+            train_corpus = list(read_corpus(text_files))
+
+        model = Doc2Vec(vector_size=vector_size, min_count=min_count, epochs=epochs)
+        model.build_vocab(train_corpus)
+        model.train(train_corpus, total_examples=model.corpus_count, epochs=model.epochs)
+        
+        os.makedirs(checkpoint_path, exist_ok=True)
+        output_model_name = os.path.join(checkpoint_path, 'custom_doc2vec_model.model')
+        model.save(output_model_name)
