@@ -40,6 +40,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 * [Bengali GloVe Wordvectors](https://huggingface.co/sagorsarker/bangla-glove-vectors)
 * [Bengali POS Tag model](https://github.com/sagorbrur/bnlp/blob/master/model/bn_pos.pkl)
 * [Bengali NER model](https://github.com/sagorbrur/bnlp/blob/master/model/bn_ner.pkl)
+* [Bengali News article Doc2Vec model]()
 
 ### Training Details
 * Sentencepiece, Word2Vec, Fasttext, GloVe model trained with **Bengali Wikipedia Dump Dataset**
@@ -50,6 +51,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 * To Know Bengali GloVe Wordvector and training process follow [this](https://github.com/sagorbrur/GloVe-Bengali) repository
 * Bengali CRF POS Tagging was training with [nltr](https://github.com/abhishekgupta92/bangla_pos_tagger/tree/master/data) dataset with 80% accuracy. 
 * Bengali CRF NER Tagging was train with [this](https://github.com/MISabic/NER-Bangla-Dataset) data with 90% accuracy.
+* bengali news article doc2vec model train with 3 jsons of [this](https://www.kaggle.com/datasets/ebiswas/bangla-largest-newspaper-dataset) corpus with epochs 40 vector size 100 min_count=2
 
 
 ## Tokenization
@@ -247,6 +249,28 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
   print(vec)
 
   ```
+
+## Document Embedding
+* __Bengali Doc2Vec__
+  - Find news article similarity between two news artilce
+
+    ```py
+    from bnlp import BengaliDoc2vec
+    
+    bn_doc2vec = BengaliDoc2vec()
+    
+    model_path = ""
+    article_1 = ""
+    article_2 = ""
+    similarity = bn_doc2vec.news_article_similarity(
+      model_path,
+      article_1,
+      article_2
+    )
+    print(similarity)
+
+    ```
+
 
 ## Bengali POS Tagging
 * **Bengali CRF POS Tagging** 
