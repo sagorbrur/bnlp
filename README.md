@@ -265,7 +265,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
     vector = bn_doc2vec.get_document_vector(model_path, text)
     print(vector)
     ```
-    
+
   - Find document similarity between two document
 
     ```py
@@ -286,6 +286,27 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
     ```
 
+  - Train doc2vec vector with custom text files
+
+    ```py
+    from bnlp import BengaliDoc2vec
+      
+    bn_doc2vec = BengaliDoc2vec()
+
+    text_files = "path/myfiles"
+    checkpoint_path = "msc/logs"
+
+    bn_doc2vec.train_doc2vec(
+      text_files, 
+      checkpoint_path=checkpoint_path,
+      vector_size=100,
+      min_count=2,
+      epochs=10
+    )
+
+    # it will train doc2vec with your text files and save the train model in checkpoint_path
+
+    ```
 
 ## Bengali POS Tagging
 * **Bengali CRF POS Tagging** 
