@@ -71,7 +71,7 @@ Training Details
 * To Know Bengali GloVe Wordvector and training process follow `this <https://github.com/sagorbrur/GloVe-Bengali>`_ repository
 * Bengali CRF POS Tagging was training with `nltr <https://github.com/abhishekgupta92/bangla_pos_tagger/tree/master/data>`_ dataset with 80% accuracy. 
 * Bengali CRF NER Tagging was train with `this <https://github.com/MISabic/NER-Bangla-Dataset>`_ data with 90% accuracy.
-* Bengali news article doc2vec model train with 3 jsons of `this <https://www.kaggle.com/datasets/ebiswas/bangla-largest-newspaper-dataset>`_ corpus with epochs 40 vector size 100 min_count=2
+* Bengali news article doc2vec model train with 3 jsons of `this <https://www.kaggle.com/datasets/ebiswas/bangla-largest-newspaper-dataset`_ corpus with epochs 40 vector size 100 min_count=2, total news article 91716
 
 Tokenization
 ============
@@ -274,6 +274,70 @@ Word Embedding
      print(res)
      vec = bng.word2vec(glove_path, word)
      print(vec)
+
+Document Embedding
+==================
+
+
+* 
+  **Bengali Doc2Vec**
+
+
+  * 
+    Get document vector from input document
+
+    .. code-block:: py
+
+       from bnlp import BengaliDoc2vec
+    
+       bn_doc2vec = BengaliDoc2vec()
+        
+       model_path = "bangla_news_article_doc2vec.model" # keep other .npy model files also in same folder
+       document = "রাষ্ট্রবিরোধী ও উসকানিমূলক বক্তব্য দেওয়ার অভিযোগে গাজীপুরের গাছা থানায় ডিজিটাল নিরাপত্তা আইনে করা মামলায় আলোচিত ‘শিশুবক্তা’ রফিকুল ইসলামের বিরুদ্ধে অভিযোগ গঠন করেছেন আদালত। ফলে মামলার আনুষ্ঠানিক বিচার শুরু হলো। আজ বুধবার (২৬ জানুয়ারি) ঢাকার সাইবার ট্রাইব্যুনালের বিচারক আসসামছ জগলুল হোসেন এ অভিযোগ গঠন করেন। এর আগে, রফিকুল ইসলামকে কারাগার থেকে আদালতে হাজির করা হয়। এরপর তাকে নির্দোষ দাবি করে তার আইনজীবী শোহেল মো. ফজলে রাব্বি অব্যাহতি চেয়ে আবেদন করেন। অন্যদিকে, রাষ্ট্রপক্ষ অভিযোগ গঠনের পক্ষে শুনানি করেন। উভয় পক্ষের শুনানি শেষে আদালত অব্যাহতির আবেদন খারিজ করে অভিযোগ গঠনের মাধ্যমে বিচার শুরুর আদেশ দেন। একইসঙ্গে সাক্ষ্যগ্রহণের জন্য আগামী ২২ ফেব্রুয়ারি দিন ধার্য করেন আদালত।"
+
+       vector = bn_doc2vec.get_document_vector(model_path, text)
+       print(vector)
+
+  * 
+    Find document similarity between two document
+
+    .. code-block:: py
+
+       from bnlp import BengaliDoc2vec
+    
+       bn_doc2vec = BengaliDoc2vec()
+    
+       model_path = "bangla_news_article_doc2vec.model" # keep other .npy model files also in same folder
+       article_1 = "রাষ্ট্রবিরোধী ও উসকানিমূলক বক্তব্য দেওয়ার অভিযোগে গাজীপুরের গাছা থানায় ডিজিটাল নিরাপত্তা আইনে করা মামলায় আলোচিত ‘শিশুবক্তা’ রফিকুল ইসলামের বিরুদ্ধে অভিযোগ গঠন করেছেন আদালত। ফলে মামলার আনুষ্ঠানিক বিচার শুরু হলো। আজ বুধবার (২৬ জানুয়ারি) ঢাকার সাইবার ট্রাইব্যুনালের বিচারক আসসামছ জগলুল হোসেন এ অভিযোগ গঠন করেন। এর আগে, রফিকুল ইসলামকে কারাগার থেকে আদালতে হাজির করা হয়। এরপর তাকে নির্দোষ দাবি করে তার আইনজীবী শোহেল মো. ফজলে রাব্বি অব্যাহতি চেয়ে আবেদন করেন। অন্যদিকে, রাষ্ট্রপক্ষ অভিযোগ গঠনের পক্ষে শুনানি করেন। উভয় পক্ষের শুনানি শেষে আদালত অব্যাহতির আবেদন খারিজ করে অভিযোগ গঠনের মাধ্যমে বিচার শুরুর আদেশ দেন। একইসঙ্গে সাক্ষ্যগ্রহণের জন্য আগামী ২২ ফেব্রুয়ারি দিন ধার্য করেন আদালত।"
+       article_2 = "রাষ্ট্রবিরোধী ও উসকানিমূলক বক্তব্য দেওয়ার অভিযোগে গাজীপুরের গাছা থানায় ডিজিটাল নিরাপত্তা আইনে করা মামলায় আলোচিত ‘শিশুবক্তা’ রফিকুল ইসলামের বিরুদ্ধে অভিযোগ গঠন করেছেন আদালত। ফলে মামলার আনুষ্ঠানিক বিচার শুরু হলো। আজ বুধবার (২৬ জানুয়ারি) ঢাকার সাইবার ট্রাইব্যুনালের বিচারক আসসামছ জগলুল হোসেন এ অভিযোগ গঠন করেন। এর আগে, রফিকুল ইসলামকে কারাগার থেকে আদালতে হাজির করা হয়। এরপর তাকে নির্দোষ দাবি করে তার আইনজীবী শোহেল মো. ফজলে রাব্বি অব্যাহতি চেয়ে আবেদন করেন। অন্যদিকে, রাষ্ট্রপক্ষ অভিযোগ গঠনের পক্ষে শুনানি করেন। উভয় পক্ষের শুনানি শেষে আদালত অব্যাহতির আবেদন খারিজ করে অভিযোগ গঠনের মাধ্যমে বিচার শুরুর আদেশ দেন। একইসঙ্গে সাক্ষ্যগ্রহণের জন্য আগামী ২২ ফেব্রুয়ারি দিন ধার্য করেন আদালত।"
+
+       similarity = bn_doc2vec.get_document_similarity(
+          model_path,
+          article_1,
+          article_2
+       )
+       print(similarity)
+
+  * 
+    Train doc2vec vector with custom text files
+
+    .. code-block:: py
+
+       from bnlp import BengaliDoc2vec
+      
+       bn_doc2vec = BengaliDoc2vec()
+
+       text_files = "path/myfiles"
+       checkpoint_path = "msc/logs"
+
+       bn_doc2vec.train_doc2vec(
+         text_files, 
+         checkpoint_path=checkpoint_path,
+         vector_size=100,
+         min_count=2,
+         epochs=10
+       )
+       # it will train doc2vec with your text files and save the train model in checkpoint_path
 
 Bengali POS Tagging
 ===================
