@@ -402,8 +402,4 @@ Check [CONTRIBUTING.md](https://github.com/sagorbrur/bnlp/blob/master/CONTRIBUTI
 
 ## Thanks To
 
-* [Semantics Lab]()
-
-### Extra Contributor
-* [Mehadi Hasan Menon](https://github.com/menon92)
-* [Kazal Chandra Barman](https://github.com/kazalbrur)
+* [Semantics Lab](https://www.facebook.com/lab.semantics/)
