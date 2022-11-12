@@ -41,6 +41,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 * [Bengali POS Tag model](https://github.com/sagorbrur/bnlp/blob/master/model/bn_pos.pkl)
 * [Bengali NER model](https://github.com/sagorbrur/bnlp/blob/master/model/bn_ner.pkl)
 * [Bengali News article Doc2Vec model](https://huggingface.co/sagorsarker/news_article_doc2vec)
+* [Bangla Wikipedia Doc2Vec model](https://huggingface.co/sagorsarker/bnwiki_doc2vec_model)
 
 ### Training Details
 * Sentencepiece, Word2Vec, Fasttext, GloVe model trained with **Bengali Wikipedia Dump Dataset**
@@ -52,6 +53,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 * Bengali CRF POS Tagging was training with [nltr](https://github.com/abhishekgupta92/bangla_pos_tagger/tree/master/data) dataset with 80% accuracy. 
 * Bengali CRF NER Tagging was train with [this](https://github.com/MISabic/NER-Bangla-Dataset) data with 90% accuracy.
 * Bengali news article doc2vec model train with 8 jsons of [this](https://www.kaggle.com/datasets/ebiswas/bangla-largest-newspaper-dataset) corpus with epochs 40 vector size 100 min_count=2, total news article 400013
+* Bengali wikipedia doc2vec model trained with wikipedia dump datasets. Total articles 110448, epochs: 40, vector_size: 100, min_count: 2
 
 
 ## Tokenization

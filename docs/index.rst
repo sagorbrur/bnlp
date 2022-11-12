@@ -56,6 +56,7 @@ Download Link
 * `Bengali POS Tag model <https://github.com/sagorbrur/bnlp/blob/master/model/bn_pos.pkl>`_
 * `Bengali NER model <https://github.com/sagorbrur/bnlp/blob/master/model/bn_ner.pkl>`_
 * `Bengali News article Doc2Vec model <https://huggingface.co/sagorsarker/news_article_doc2vec>`_
+* `Bengali Wikipedia Doc2Vec model <https://huggingface.co/sagorsarker/bnwiki_doc2vec_model>`_
 
 Training Details
 ^^^^^^^^^^^^^^^^
@@ -72,6 +73,7 @@ Training Details
 * Bengali CRF POS Tagging was training with `nltr <https://github.com/abhishekgupta92/bangla_pos_tagger/tree/master/data>`_ dataset with 80% accuracy. 
 * Bengali CRF NER Tagging was train with `this <https://github.com/MISabic/NER-Bangla-Dataset>`_ data with 90% accuracy.
 * Bengali news article doc2vec model train with 8 jsons of `this <https://www.kaggle.com/datasets/ebiswas/bangla-largest-newspaper-dataset>`_ corpus with epochs 40 vector size 100 min_count=2, total news article 400013
+* Bengali wikipedia doc2vec model trained with `wikipedia dump <https://dumps.wikimedia.org/bnwiki/latest/>`_ corpus with epochs 40 vector size 100 min_count=2, total article 110448
 
 Tokenization
 ============
