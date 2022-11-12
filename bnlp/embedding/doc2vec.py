@@ -71,6 +71,15 @@ class BengaliDoc2vec:
         return similarity
 
     def train_doc2vec(self, text_files, checkpoint_path='ckpt', vector_size=100, min_count=2, epochs=10):
+        """Train doc2vec with custom text files
+
+        Args:
+            text_files (str): path contains the text files with extension .txt
+            checkpoint_path (str, optional): checkpoint save path. Defaults to 'ckpt'.
+            vector_size (int, optional): size of the vector. Defaults to 100.
+            min_count (int, optional): minimum word count. Defaults to 2.
+            epochs (int, optional): training iteration number. Defaults to 10.
+        """
         text_files = glob.glob(text_files + '/*.txt')
         if self.tokenizer:
             train_corpus = list(read_corpus(text_files, self.tokenizer))
