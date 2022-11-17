@@ -128,7 +128,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
     ```py
     from bnlp.tokenizer.spacy import spacy_tokenizer
 
-    text = "আমি বাংলায় গান গাই."
+    text = "আমি বাংলায় গান গাই।"
     tokens = spacy_tokenizer(text)
     print(tokens)
     ```
