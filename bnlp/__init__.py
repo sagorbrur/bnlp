@@ -1,4 +1,4 @@
-__version__="3.3.0dev"
+__version__="3.3.0"
 
 import os
 from bnlp.pos import POS
