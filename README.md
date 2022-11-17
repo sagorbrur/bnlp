@@ -121,7 +121,17 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
     ```
 
+* **Bengali Spacy Tokenizer**
 
+    For using Spacy Bangla tokenizer install spacy by `pip install bnlp_toolkit[spacy]`
+
+    ```py
+    from bnlp.tokenizer.spacy import spacy_tokenizer
+
+    text = "আমি বাংলায় গান গাই."
+    tokens = spacy_tokenizer(text)
+    print(tokens)
+    ```
 
 ## Word Embedding
 
@@ -191,7 +201,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
     
  * **Bengali FastText**
  
-    To use `fasttext` you need to install fasttext manually by `pip install fasttext==0.9.2`
+    To use `fasttext` you need to install fasttext manually by `pip install bnlp_toolkit[fasttext]`
     
     NB: `fasttext` may not be worked in `windows`, it will only work in `linux`
 
@@ -370,6 +380,18 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
     ```
 
+* **Bangla Spacy Name Entity Recognition**
+
+  Install bnlp_toolkit with spacy by `pip install bnlp_toolkit[spacy]`
+
+  ```py
+  from bnlp.ner import spacy_ner
+
+  text = ""
+  model_path = "path/spacy_bn_model"
+  output = spacy_ner(text, model_path)
+  print(output)
+  ```
 
 ## Bengali Corpus Class
 
