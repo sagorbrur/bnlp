@@ -4,7 +4,7 @@ import setuptools
 
 setuptools.setup(
     name="bnlp_toolkit",
-    version="3.2.0",
+    version="3.3.0",
     author="Sagor Sarker",
     author_email="sagorhem3532@gmail.com",
     description="BNLP is a natural language processing toolkit for Bengali Language",
@@ -29,4 +29,8 @@ setuptools.setup(
         "wasabi",
         "tqdm"
     ],
+    extras_require={
+        'spacy': ["spacy==3.4.3"],
+        'fasttext': ["fasttext==0.9.2"]
+    },
 )
