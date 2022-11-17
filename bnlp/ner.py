@@ -86,3 +86,32 @@ class NER:
         
         pickle.dump(model, open(model_name, 'wb'))
         print("Model Saved!")
+
+
+def spacy_ner(text, model_path):
+    try:
+        import spacy
+
+        nlp = spacy.load(model_path)
+        doc = nlp(text)
+        output = []
+        for entity in doc.ents:
+            label = entity.label_
+            ent_text = entity.text
+            start_char = entity.start_char
+            end_char = entity.end_char
+            token_start = entity.start
+            token_end = entity.end
+            out = {
+                'text': ent_text,
+                'label': label,
+                'start_char': start_char,
+                'end_char': end_char,
+                'start_token': token_start,
+                'end_token': token_end
+            }
+            output.append(out)
+        return output
+
+    except ImportError:
+        print("spacy not installed. install it by pip install bnlp_toolkit[spacy]")
