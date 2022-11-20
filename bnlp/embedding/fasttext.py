@@ -1,15 +1,30 @@
 import multiprocessing
 from wasabi import msg
+
 try:
     import fasttext
 except ImportError:
     print("fasttext not installed. Install it by 'pip install fasttext'")
 
+
 class BengaliFasttext:
-    
-    def train(self, data, model_name, epoch, lr=0.05, dim=300, ws=5, minCount=5, 
-        minn=3, maxn=6, neg=5, wordNgrams=1, loss="ns", bucket=2000000,
-        thread=multiprocessing.cpu_count() - 1):
+    def train(
+        self,
+        data,
+        model_name,
+        epoch,
+        lr=0.05,
+        dim=300,
+        ws=5,
+        minCount=5,
+        minn=3,
+        maxn=6,
+        neg=5,
+        wordNgrams=1,
+        loss="ns",
+        bucket=2000000,
+        thread=multiprocessing.cpu_count() - 1,
+    ):
         """train fasttext with raw text data
 
         Args:
@@ -28,10 +43,10 @@ class BengaliFasttext:
             bucket (int, optional): [description]. Defaults to 2000000.
             thread ([type], optional): [description]. Defaults to multiprocessing.cpu_count()-1.
         """
-        msg.info('training started.....')
+        msg.info("training started.....")
         model = fasttext.train_unsupervised(
-            data, 
-            model='skipgram',
+            data,
+            model="skipgram",
             epoch=epoch,
             lr=lr,
             dim=dim,
@@ -43,9 +58,9 @@ class BengaliFasttext:
             wordNgrams=wordNgrams,
             loss=loss,
             bucket=bucket,
-            thread=thread
+            thread=thread,
         )
-        msg.good(f'training done! saving as {model_name}')
+        msg.good(f"training done! saving as {model_name}")
         model.save_model(model_name)
 
     def bin2vec(self, bin_model, vector_name):
@@ -55,19 +70,19 @@ class BengaliFasttext:
             bin_model (bin): fasttext trained binary model
             vector_name (str): name of the output vector with extension
         """
-        output_vector = open(vector_name, 'w')
+        output_vector = open(vector_name, "w")
 
         f = fasttext.load_model(bin_model)
         words = f.get_words()
         vocab_len = str(len(words))
         dimension = str(f.get_dimension())
-        output_vector.write(vocab_len+" "+dimension+"\n")
+        output_vector.write(vocab_len + " " + dimension + "\n")
         for w in words:
             v = f.get_word_vector(w)
             vstr = ""
             for vi in v:
                 vstr += " " + str(vi)
-            output_vector.write(w + vstr+ "\n")
+            output_vector.write(w + vstr + "\n")
         output_vector.close()
 
     def generate_word_vector(self, model_path, word):

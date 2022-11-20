@@ -18,16 +18,13 @@ import json
 stopwords = json.load(open("./stopwords.json", "r"))
 
 # return list of bengali punctuation
-punctuations = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~।ঃ'
+punctuations = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~।ঃ"
 
 # return bangla letters
-letters = 'অআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহড়ঢ়য়ৎংঃঁ'
+letters = "অআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহড়ঢ়য়ৎংঃঁ"
 
 # return bangla digits
-digits = '০১২৩৪৫৬৭৮৯'
+digits = "০১২৩৪৫৬৭৮৯"
 
 # bengali vower mark
-vower_mark = 'া ি ী ু ৃ ে ৈ ো ৌ'
-
-
-
+vower_mark = "া ি ী ু ৃ ে ৈ ো ৌ"

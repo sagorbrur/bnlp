@@ -8,16 +8,17 @@ from bnlp.tokenizer.basic import BasicTokenizer
 
 default_tokenizer = BasicTokenizer()
 
+
 def read_corpus(files, tokenizer=None):
     for i, file in tqdm(enumerate(files)):
-      with open(file) as f:
-        text = f.read()
-        if tokenizer:
-            tokens = tokenizer(text)
-        else:
-            tokens = default_tokenizer.tokenize(text)
-        yield gensim.models.doc2vec.TaggedDocument(tokens, [i])
-          
+        with open(file) as f:
+            text = f.read()
+            if tokenizer:
+                tokens = tokenizer(text)
+            else:
+                tokens = default_tokenizer.tokenize(text)
+            yield gensim.models.doc2vec.TaggedDocument(tokens, [i])
+
 
 class BengaliDoc2vec:
     def __init__(self, tokenizer=None):
@@ -31,7 +32,7 @@ class BengaliDoc2vec:
             document (str): input documents
 
         Returns:
-            ndarray: generated vector 
+            ndarray: generated vector
         """
         model = Doc2Vec.load(model_path)
         if self.tokenizer:
@@ -66,11 +67,20 @@ class BengaliDoc2vec:
         document_1_vector = model.infer_vector(document_1_tokens)
         document_2_vector = model.infer_vector(document_2_tokens)
 
-        similarity = round(1 - spatial.distance.cosine(document_1_vector, document_2_vector), 2)
+        similarity = round(
+            1 - spatial.distance.cosine(document_1_vector, document_2_vector), 2
+        )
 
         return similarity
 
-    def train_doc2vec(self, text_files, checkpoint_path='ckpt', vector_size=100, min_count=2, epochs=10):
+    def train_doc2vec(
+        self,
+        text_files,
+        checkpoint_path="ckpt",
+        vector_size=100,
+        min_count=2,
+        epochs=10,
+    ):
         """Train doc2vec with custom text files
 
         Args:
@@ -80,7 +90,7 @@ class BengaliDoc2vec:
             min_count (int, optional): minimum word count. Defaults to 2.
             epochs (int, optional): training iteration number. Defaults to 10.
         """
-        text_files = glob.glob(text_files + '/*.txt')
+        text_files = glob.glob(text_files + "/*.txt")
         if self.tokenizer:
             train_corpus = list(read_corpus(text_files, self.tokenizer))
         else:
@@ -88,8 +98,10 @@ class BengaliDoc2vec:
 
         model = Doc2Vec(vector_size=vector_size, min_count=min_count, epochs=epochs)
         model.build_vocab(train_corpus)
-        model.train(train_corpus, total_examples=model.corpus_count, epochs=model.epochs)
-        
+        model.train(
+            train_corpus, total_examples=model.corpus_count, epochs=model.epochs
+        )
+
         os.makedirs(checkpoint_path, exist_ok=True)
-        output_model_name = os.path.join(checkpoint_path, 'custom_doc2vec_model.model')
+        output_model_name = os.path.join(checkpoint_path, "custom_doc2vec_model.model")
         model.save(output_model_name)
