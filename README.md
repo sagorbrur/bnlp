@@ -391,7 +391,6 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
     print(result)
     # ['ভাত', 'খাই', '।']
     ```
-You can add new stop words in `bnlp/corpus/stopwords.json`
 
 ## Contributor Guide
 
