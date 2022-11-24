@@ -46,7 +46,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 * Fasttext trained with total words = 20M, vocab size = 1171011, epoch=50, embedding dimension = 300 and the training loss = 0.318668,
 * Word2Vec word embedding dimension = 100, min_count=5, window=5, epochs=10
 * To Know Bengali GloVe Wordvector and training process follow [this](https://github.com/sagorbrur/GloVe-Bengali) repository
-* Bengali CRF POS Tagging was training with [nltr](https://github.com/abhishekgupta92/bangla_pos_tagger/tree/master/data) dataset with 80% accuracy. 
+* Bengali CRF POS Tagging was training with [nltr](https://github.com/abhishekgupta92/bangla_pos_tagger/tree/master/data) dataset with 80% accuracy.
 * Bengali CRF NER Tagging was train with [this](https://github.com/MISabic/NER-Bangla-Dataset) data with 90% accuracy.
 * Bengali news article doc2vec model train with 8 jsons of [this](https://www.kaggle.com/datasets/ebiswas/bangla-largest-newspaper-dataset) corpus with epochs 40 vector size 100 min_count=2, total news article 400013
 * Bengali wikipedia doc2vec model trained with wikipedia dump datasets. Total articles 110448, epochs: 40, vector_size: 100, min_count: 2
@@ -56,7 +56,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
 * **Basic Tokenizer**
 
- 
+
 
   ```py
   from bnlp import BasicTokenizer
@@ -64,7 +64,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
   raw_text = "আমি বাংলায় গান গাই।"
   tokens = basic_tokenizer.tokenize(raw_text)
   print(tokens)
-  
+
   # output: ["আমি", "বাংলায়", "গান", "গাই", "।"]
 
   ```
@@ -73,14 +73,14 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
   ```py
   from bnlp import NLTKTokenizer
-  
+
   bnltk = NLTKTokenizer()
   text = "আমি ভাত খাই। সে বাজারে যায়। তিনি কি সত্যিই ভালো মানুষ?"
   word_tokens = bnltk.word_tokenize(text)
   sentence_tokens = bnltk.sentence_tokenize(text)
   print(word_tokens)
   print(sentence_tokens)
-  
+
   # output
   # word_token: ["আমি", "ভাত", "খাই", "।", "সে", "বাজারে", "যায়", "।", "তিনি", "কি", "সত্যিই", "ভালো", "মানুষ", "?"]
   # sentence_token: ["আমি ভাত খাই।", "সে বাজারে যায়।", "তিনি কি সত্যিই ভালো মানুষ?"]
@@ -108,12 +108,12 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
   - Training SentencePiece
     ```py
     from bnlp import SentencepieceTokenizer
-    
+
     bsp = SentencepieceTokenizer()
     data = "raw_text.txt"
     model_prefix = "test"
     vocab_size = 5
-    bsp.train(data, model_prefix, vocab_size) 
+    bsp.train(data, model_prefix, vocab_size)
 
     ```
 
@@ -184,15 +184,15 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
     bwv.pretrain(trained_model_path, data_file, model_name, vector_name, epochs=5)
 
     ```
-    
+
  * **Bengali FastText**
- 
+
     To use `fasttext` you need to install fasttext manually by `pip install fasttext==0.9.2`
-    
+
     NB: `fasttext` may not be worked in `windows`, it will only work in `linux`
 
     - Generate Vector Using Pretrained Model
-      
+
 
       ```py
       from bnlp.embedding.fasttext import BengaliFasttext
@@ -254,9 +254,9 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
     ```py
     from bnlp import BengaliDoc2vec
-    
+
     bn_doc2vec = BengaliDoc2vec()
-    
+
     model_path = "bangla_news_article_doc2vec.model" # keep other .npy model files also in same folder
     document = "রাষ্ট্রবিরোধী ও উসকানিমূলক বক্তব্য দেওয়ার অভিযোগে গাজীপুরের গাছা থানায় ডিজিটাল নিরাপত্তা আইনে করা মামলায় আলোচিত ‘শিশুবক্তা’ রফিকুল ইসলামের বিরুদ্ধে অভিযোগ গঠন করেছেন আদালত। ফলে মামলার আনুষ্ঠানিক বিচার শুরু হলো। আজ বুধবার (২৬ জানুয়ারি) ঢাকার সাইবার ট্রাইব্যুনালের বিচারক আসসামছ জগলুল হোসেন এ অভিযোগ গঠন করেন। এর আগে, রফিকুল ইসলামকে কারাগার থেকে আদালতে হাজির করা হয়। এরপর তাকে নির্দোষ দাবি করে তার আইনজীবী শোহেল মো. ফজলে রাব্বি অব্যাহতি চেয়ে আবেদন করেন। অন্যদিকে, রাষ্ট্রপক্ষ অভিযোগ গঠনের পক্ষে শুনানি করেন। উভয় পক্ষের শুনানি শেষে আদালত অব্যাহতির আবেদন খারিজ করে অভিযোগ গঠনের মাধ্যমে বিচার শুরুর আদেশ দেন। একইসঙ্গে সাক্ষ্যগ্রহণের জন্য আগামী ২২ ফেব্রুয়ারি দিন ধার্য করেন আদালত।"
 
@@ -268,9 +268,9 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
     ```py
     from bnlp import BengaliDoc2vec
-    
+
     bn_doc2vec = BengaliDoc2vec()
-    
+
     model_path = "bangla_news_article_doc2vec.model" # keep other .npy model files also in same folder
     article_1 = "রাষ্ট্রবিরোধী ও উসকানিমূলক বক্তব্য দেওয়ার অভিযোগে গাজীপুরের গাছা থানায় ডিজিটাল নিরাপত্তা আইনে করা মামলায় আলোচিত ‘শিশুবক্তা’ রফিকুল ইসলামের বিরুদ্ধে অভিযোগ গঠন করেছেন আদালত। ফলে মামলার আনুষ্ঠানিক বিচার শুরু হলো। আজ বুধবার (২৬ জানুয়ারি) ঢাকার সাইবার ট্রাইব্যুনালের বিচারক আসসামছ জগলুল হোসেন এ অভিযোগ গঠন করেন। এর আগে, রফিকুল ইসলামকে কারাগার থেকে আদালতে হাজির করা হয়। এরপর তাকে নির্দোষ দাবি করে তার আইনজীবী শোহেল মো. ফজলে রাব্বি অব্যাহতি চেয়ে আবেদন করেন। অন্যদিকে, রাষ্ট্রপক্ষ অভিযোগ গঠনের পক্ষে শুনানি করেন। উভয় পক্ষের শুনানি শেষে আদালত অব্যাহতির আবেদন খারিজ করে অভিযোগ গঠনের মাধ্যমে বিচার শুরুর আদেশ দেন। একইসঙ্গে সাক্ষ্যগ্রহণের জন্য আগামী ২২ ফেব্রুয়ারি দিন ধার্য করেন আদালত।"
     article_2 = "রাষ্ট্রবিরোধী ও উসকানিমূলক বক্তব্য দেওয়ার অভিযোগে গাজীপুরের গাছা থানায় ডিজিটাল নিরাপত্তা আইনে করা মামলায় আলোচিত ‘শিশুবক্তা’ রফিকুল ইসলামের বিরুদ্ধে অভিযোগ গঠন করেছেন আদালত। ফলে মামলার আনুষ্ঠানিক বিচার শুরু হলো। আজ বুধবার (২৬ জানুয়ারি) ঢাকার সাইবার ট্রাইব্যুনালের বিচারক আসসামছ জগলুল হোসেন এ অভিযোগ গঠন করেন। এর আগে, রফিকুল ইসলামকে কারাগার থেকে আদালতে হাজির করা হয়। এরপর তাকে নির্দোষ দাবি করে তার আইনজীবী শোহেল মো. ফজলে রাব্বি অব্যাহতি চেয়ে আবেদন করেন। অন্যদিকে, রাষ্ট্রপক্ষ অভিযোগ গঠনের পক্ষে শুনানি করেন। উভয় পক্ষের শুনানি শেষে আদালত অব্যাহতির আবেদন খারিজ করে অভিযোগ গঠনের মাধ্যমে বিচার শুরুর আদেশ দেন। একইসঙ্গে সাক্ষ্যগ্রহণের জন্য আগামী ২২ ফেব্রুয়ারি দিন ধার্য করেন আদালত।"
@@ -288,14 +288,14 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
     ```py
     from bnlp import BengaliDoc2vec
-      
+
     bn_doc2vec = BengaliDoc2vec()
 
     text_files = "path/myfiles"
     checkpoint_path = "msc/logs"
 
     bn_doc2vec.train_doc2vec(
-      text_files, 
+      text_files,
       checkpoint_path=checkpoint_path,
       vector_size=100,
       min_count=2,
@@ -307,7 +307,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
     ```
 
 ## Bengali POS Tagging
-* **Bengali CRF POS Tagging** 
+* **Bengali CRF POS Tagging**
 
 
   - Find Pos Tag Using Pretrained Model
@@ -323,7 +323,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
     ```
   - Train POS Tag Model
-  
+
     ```py
     from bnlp import POS
     bn_pos = POS()
@@ -337,7 +337,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
     ```
 
 ## Bengali NER
-* **Bengali CRF NER** 
+* **Bengali CRF NER**
 
 
   - Find NER Tag Using Pretrained Model
@@ -353,7 +353,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
     ```
   - Train NER Tag Model
-  
+
     ```py
     from bnlp import NER
     bn_ner = NER()
@@ -386,12 +386,12 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
     from bnlp.corpus import stopwords
     from bnlp.corpus.util import remove_stopwords
 
-    raw_text = 'আমি ভাত খাই।' 
+    raw_text = 'আমি ভাত খাই।'
     result = remove_stopwords(raw_text, stopwords)
     print(result)
     # ['ভাত', 'খাই', '।']
     ```
-
+You can add new stop words in `bnlp/corpus/stopwords.json`
 
 ## Contributor Guide
 

@@ -11,10 +11,12 @@ from gensim.models import Word2Vec
 from gensim.models.word2vec import LineSentence
 from bnlp.tokenizer.nltk import NLTKTokenizer
 
+
 class MyCorpus:
     """An iterator that yields sentences (lists of str).
-        We used NLTKTokenizer from bnlp to tokenize sentence words
+    We used NLTKTokenizer from bnlp to tokenize sentence words
     """
+
     def __init__(self, data_path):
         self.data_path = data_path
         self.bnltk = NLTKTokenizer()
@@ -26,11 +28,30 @@ class MyCorpus:
                 tokens = self.bnltk.word_tokenize(sentence)
                 yield tokens
 
+
 class BengaliWord2Vec:
-    def train(self, data_path, model_name, vector_name, vector_size=100,
-        alpha=0.025, min_alpha=0.0001, sg=0, hs=0, negative=5, ns_exponent=0.75, 
-        window=5, min_count=5, max_vocab_size=None, workers=3, epochs=5, 
-        sample=1e-3, cbow_mean=1, compute_loss=True, callbacks=()):
+    def train(
+        self,
+        data_path,
+        model_name,
+        vector_name,
+        vector_size=100,
+        alpha=0.025,
+        min_alpha=0.0001,
+        sg=0,
+        hs=0,
+        negative=5,
+        ns_exponent=0.75,
+        window=5,
+        min_count=5,
+        max_vocab_size=None,
+        workers=3,
+        epochs=5,
+        sample=1e-3,
+        cbow_mean=1,
+        compute_loss=True,
+        callbacks=(),
+    ):
         """train bengali word2vec
 
         Args:
@@ -44,7 +65,7 @@ class BengaliWord2Vec:
             sg (int, optional): skip-gram model or cbow model. if 1 then skip-gram. Defaults to 0.
             hs (int, optional): hierarchical softmax. Defaults to 0.
             negative (int, optional): negative sampling. Defaults to 5.
-            ns_exponent (float, optional): The exponent used to shape the 
+            ns_exponent (float, optional): The exponent used to shape the
                         negative sampling distribution. Defaults to 0.75.
             window (int, optional): window size. Defaults to 5.
             min_count (int, optional): minimum word count to ignore. Defaults to 5.
@@ -62,9 +83,11 @@ class BengaliWord2Vec:
             sentences = MyCorpus(data_path)
 
         msg.info("training started.......")
-        msg.info("please wait.....it will take time according to your data size and computation capability")
+        msg.info(
+            "please wait.....it will take time according to your data size and computation capability"
+        )
         model = Word2Vec(
-            sentences=sentences, 
+            sentences=sentences,
             vector_size=vector_size,
             alpha=alpha,
             min_alpha=min_alpha,
@@ -74,26 +97,27 @@ class BengaliWord2Vec:
             ns_exponent=ns_exponent,
             sample=sample,
             cbow_mean=cbow_mean,
-            window=window, 
-            min_count=min_count, 
-            max_vocab_size=max_vocab_size, 
+            window=window,
+            min_count=min_count,
+            max_vocab_size=max_vocab_size,
             workers=workers,
-            epochs=epochs, 
+            epochs=epochs,
             compute_loss=compute_loss,
-            callbacks=callbacks
+            callbacks=callbacks,
         )
         # getting the training loss value
         training_loss = model.get_latest_training_loss()
 
-        msg.good('train completed successfully')
+        msg.good("train completed successfully")
         msg.good(f"trianing loss: {training_loss}")
         msg.info(f"model and vector saving...")
         model.save(model_name)
         model.wv.save_word2vec_format(vector_name, binary=False)
         msg.good(f"model and vector saved as {model_name} and {vector_name}")
 
-    def pretrain(self, model_path, new_sentences, output_model_name, 
-        output_vector_name, epochs=5):
+    def pretrain(
+        self, model_path, new_sentences, output_model_name, output_vector_name, epochs=5
+    ):
         """resume training from saved word2vec model
 
         Args:
@@ -110,21 +134,21 @@ class BengaliWord2Vec:
         msg.info(f"vocab building with new sentences")
         model.build_vocab(new_sentences, update=True)
         msg.info("pre-training started.......")
-        msg.info("please wait.....it will take time according to your data size and computation capability")
-        model.train(
-            new_sentences, 
-            total_examples=model.corpus_count,
-            epochs=epochs
+        msg.info(
+            "please wait.....it will take time according to your data size and computation capability"
         )
+        model.train(new_sentences, total_examples=model.corpus_count, epochs=epochs)
         # getting the training loss value
         training_loss = model.get_latest_training_loss()
 
-        msg.good('pre-train completed successfully')
+        msg.good("pre-train completed successfully")
         msg.good(f"pre-trianing loss: {training_loss}")
         msg.info(f"model and vector saving...")
         model.save(output_model_name)
         model.wv.save_word2vec_format(output_vector_name, binary=False)
-        msg.good(f"model and vector saved as {output_model_name} and {output_vector_name}")
+        msg.good(
+            f"model and vector saved as {output_model_name} and {output_vector_name}"
+        )
 
     def generate_word_vector(self, model_path, input_word):
         """

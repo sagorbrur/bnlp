@@ -3,7 +3,6 @@ import sentencepiece as bsp
 
 
 class SentencepieceTokenizer:
-    
     def train(self, data, model_prefix, vocab_size):
         """
         :data: (str) data path with extension
@@ -11,9 +10,19 @@ class SentencepieceTokenizer:
         :vocab_size: (int) size of train vocabulary
 
         """
-        train_args = "--model_prefix="+model_prefix+" --input="+data+" --vocab_size="+str(vocab_size)
+        train_args = (
+            "--model_prefix="
+            + model_prefix
+            + " --input="
+            + data
+            + " --vocab_size="
+            + str(vocab_size)
+        )
         bsp.SentencePieceTrainer.train(train_args)
-        print("%s.model and %s.vocab is saved on your current directory"%(model_prefix, model_prefix))
+        print(
+            "%s.model and %s.vocab is saved on your current directory"
+            % (model_prefix, model_prefix)
+        )
 
     def tokenize(self, model_path, text):
         """
@@ -26,18 +35,15 @@ class SentencepieceTokenizer:
         tokens = model.EncodeAsPieces(text)
 
         return tokens
-    
+
     def text2id(self, model_path, text):
         model = bsp.SentencePieceProcessor()
         model.Load(model_path)
         ids = model.EncodeAsIds(text)
         return ids
+
     def id2text(self, model_path, ids):
         model = bsp.SentencePieceProcessor()
         model.Load(model_path)
         text = model.DecodeIds(ids)
         return text
-
-
-
-

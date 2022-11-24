@@ -1,9 +1,9 @@
 # Contributing to BNLP
 
-Hi, thanks for your interest. We know, we always suffer from scarcity of good tools/resources for processing Bengali language. 
+Hi, thanks for your interest. We know, we always suffer from scarcity of good tools/resources for processing Bengali language.
 [BNLP](https://github.com/sagorbrur/bnlp) is a great initiative to solve this problem.
 Your contribution can make this initiative more powerful and also help millions of Bengali developer to process Bengali language
-more efficiently. 
+more efficiently.
 
 ## Current Features
 * Bengali Tokenization
@@ -15,7 +15,7 @@ more efficiently.
 
 * **Bengali Lemmatization**
 * **Bengali Spell Checker**
-* so on.................. 
+* so on..................
 
 
 
