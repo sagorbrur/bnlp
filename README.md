@@ -10,11 +10,55 @@
 
 BNLP is a natural language processing toolkit for Bengali Language. This tool will help you to **tokenize Bengali text**, **Embedding Bengali words**, **Embedding Bengali Document**, **Bengali POS Tagging**, **Bengali Name Entity Recognition**, **Construct Neural Model** for Bengali NLP purposes.
 
+Table of contents
+=================
 
+<!--ts-->
+   * [Installation](#installation)
+      * [PIP installer](#pip-installer)
+   * [Pretrained Model](#pretrained-model)
+      * [Download Links](#download-links)
+      * [Training Details](#training-details)
+   * [Tokenization](#tokenization)
+      * [Basic Tokenizer](#basic-tokenizer)
+      * [NLTK Tokenization](#nltk-tokenization)
+      * [Bengali SentencePiece Tokenization](#bengali-sentencepiece-tokenization)
+         * [Tokenization using trained model](#tokenization-using-trained-model)
+         * [Training SentencePiece](#training-sentencepiece)
+   * [Word Embedding](#word-embedding)
+      * [Bengali Word2Vec](#bengali-word2vec)
+         * [Generate Vector using pretrain model](#generate-vector-using-pretrain-model)
+         * [Find Most Similar Word Using Pretrained Model](#find-most-similar-word-using-pretrained-model)
+         * [Train Bengali Word2Vec with your own data](#train-bengali-word2vec-with-your-own-data)
+         * [Pre-train or resume word2vec training with same or new corpus or tokenized sentences](#pre-train-or-resume-word2vec-training-with-same-or-new-corpus-or-tokenized-sentences)
+   * [Bengali FastText](#bengali-fasttext)
+      * [Generate Vector Using Pretrained Model](#generate-vector-using-pretrain-model)
+      * [Train Bengali FastText Model](#train-bengali-fasttext-model)
+      * [Generate Vector File from Fasttext Binary Model](#generate-vector-file-from-fasttext-binary-model)
+   * [Bengali GloVe Word Vectors](#bengali-glove-word-vectors)
+   * [Document Embedding](#document-embedding)
+      * [Bengali Doc2Vec](#bengali-doc2vec)
+         * [Get document vector from input document](#get-document-vector-from-input-document)
+         * [Find document similarity between two document](#find-document-similarity-between-two-document)
+         * [Train doc2vec vector with custom text files](#train-doc2vec-vector-with-custom-text-files)
+   * [Bengali POS Tagging](#bengali-pos-tagging)
+      * [Bengali CRF POS Tagging](#bengali-crf-pos-tagging)
+         * [Find Pos Tag Using Pretrained Model](#find-pos-tag-using-pretrained-model)
+         * [Train POS Tag Model](#train-pos-tag-model)
+   * [Bengali NER](#bengali-ner)
+      * [Bengali CRF NER](#bengali-crf-ner)
+         * [Find NER Tag Using Pretrained Model](#find-ner-tag-using-pretrained-model)
+         * [Train NER Tag Model](#train-ner-tag-model)
+   * [Bengali Corpus Class](#bengali-corpus-class)
+      * [Stopwords and Punctuations](#stopwords-and-punctuations)
+      * [Remove stopwords from Text](#remove-stopwords-from-text)
+   * [Contributor Guide](#contributor-guide)
+<!--te-->
+---
 
 ## Installation
 
-### PIP installer(Python: 3.6, 3.7, 3.8 tested okay, OS: linux, windows tested okay )
+### PIP installer
 
   ```
   pip install bnlp_toolkit
@@ -23,14 +67,15 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 
   ```
   pip install -U bnlp_toolkit
-
   ```
+  - Python: `3.6, 3.7, 3.8`
+  - OS: Linux, Windows
 
 
 
 ## Pretrained Model
 
-### Download Link
+### Download Links
 
 Large model published in [huggingface](https://huggingface.co/) model hub.
 
@@ -58,9 +103,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
 ## Tokenization
 
-* **Basic Tokenizer**
-
-
+### Basic Tokenizer
 
   ```py
   from bnlp import BasicTokenizer
@@ -73,7 +116,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
   ```
 
-* **NLTK Tokenization**
+### NLTK Tokenization
 
   ```py
   from bnlp import NLTKTokenizer
@@ -92,9 +135,9 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
   ```
 
 
-* **Bengali SentencePiece Tokenization**
+### Bengali SentencePiece Tokenization
 
-  - tokenization using trained model
+#### Tokenization using trained model
     ```py
     from bnlp import SentencepieceTokenizer
 
@@ -109,7 +152,8 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
     print(id2text)
 
     ```
-  - Training SentencePiece
+
+#### Training SentencePiece
     ```py
     from bnlp import SentencepieceTokenizer
 
@@ -121,13 +165,11 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
     ```
 
-
-
 ## Word Embedding
 
-* **Bengali Word2Vec**
+### Bengali Word2Vec
 
-  - Generate Vector using pretrain model
+#### Generate Vector using pretrain model
 
     ```py
     from bnlp import BengaliWord2Vec
@@ -141,7 +183,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
     ```
 
-  - Find Most Similar Word Using Pretrained Model
+#### Find Most Similar Word Using Pretrained Model
 
     ```py
     from bnlp import BengaliWord2Vec
@@ -153,7 +195,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
     print(similar)
 
     ```
-  - Train Bengali Word2Vec with your own data
+#### Train Bengali Word2Vec with your own data
 
     Train Bengali word2vec with your custom raw data or tokenized sentences.
 
@@ -173,7 +215,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
 
     ```
-  - Pre-train or resume word2vec training with same or new corpus or tokenized sentences
+#### Pre-train or resume word2vec training with same or new corpus or tokenized sentences
 
     Check [gensim word2vec api](https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.Word2Vec) for details of training parameter
 
@@ -189,13 +231,13 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
     ```
 
- * **Bengali FastText**
+### Bengali FastText
 
     To use `fasttext` you need to install fasttext manually by `pip install fasttext==0.9.2`
 
     NB: `fasttext` may not be worked in `windows`, it will only work in `linux`
 
-    - Generate Vector Using Pretrained Model
+### Generate Vector Using Pretrained Model
 
 
       ```py
@@ -210,7 +252,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
 
       ```
-    - Train Bengali FastText Model
+### Train Bengali FastText Model
 
       Check [fasttext documentation](https://fasttext.cc/docs/en/options.html) for details of training parameter
 
@@ -224,7 +266,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
       bft.train(data, model_name, epoch)
       ```
 
-    - Generate Vector File from Fasttext Binary Model
+### Generate Vector File from Fasttext Binary Model
       ```py
       from bnlp.embedding.fasttext import BengaliFasttext
 
@@ -235,7 +277,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
       bft.bin2vec(model_path, out_vector_name)
       ```
 
-* **Bengali GloVe Word Vectors**
+## Bengali GloVe Word Vectors
 
   We trained glove model with bengali data(wiki+news articles) and published bengali glove word vectors</br>
   You can download and use it on your different machine learning purposes.
@@ -253,8 +295,9 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
   ```
 
 ## Document Embedding
-* __Bengali Doc2Vec__
-  - Get document vector from input document
+
+### Bengali Doc2Vec
+#### Get document vector from input document
 
     ```py
     from bnlp import BengaliDoc2vec
@@ -268,7 +311,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
     print(vector)
     ```
 
-  - Find document similarity between two document
+#### Find document similarity between two document
 
     ```py
     from bnlp import BengaliDoc2vec
@@ -288,7 +331,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
     ```
 
-  - Train doc2vec vector with custom text files
+#### Train doc2vec vector with custom text files
 
     ```py
     from bnlp import BengaliDoc2vec
@@ -311,10 +354,10 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
     ```
 
 ## Bengali POS Tagging
-* **Bengali CRF POS Tagging**
 
+### Bengali CRF POS Tagging
 
-  - Find Pos Tag Using Pretrained Model
+#### Find Pos Tag Using Pretrained Model
 
     ```py
     from bnlp import POS
@@ -326,7 +369,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
     # [('আমি', 'PPR'), ('ভাত', 'NC'), ('খাই', 'VM'), ('।', 'PU')]
 
     ```
-  - Train POS Tag Model
+#### Train POS Tag Model
 
     ```py
     from bnlp import POS
@@ -341,10 +384,10 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
     ```
 
 ## Bengali NER
-* **Bengali CRF NER**
 
+### Bengali CRF NER
 
-  - Find NER Tag Using Pretrained Model
+#### Find NER Tag Using Pretrained Model
 
     ```py
     from bnlp import NER
@@ -356,7 +399,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
     # [('সে', 'O'), ('ঢাকায়', 'S-LOC'), ('থাকে', 'O')]
 
     ```
-  - Train NER Tag Model
+#### Train NER Tag Model
 
     ```py
     from bnlp import NER
@@ -373,7 +416,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
 ## Bengali Corpus Class
 
-* Stopwords and Punctuations
+### Stopwords and Punctuations
   ```py
   from bnlp.corpus import stopwords, punctuations, letters, digits
 
@@ -384,7 +427,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
   ```
 
-* Remove stopwords from Text
+### Remove stopwords from Text
 
     ```py
     from bnlp.corpus import stopwords
