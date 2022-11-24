@@ -27,11 +27,11 @@ Table of contents
          * [Find Most Similar Word Using Pretrained Model](#find-most-similar-word-using-pretrained-model)
          * [Train Bengali Word2Vec with your own data](#train-bengali-word2vec-with-your-own-data)
          * [Pre-train or resume word2vec training with same or new corpus or tokenized sentences](#pre-train-or-resume-word2vec-training-with-same-or-new-corpus-or-tokenized-sentences)
-   * [Bengali FastText](#bengali-fasttext)
-      * [Generate Vector Using Pretrained Model](#generate-vector-using-pretrain-model)
-      * [Train Bengali FastText Model](#train-bengali-fasttext-model)
-      * [Generate Vector File from Fasttext Binary Model](#generate-vector-file-from-fasttext-binary-model)
-   * [Bengali GloVe Word Vectors](#bengali-glove-word-vectors)
+     * [Bengali FastText](#bengali-fasttext)
+        * [Generate Vector Using Pretrained Model](#generate-vector-using-pretrain-model)
+        * [Train Bengali FastText Model](#train-bengali-fasttext-model)
+        * [Generate Vector File from Fasttext Binary Model](#generate-vector-file-from-fasttext-binary-model)
+     * [Bengali GloVe Word Vectors](#bengali-glove-word-vectors)
    * [Document Embedding](#document-embedding)
       * [Bengali Doc2Vec](#bengali-doc2vec)
          * [Get document vector from input document](#get-document-vector-from-input-document)
@@ -103,6 +103,7 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 
   ```py
   from bnlp import BasicTokenizer
+  
   basic_tokenizer = BasicTokenizer()
   raw_text = "আমি বাংলায় গান গাই।"
   tokens = basic_tokenizer.tokenize(raw_text)
