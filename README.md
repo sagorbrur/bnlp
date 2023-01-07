@@ -64,7 +64,7 @@ Table of contents
   ```
   pip install -U bnlp_toolkit
   ```
-  - Python: `3.6, 3.7, 3.8`
+  - Python: `3.6, 3.7, 3.8, 3.9`
   - OS: Linux, Windows
 
 
