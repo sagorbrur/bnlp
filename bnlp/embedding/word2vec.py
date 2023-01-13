@@ -6,7 +6,6 @@ from __future__ import print_function
 import os
 import sys
 import multiprocessing
-from wasabi import msg
 from gensim.models import Word2Vec
 from gensim.models.word2vec import LineSentence
 from bnlp.tokenizer.nltk import NLTKTokenizer
@@ -82,8 +81,8 @@ class BengaliWord2Vec:
         else:
             sentences = MyCorpus(data_path)
 
-        msg.info("training started.......")
-        msg.info(
+        print("training started.......")
+        print(
             "please wait.....it will take time according to your data size and computation capability"
         )
         model = Word2Vec(
@@ -108,12 +107,12 @@ class BengaliWord2Vec:
         # getting the training loss value
         training_loss = model.get_latest_training_loss()
 
-        msg.good("train completed successfully")
-        msg.good(f"trianing loss: {training_loss}")
-        msg.info(f"model and vector saving...")
+        print("train completed successfully")
+        print(f"trianing loss: {training_loss}")
+        print(f"model and vector saving...")
         model.save(model_name)
         model.wv.save_word2vec_format(vector_name, binary=False)
-        msg.good(f"model and vector saved as {model_name} and {vector_name}")
+        print(f"model and vector saved as {model_name} and {vector_name}")
 
     def pretrain(
         self, model_path, new_sentences, output_model_name, output_vector_name, epochs=5
@@ -129,24 +128,24 @@ class BengaliWord2Vec:
         """
         if isinstance(new_sentences, str):
             new_sentences = MyCorpus(new_sentences)
-        msg.info(f"model loading ....")
+        print(f"model loading ....")
         model = Word2Vec.load(model_path)
-        msg.info(f"vocab building with new sentences")
+        print(f"vocab building with new sentences")
         model.build_vocab(new_sentences, update=True)
-        msg.info("pre-training started.......")
-        msg.info(
+        print("pre-training started.......")
+        print(
             "please wait.....it will take time according to your data size and computation capability"
         )
         model.train(new_sentences, total_examples=model.corpus_count, epochs=epochs)
         # getting the training loss value
         training_loss = model.get_latest_training_loss()
 
-        msg.good("pre-train completed successfully")
-        msg.good(f"pre-trianing loss: {training_loss}")
-        msg.info(f"model and vector saving...")
+        print("pre-train completed successfully")
+        print(f"pre-trianing loss: {training_loss}")
+        print(f"model and vector saving...")
         model.save(output_model_name)
         model.wv.save_word2vec_format(output_vector_name, binary=False)
-        msg.good(
+        print(
             f"model and vector saved as {output_model_name} and {output_vector_name}"
         )
 

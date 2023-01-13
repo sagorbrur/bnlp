@@ -26,7 +26,6 @@ setuptools.setup(
         "numpy",
         "scipy",
         "sklearn-crfsuite",
-        "wasabi",
         "tqdm",
     ],
 )

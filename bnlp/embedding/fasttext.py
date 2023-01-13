@@ -1,5 +1,4 @@
 import multiprocessing
-from wasabi import msg
 
 try:
     import fasttext
@@ -43,7 +42,7 @@ class BengaliFasttext:
             bucket (int, optional): [description]. Defaults to 2000000.
             thread ([type], optional): [description]. Defaults to multiprocessing.cpu_count()-1.
         """
-        msg.info("training started.....")
+        print("training started.....")
         model = fasttext.train_unsupervised(
             data,
             model="skipgram",
@@ -60,7 +59,7 @@ class BengaliFasttext:
             bucket=bucket,
             thread=thread,
         )
-        msg.good(f"training done! saving as {model_name}")
+        print(f"training done! saving as {model_name}")
         model.save_model(model_name)
 
     def bin2vec(self, bin_model, vector_name):
