@@ -1,5 +1,6 @@
 # Bengali Natural Language Processing(BNLP)
 
+![building and testing status](https://github.com/sagorbrur/bnlp/actions/workflows/build_and_test.yml/badge.svg)
 [![PyPI version](https://img.shields.io/pypi/v/bnlp_toolkit)](https://pypi.org/project/bnlp-toolkit/)
 [![Downloads](https://pepy.tech/badge/bnlp-toolkit)](https://pepy.tech/project/bnlp-toolkit)
 [![Documentation Status](https://readthedocs.org/projects/bnlp/badge/?version=latest)](https://bnlp.readthedocs.io/en/latest/?badge=latest)
