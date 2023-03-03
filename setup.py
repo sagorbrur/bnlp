@@ -27,5 +27,6 @@ setuptools.setup(
         "scipy",
         "sklearn-crfsuite",
         "tqdm",
+        "ftfy",
     ],
 )

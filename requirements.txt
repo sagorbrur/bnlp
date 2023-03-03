@@ -5,3 +5,4 @@ numpy
 scipy
 sklearn-crfsuite
 tqdm
+ftfy
