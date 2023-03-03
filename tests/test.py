@@ -6,6 +6,7 @@ from bnlp import BasicTokenizer
 from bnlp import SentencepieceTokenizer
 from bnlp import BengaliWord2Vec
 from bnlp.corpus import stopwords
+from bnlp import CleanText
 
 
 class TestBNLP(unittest.TestCase):

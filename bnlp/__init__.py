@@ -10,3 +10,4 @@ from bnlp.tokenizer.sentencepiece import SentencepieceTokenizer
 from bnlp.embedding.word2vec import BengaliWord2Vec
 from bnlp.embedding.glove import BengaliGlove
 from bnlp.embedding.doc2vec import BengaliDoc2vec
+from bnlp.cleantext.clean import CleanText
