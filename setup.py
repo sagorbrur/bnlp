@@ -28,6 +28,6 @@ setuptools.setup(
         "sklearn-crfsuite",
         "tqdm",
         "ftfy",
-        "emoji",
+        "emoji==1.7.0",
     ],
 )

@@ -6,7 +6,7 @@ import re
 import sys
 import unicodedata
 
-EMOJI_LANGUAGE = ['en', 'es', 'pt', 'it', 'fr', 'de', 'fa', 'id', 'zh', 'alias']
+# EMOJI_LANGUAGE = ['en', 'es', 'pt', 'it', 'fr', 'de', 'fa', 'id', 'zh', 'alias']
 
 # taken hostname, domainname, tld from URL regex below
 EMAIL_REGEX = re.compile(
