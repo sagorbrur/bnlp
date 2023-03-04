@@ -49,7 +49,10 @@ def remove_substrings(text, to_replace, replace_with=""):
     return result
 
 def remove_emoji(text):
-    return remove_substrings(text, UNICODE_EMOJI["en"])
+    for lang in constants.EMOJI_LANGUAGE:
+        text = emoji.demojize(text, language=lang)
+
+    return text
 
 
 class CleanText(object):
