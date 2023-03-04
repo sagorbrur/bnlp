@@ -2,6 +2,7 @@
 This cleantext scripts functions solely depends on clean-text library.
 Most of the functions are copied from clean-text.
 """
+from bnlp.corpus import punctuations
 from bnlp.cleantext import constants
 
 from ftfy import fix_text
@@ -51,6 +52,14 @@ def remove_substrings(text, to_replace, replace_with=""):
 def remove_emoji(text):
     return remove_substrings(text, UNICODE_EMOJI["en"])
 
+def remove_number_or_digit(text, replace_with=""):
+    return re.sub(constants.BANGLA_DIGIT_REGEX, replace_with, text)
+
+def remove_punctuations(text, replace_with=""):
+    for punc in punctuations:
+        text = text.replace(punc, replace_with)
+    
+    return text
 
 class CleanText(object):
     def __init__(
@@ -64,6 +73,11 @@ class CleanText(object):
         remove_digits=False,
         remove_emoji=False,
         remove_punct=False,
+        replace_with_url="<URL>",
+        replace_with_email="<EMAIL>",
+        replace_with_number="<NUMBER>",
+        replace_with_digit="<DIGIT>",
+        replace_with_punct = "<PUNC>"
         ):
         self.fix_unicode = fix_unicode
         self.unicode_norm = unicode_norm
@@ -74,6 +88,12 @@ class CleanText(object):
         self.remove_digits = remove_digits
         self.remove_emoji = remove_emoji
         self.remove_punct = remove_punct
+        
+        self.replace_with_url = replace_with_url
+        self.replace_with_email = replace_with_email
+        self.replace_with_number = replace_with_number
+        self.replace_with_digit = replace_with_digit
+        self.replace_with_punct = replace_with_punct
 
     def __call__(self, text):
         if text is None:
@@ -86,11 +106,17 @@ class CleanText(object):
         if self.unicode_norm:
             text = normalize(self.unicode_norm_form, text)
         if self.remove_url:
-            text = replace_urls(text)
+            text = replace_urls(text, replace_with=self.replace_with_url)
         if self.remove_email:
-            text = replace_emails(text)
+            text = replace_emails(text, replace_with=self.replace_with_email)
         if self.remove_emoji:
             text = remove_emoji(text)
+        if self.remove_digits:
+            text = remove_number_or_digit(text, replace_with=self.replace_with_digit)
+        if self.remove_number:
+            text = remove_number_or_digit(text, replace_with=self.replace_with_number)
+        if self.remove_punct:
+            text = remove_punctuations(text, replace_with=self.replace_with_punct)
 
         return text
 
