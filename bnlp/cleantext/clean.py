@@ -94,5 +94,3 @@ class CleanText(object):
 
         return text
 
-
-
