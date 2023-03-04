@@ -2,6 +2,7 @@
 This cleantext scripts functions solely depends on clean-text library.
 Most of the functions are copied from clean-text.
 """
+import re
 from bnlp.corpus import punctuations
 from bnlp.cleantext import constants
 
@@ -57,6 +58,7 @@ def remove_number_or_digit(text, replace_with=""):
 
 def remove_punctuations(text, replace_with=""):
     for punc in punctuations:
+        print(punc)
         text = text.replace(punc, replace_with)
     
     return text
@@ -105,6 +107,8 @@ class CleanText(object):
             text = fix_bad_unicode(text)
         if self.unicode_norm:
             text = normalize(self.unicode_norm_form, text)
+        if self.remove_punct:
+            text = remove_punctuations(text, replace_with=self.replace_with_punct)
         if self.remove_url:
             text = replace_urls(text, replace_with=self.replace_with_url)
         if self.remove_email:
@@ -115,8 +119,6 @@ class CleanText(object):
             text = remove_number_or_digit(text, replace_with=self.replace_with_digit)
         if self.remove_number:
             text = remove_number_or_digit(text, replace_with=self.replace_with_number)
-        if self.remove_punct:
-            text = remove_punctuations(text, replace_with=self.replace_with_punct)
 
         return text
 

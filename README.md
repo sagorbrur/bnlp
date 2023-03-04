@@ -430,15 +430,20 @@ We adopted different text cleaning formula, codes from [clean-text](https://gith
 from bnlp import CleanText
 
 clean_text = CleanText(
-    fix_unicode=True,
-    unicode_norm=True,
-    unicode_norm_form="NFKC",
-    remove_url=False,
-    remove_email=False,
-    remove_emoji=False,
-    remove_number=False, # not implement yet
-    remove_digits=False, # not implement yet
-    remove_punct=False  # not implement yet
+   fix_unicode=True,
+   unicode_norm=True,
+   unicode_norm_form="NFKC",
+   remove_url=False,
+   remove_email=False,
+   remove_emoji=False,
+   remove_number=False,
+   remove_digits=False,
+   remove_punct=False,
+   replace_with_url="<URL>",
+   replace_with_email="<EMAIL>",
+   replace_with_number="<NUMBER>",
+   replace_with_digit="<DIGIT>",
+   replace_with_punct = "<PUNC>"
 )
 
 input_text = "আমার সোনার বাংলা।"
