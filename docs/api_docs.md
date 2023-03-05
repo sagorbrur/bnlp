@@ -1,58 +1,3 @@
-# Bengali Natural Language Processing(BNLP)
-
-[![PyPI version](https://img.shields.io/pypi/v/bnlp_toolkit)](https://pypi.org/project/bnlp-toolkit/)
-[![Downloads](https://pepy.tech/badge/bnlp-toolkit)](https://pepy.tech/project/bnlp-toolkit)
-[![Documentation Status](https://readthedocs.org/projects/bnlp/badge/?version=latest)](https://bnlp.readthedocs.io/en/latest/?badge=latest)
-
-BNLP is a natural language processing toolkit for Bengali Language. This tool will help you to **tokenize Bengali text**, **Embedding Bengali words**, **Embedding Bengali Document**, **Bengali POS Tagging**, **Bengali Name Entity Recognition**, **Construct Neural Model** for Bengali NLP purposes.
-
-Table of contents
-=================
-
-<!--ts-->
-   * [Installation](#installation)
-      * [PIP installer](#pip-installer)
-   * [Pretrained Model](#pretrained-model)
-      * [Download Links](#download-links)
-      * [Training Details](#training-details)
-   * [Tokenization](#tokenization)
-      * [Basic Tokenizer](#basic-tokenizer)
-      * [NLTK Tokenization](#nltk-tokenization)
-      * [Bengali SentencePiece Tokenization](#bengali-sentencepiece-tokenization)
-         * [Tokenization using trained model](#tokenization-using-trained-model)
-         * [Training SentencePiece](#training-sentencepiece)
-   * [Word Embedding](#word-embedding)
-      * [Bengali Word2Vec](#bengali-word2vec)
-         * [Generate Vector using pretrain model](#generate-vector-using-pretrain-model)
-         * [Find Most Similar Word Using Pretrained Model](#find-most-similar-word-using-pretrained-model)
-         * [Train Bengali Word2Vec with your own data](#train-bengali-word2vec-with-your-own-data)
-         * [Pre-train or resume word2vec training with same or new corpus or tokenized sentences](#pre-train-or-resume-word2vec-training-with-same-or-new-corpus-or-tokenized-sentences)
-     * [Bengali FastText](#bengali-fasttext)
-        * [Generate Vector Using Pretrained Model](#generate-vector-using-pretrain-model)
-        * [Train Bengali FastText Model](#train-bengali-fasttext-model)
-        * [Generate Vector File from Fasttext Binary Model](#generate-vector-file-from-fasttext-binary-model)
-     * [Bengali GloVe Word Vectors](#bengali-glove-word-vectors)
-   * [Document Embedding](#document-embedding)
-      * [Bengali Doc2Vec](#bengali-doc2vec)
-         * [Get document vector from input document](#get-document-vector-from-input-document)
-         * [Find document similarity between two document](#find-document-similarity-between-two-document)
-         * [Train doc2vec vector with custom text files](#train-doc2vec-vector-with-custom-text-files)
-   * [Bengali POS Tagging](#bengali-pos-tagging)
-      * [Bengali CRF POS Tagging](#bengali-crf-pos-tagging)
-         * [Find Pos Tag Using Pretrained Model](#find-pos-tag-using-pretrained-model)
-         * [Train POS Tag Model](#train-pos-tag-model)
-   * [Bengali NER](#bengali-ner)
-      * [Bengali CRF NER](#bengali-crf-ner)
-         * [Find NER Tag Using Pretrained Model](#find-ner-tag-using-pretrained-model)
-         * [Train NER Tag Model](#train-ner-tag-model)
-   * [Bengali Corpus Class](#bengali-corpus-class)
-      * [Stopwords and Punctuations](#stopwords-and-punctuations)
-      * [Remove stopwords from Text](#remove-stopwords-from-text)
-   * [Bangla Text Cleaning](#text-cleaning)
-   * [Contributor Guide](#contributor-guide)
-<!--te-->
----
-
 ## Installation
 
 ### PIP installer
@@ -450,12 +395,3 @@ input_text = "আমার সোনার বাংলা।"
 clean_text = clean_text(input_text)
 print(clean_text)
 ```
-
-## Contributor Guide
-
-Check [CONTRIBUTING.md](https://github.com/sagorbrur/bnlp/blob/master/CONTRIBUTING.md) page for details.
-
-
-## Thanks To
-
-* [Semantics Lab](https://www.facebook.com/lab.semantics/)
