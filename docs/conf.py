@@ -46,6 +46,7 @@ extensions = [
     'sphinx_markdown_tables',
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
+    "sphinx.ext.imgconverter",
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
