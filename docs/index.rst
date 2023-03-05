@@ -1,727 +1,448 @@
 Bengali Natural Language Processing(BNLP)
 =========================================
 
-[![PyPI version](https://img.shields.io/pypi/v/bnlp_toolkit)](https://pypi.org/project/bnlp-toolkit/)
 
-[![Downloads](https://pepy.tech/badge/bnlp-toolkit)](https://pepy.tech/project/bnlp-toolkit)
+.. image:: https://travis-ci.org/sagorbrur/bnlp.svg?branch=master
+   :target: https://travis-ci.org/sagorbrur/bnlp
+   :alt: Build Status
 
-[![Documentation Status](https://readthedocs.org/projects/bnlp/badge/?version=latest)](https://bnlp.readthedocs.io/en/latest/?badge=latest)
 
-BNLP is a natural language processing toolkit for Bengali Language. This tool will help you to **tokenize Bengali text**, **Embedding Bengali words**, **Embedding Bengali Document**, **Bengali POS Tagging**, **Bengali Name Entity Recognition**, **Construct Neural Model** for Bengali NLP purposes.
+.. image:: https://img.shields.io/pypi/v/bnlp_toolkit
+   :target: https://pypi.org/project/bnlp-toolkit/
+   :alt: PyPI version
 
-Table of contents
-=================
 
-<!--ts-->
+.. image:: https://img.shields.io/github/v/release/sagorbrur/bnlp
+   :target: https://github.com/sagorbrur/bnlp/releases/tag/1.1.0
+   :alt: release version
 
-   * `Installation <#installation>`_
 
-	  \* [PIP installer](#pip\-installer)
+.. image:: https://img.shields.io/badge/python-3.6%7C3.7%7C3.8-brightgreen
+   :target: https://pypi.org/project/bnlp-toolkit/
+   :alt: Support Python Version
 
-   * `Pretrained Model <#pretrained-model>`_
 
-	  \* [Download Links](#download\-links)
+BNLP is a natural language processing toolkit for Bengali Language. This tool will help you to **tokenize Bengali text**\ , **Embedding Bengali words**\ , **Bengali POS Tagging**\ , **Construct Neural Model** for Bengali NLP purposes.
 
-	  \* [Training Details](#training\-details)
 
-   * `Tokenization <#tokenization>`_
 
-	  \* [Basic Tokenizer](#basic\-tokenizer)
 
-	  \* [NLTK Tokenization](#nltk\-tokenization)
+Installation
+============
 
-	  \* [Bengali SentencePiece Tokenization](#bengali\-sentencepiece\-tokenization)
 
-		 \* [Tokenization using trained model](#tokenization\-using\-trained\-model)
+*
+  pypi package installer(python 3.6, 3.7, 3.8 tested okay)
 
-		 \* [Training SentencePiece](#training\-sentencepiece)
+  ``pip install bnlp_toolkit``
 
-   * `Word Embedding <#word-embedding>`_
+  or Upgrade
 
-	  \* [Bengali Word2Vec](#bengali\-word2vec)
+  ``pip install -U bnlp_toolkit``
 
-		 \* [Generate Vector using pretrain model](#generate\-vector\-using\-pretrain\-model)
 
-		 \* [Find Most Similar Word Using Pretrained Model](#find\-most\-similar\-word\-using\-pretrained\-model)
 
-		 \* [Train Bengali Word2Vec with your own data](#train\-bengali\-word2vec\-with\-your\-own\-data)
-
-		 \* [Pre\-train or resume word2vec training with same or new corpus or tokenized sentences](#pre\-train\-or\-resume\-word2vec\-training\-with\-same\-or\-new\-corpus\-or\-tokenized\-sentences)
-
-	 \* [Bengali FastText](#bengali\-fasttext)
-
-		\* [Generate Vector Using Pretrained Model](#generate\-vector\-using\-pretrain\-model)
-
-		\* [Train Bengali FastText Model](#train\-bengali\-fasttext\-model)
-
-		\* [Generate Vector File from Fasttext Binary Model](#generate\-vector\-file\-from\-fasttext\-binary\-model)
-
-	 \* [Bengali GloVe Word Vectors](#bengali\-glove\-word\-vectors)
-
-   * `Document Embedding <#document-embedding>`_
-
-	  \* [Bengali Doc2Vec](#bengali\-doc2vec)
-
-		 \* [Get document vector from input document](#get\-document\-vector\-from\-input\-document)
-
-		 \* [Find document similarity between two document](#find\-document\-similarity\-between\-two\-document)
-
-		 \* [Train doc2vec vector with custom text files](#train\-doc2vec\-vector\-with\-custom\-text\-files)
-
-   * `Bengali POS Tagging <#bengali-pos-tagging>`_
-
-	  \* [Bengali CRF POS Tagging](#bengali\-crf\-pos\-tagging)
-
-		 \* [Find Pos Tag Using Pretrained Model](#find\-pos\-tag\-using\-pretrained\-model)
-
-		 \* [Train POS Tag Model](#train\-pos\-tag\-model)
-
-   * `Bengali NER <#bengali-ner>`_
-
-	  \* [Bengali CRF NER](#bengali\-crf\-ner)
-
-		 \* [Find NER Tag Using Pretrained Model](#find\-ner\-tag\-using\-pretrained\-model)
-
-		 \* [Train NER Tag Model](#train\-ner\-tag\-model)
-
-   * `Bengali Corpus Class <#bengali-corpus-class>`_
-
-	  \* [Stopwords and Punctuations](#stopwords\-and\-punctuations)
-
-	  \* [Remove stopwords from Text](#remove\-stopwords\-from\-text)
-
-   * `Bangla Text Cleaning <#text-cleaning>`_
-
-   * `Contributor Guide <#contributor-guide>`_
-<!--te-->
----
-
-# Installation
-==============
-
-## PIP installer
+Pretrained Model
 ================
 
-  ```
+Download Link
+^^^^^^^^^^^^^
 
-  pip install bnlp_toolkit
-
-  ```
-
-  **or Upgrade**
-
-  ```
-
-  pip install -U bnlp_toolkit
-
-  ```
-
-  - Python: 3.6, 3.7, 3.8, 3.9
-
-  - OS: Linux, Windows, Mac
-
-
-
-# Pretrained Model
-==================
-
-## Download Links
-=================
-
-Large model published in `huggingface <https://huggingface.co/>`_ model hub.
 
 * `Bengali SentencePiece <https://github.com/sagorbrur/bnlp/tree/master/model>`_
-
-* `Bengali Word2Vec <https://huggingface.co/sagorsarker/bangla_word2vec>`_
-
-* `Bengali FastText <https://huggingface.co/sagorsarker/bangla-fasttext>`_
-
-* `Bengali GloVe Wordvectors <https://huggingface.co/sagorsarker/bangla-glove-vectors>`_
-
+* `Bengali Word2Vec <https://drive.google.com/file/d/1cQ8AoSdiX5ATYOzcTjCqpLCV1efB9QzT/view?usp=sharing>`_
+* `Bengali FastText <https://drive.google.com/open?id=1CFA-SluRyz3s5gmGScsFUcs7AjLfscm2>`_
+* `Bengali GloVe Wordvectors <https://github.com/sagorbrur/GloVe-Bengali>`_
 * `Bengali POS Tag model <https://github.com/sagorbrur/bnlp/blob/master/model/bn_pos.pkl>`_
-
 * `Bengali NER model <https://github.com/sagorbrur/bnlp/blob/master/model/bn_ner.pkl>`_
-
 * `Bengali News article Doc2Vec model <https://huggingface.co/sagorsarker/news_article_doc2vec>`_
+* `Bengali Wikipedia Doc2Vec model <https://huggingface.co/sagorsarker/bnwiki_doc2vec_model>`_
 
-* `Bangla Wikipedia Doc2Vec model <https://huggingface.co/sagorsarker/bnwiki_doc2vec_model>`_
+Training Details
+^^^^^^^^^^^^^^^^
 
-## Training Details
-===================
 
 * Sentencepiece, Word2Vec, Fasttext, GloVe model trained with **Bengali Wikipedia Dump Dataset**
 
-  - `Bengali Wiki Dump <https://dumps.wikimedia.org/bnwiki/latest/>`_
+  * `Bengali Wiki Dump <https://dumps.wikimedia.org/bnwiki/latest/>`_
+
 * SentencePiece Training Vocab Size=50000
-
 * Fasttext trained with total words = 20M, vocab size = 1171011, epoch=50, embedding dimension = 300 and the training loss = 0.318668,
-
 * Word2Vec word embedding dimension = 100, min_count=5, window=5, epochs=10
-
 * To Know Bengali GloVe Wordvector and training process follow `this <https://github.com/sagorbrur/GloVe-Bengali>`_ repository
-
 * Bengali CRF POS Tagging was training with `nltr <https://github.com/abhishekgupta92/bangla_pos_tagger/tree/master/data>`_ dataset with 80% accuracy.
-
 * Bengali CRF NER Tagging was train with `this <https://github.com/MISabic/NER-Bangla-Dataset>`_ data with 90% accuracy.
-
 * Bengali news article doc2vec model train with 8 jsons of `this <https://www.kaggle.com/datasets/ebiswas/bangla-largest-newspaper-dataset>`_ corpus with epochs 40 vector size 100 min_count=2, total news article 400013
+* Bengali wikipedia doc2vec model trained with `wikipedia dump <https://dumps.wikimedia.org/bnwiki/latest/>`_ corpus with epochs 40 vector size 100 min_count=2, total article 110448
 
-* Bengali wikipedia doc2vec model trained with wikipedia dump datasets. Total articles 110448, epochs: 40, vector*size: 100, min*count: 2
+Tokenization
+============
 
 
-# Tokenization
+*
+  **Basic Tokenizer**
+
+  .. code-block:: py
+
+      from bnlp import BasicTokenizer
+      basic_t = BasicTokenizer()
+      raw_text = "আমি বাংলায় গান গাই।"
+      tokens = basic_t.tokenize(raw_text)
+      print(tokens)
+
+      # output: ["আমি", "বাংলায়", "গান", "গাই", "।"]
+
+
+*
+  **NLTK Tokenization**
+
+  .. code-block:: py
+
+     from bnlp import NLTKTokenizer
+
+     bnltk = NLTKTokenizer()
+
+     text = "আমি ভাত খাই। সে বাজারে যায়। তিনি কি সত্যিই ভালো মানুষ?"
+
+     word_tokens = bnltk.word_tokenize(text)
+     sentence_tokens = bnltk.sentence_tokenize(text)
+     print(word_tokens)
+     print(sentence_tokens)
+
+     # output
+     # word_token: ["আমি", "ভাত", "খাই", "।", "সে", "বাজারে", "যায়", "।", "তিনি", "কি", "সত্যিই", "ভালো", "মানুষ", "?"]
+     # sentence_token: ["আমি ভাত খাই।", "সে বাজারে যায়।", "তিনি কি সত্যিই ভালো মানুষ?"]
+
+
+*
+  **Bengali SentencePiece Tokenization**
+
+
+  *
+    tokenization using trained model
+
+    .. code-block:: py
+
+       from bnlp import SentencepieceTokenizer
+
+       bsp = SentencepieceTokenizer()
+       model_path = "./model/bn_spm.model"
+       input_text = "আমি ভাত খাই। সে বাজারে যায়।"
+       tokens = bsp.tokenize(model_path, input_text)
+       print(tokens)
+
+  *
+    Training SentencePiece
+
+    .. code-block:: py
+
+       from bnlp import SentencepieceTokenizer
+
+       bsp = SentencepieceTokenizer()
+       data = "sample.txt"
+       model_prefix = "test"
+       vocab_size = 5
+       bsp.train(data, model_prefix, vocab_size)
+
+
+Word Embedding
 ==============
 
-## Basic Tokenizer
+
+*
+  **Bengali Word2Vec**
+
+
+  *
+    Generate Vector using pretrain model
+
+    .. code-block:: py
+
+       from bnlp import BengaliWord2Vec
+
+       bwv = BengaliWord2Vec()
+       model_path = "model/bengali_word2vec.model"
+       word = 'গ্রাম'
+       vector = bwv.generate_word_vector(model_path, word)
+       print(vector.shape)
+       print(vector)
+
+  *
+    Find Most Similar Word Using Pretrained Model
+
+    .. code-block:: py
+
+       from bnlp import BengaliWord2Vec
+
+       bwv = BengaliWord2Vec()
+       model_path = "model/bengali_word2vec.model"
+       word = 'গ্রাম'
+       similar = bwv.most_similar(model_path, word, topn=10)
+       print(similar)
+
+  *
+    Train Bengali Word2Vec with your own data
+    Train Bengali word2vec with your custom raw data or tokenized sentences.
+    custom tokenized sentence format example:
+    ``sentences = [['আমি', 'ভাত', 'খাই', '।'], ['সে', 'বাজারে', 'যায়', '।']]``
+
+    Check `gensim word2vec api <https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.Word2Vec>`_ for details of training parameter
+
+    .. code-block:: py
+
+       from bnlp import BengaliWord2Vec
+       bwv = BengaliWord2Vec()
+       data_file = "test.txt"
+       model_name = "test_model.model"
+       vector_name = "test_vector.vector"
+       bwv.train(data_file, model_name, vector_name)
+
+  *
+    Pre-train or resume word2vec training with same or new corpus or tokenized sentences
+
+    Check `gensim word2vec api <https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.Word2Vec>`_ for details of training parameter
+
+    .. code-block:: py
+
+       from bnlp import BengaliWord2Vec
+       bwv = BengaliWord2Vec()
+
+       trained_model_path = "mytrained_model.model"
+       data_file = "raw_text.txt"
+       model_name = "test_model.model"
+       vector_name = "test_vector.vector"
+       bwv.pretrain(trained_model_path, data_file, model_name, vector_name, epochs=5)
+
+
+*
+  **Bengali FastText**
+   Install fasttext first by pip install fasttext
+
+   - Generate Vector Using Pretrained Model
+
+
+     .. code-block:: py
+
+        from bnlp.embedding.fasttext import BengaliFasttext
+
+        bft = BengaliFasttext()
+        word = "গ্রাম"
+        model_path = "model/bengali_fasttext.bin"
+        word_vector = bft.generate_word_vector(model_path, word)
+        print(word_vector.shape)
+        print(word_vector)
+
+
+   - Train Bengali FastText Model
+
+     Check `fasttext documentation <https://fasttext.cc/docs/en/options.html>`_ for details of training parameter
+
+     .. code-block:: py
+
+        from bnlp.embedding.fasttext import BengaliFasttext
+
+        bft = BengaliFasttext()
+        data = "data.txt"
+        model_name = "saved_model_wiki.bin"
+        epoch = 10
+        bft.train(data, model_name, epoch)
+
+   - Generate Vector File from Fasttext Binary Model
+
+     .. code-block:: py
+
+        from bnlp.embedding.fasttext import BengaliFasttext
+
+        bft = BengaliFasttext()
+
+        model_path = "mymodel.bin"
+        out_vector_name = "myvector.txt"
+        bft.bin2vec(model_path, out_vector_name)
+
+*
+  **Bengali GloVe Word Vectors**
+
+  We trained glove model with bengali data(wiki+news articles) and published bengali glove word vectors</br>
+  You can download and use it on your different machine learning purposes.
+
+  .. code-block:: py
+
+     from bnlp import BengaliGlove
+
+     bng = BengaliGlove()
+     glove_path = "bn_glove.39M.100d.txt"
+     word = "গ্রাম"
+     res = bng.closest_word(glove_path, word)
+     print(res)
+     vec = bng.word2vec(glove_path, word)
+     print(vec)
+
+Document Embedding
 ==================
 
-  ```py
 
-  from bnlp import BasicTokenizer
-  
-  basic_tokenizer = BasicTokenizer()
-
-  raw_text = "আমি বাংলায় গান গাই।"
-
-  tokens = basic*tokenizer.tokenize(raw*text)
-
-  print(tokens)
-
-  # output: ["আমি", "বাংলায়", "গান", "গাই", "।"]
-
-  ```
-
-## NLTK Tokenization
-====================
-
-  ```py
-
-  from bnlp import NLTKTokenizer
-
-  bnltk = NLTKTokenizer()
-
-  text = "আমি ভাত খাই। সে বাজারে যায়। তিনি কি সত্যিই ভালো মানুষ?"
-
-  word*tokens = bnltk.word*tokenize(text)
-
-  sentence*tokens = bnltk.sentence*tokenize(text)
-
-  print(word_tokens)
-
-  print(sentence_tokens)
-
-  # output
-
-  # word_token: ["আমি", "ভাত", "খাই", "।", "সে", "বাজারে", "যায়", "।", "তিনি", "কি", "সত্যিই", "ভালো", "মানুষ", "?"]
-
-  # sentence_token: ["আমি ভাত খাই।", "সে বাজারে যায়।", "তিনি কি সত্যিই ভালো মানুষ?"]
-
-  ```
+*
+  **Bengali Doc2Vec**
 
 
-## Bengali SentencePiece Tokenization
-=====================================
+  *
+    Get document vector from input document
 
-### Tokenization using trained model
-====================================
+    .. code-block:: py
 
-```py
+       from bnlp import BengaliDoc2vec
 
-from bnlp import SentencepieceTokenizer
+       bn_doc2vec = BengaliDoc2vec()
 
-bsp = SentencepieceTokenizer()
+       model_path = "bangla_news_article_doc2vec.model" # keep other .npy model files also in same folder
+       document = "রাষ্ট্রবিরোধী ও উসকানিমূলক বক্তব্য দেওয়ার অভিযোগে গাজীপুরের গাছা থানায় ডিজিটাল নিরাপত্তা আইনে করা মামলায় আলোচিত ‘শিশুবক্তা’ রফিকুল ইসলামের বিরুদ্ধে অভিযোগ গঠন করেছেন আদালত। ফলে মামলার আনুষ্ঠানিক বিচার শুরু হলো। আজ বুধবার (২৬ জানুয়ারি) ঢাকার সাইবার ট্রাইব্যুনালের বিচারক আসসামছ জগলুল হোসেন এ অভিযোগ গঠন করেন। এর আগে, রফিকুল ইসলামকে কারাগার থেকে আদালতে হাজির করা হয়। এরপর তাকে নির্দোষ দাবি করে তার আইনজীবী শোহেল মো. ফজলে রাব্বি অব্যাহতি চেয়ে আবেদন করেন। অন্যদিকে, রাষ্ট্রপক্ষ অভিযোগ গঠনের পক্ষে শুনানি করেন। উভয় পক্ষের শুনানি শেষে আদালত অব্যাহতির আবেদন খারিজ করে অভিযোগ গঠনের মাধ্যমে বিচার শুরুর আদেশ দেন। একইসঙ্গে সাক্ষ্যগ্রহণের জন্য আগামী ২২ ফেব্রুয়ারি দিন ধার্য করেন আদালত।"
 
-model*path = "./model/bn*spm.model"
+       vector = bn_doc2vec.get_document_vector(model_path, text)
+       print(vector)
 
-input_text = "আমি ভাত খাই। সে বাজারে যায়।"
+  *
+    Find document similarity between two document
 
-tokens = bsp.tokenize(model*path, input*text)
+    .. code-block:: py
 
-print(tokens)
+       from bnlp import BengaliDoc2vec
 
-text2id = bsp.text2id(model*path, input*text)
+       bn_doc2vec = BengaliDoc2vec()
 
-print(text2id)
+       model_path = "bangla_news_article_doc2vec.model" # keep other .npy model files also in same folder
+       article_1 = "রাষ্ট্রবিরোধী ও উসকানিমূলক বক্তব্য দেওয়ার অভিযোগে গাজীপুরের গাছা থানায় ডিজিটাল নিরাপত্তা আইনে করা মামলায় আলোচিত ‘শিশুবক্তা’ রফিকুল ইসলামের বিরুদ্ধে অভিযোগ গঠন করেছেন আদালত। ফলে মামলার আনুষ্ঠানিক বিচার শুরু হলো। আজ বুধবার (২৬ জানুয়ারি) ঢাকার সাইবার ট্রাইব্যুনালের বিচারক আসসামছ জগলুল হোসেন এ অভিযোগ গঠন করেন। এর আগে, রফিকুল ইসলামকে কারাগার থেকে আদালতে হাজির করা হয়। এরপর তাকে নির্দোষ দাবি করে তার আইনজীবী শোহেল মো. ফজলে রাব্বি অব্যাহতি চেয়ে আবেদন করেন। অন্যদিকে, রাষ্ট্রপক্ষ অভিযোগ গঠনের পক্ষে শুনানি করেন। উভয় পক্ষের শুনানি শেষে আদালত অব্যাহতির আবেদন খারিজ করে অভিযোগ গঠনের মাধ্যমে বিচার শুরুর আদেশ দেন। একইসঙ্গে সাক্ষ্যগ্রহণের জন্য আগামী ২২ ফেব্রুয়ারি দিন ধার্য করেন আদালত।"
+       article_2 = "রাষ্ট্রবিরোধী ও উসকানিমূলক বক্তব্য দেওয়ার অভিযোগে গাজীপুরের গাছা থানায় ডিজিটাল নিরাপত্তা আইনে করা মামলায় আলোচিত ‘শিশুবক্তা’ রফিকুল ইসলামের বিরুদ্ধে অভিযোগ গঠন করেছেন আদালত। ফলে মামলার আনুষ্ঠানিক বিচার শুরু হলো। আজ বুধবার (২৬ জানুয়ারি) ঢাকার সাইবার ট্রাইব্যুনালের বিচারক আসসামছ জগলুল হোসেন এ অভিযোগ গঠন করেন। এর আগে, রফিকুল ইসলামকে কারাগার থেকে আদালতে হাজির করা হয়। এরপর তাকে নির্দোষ দাবি করে তার আইনজীবী শোহেল মো. ফজলে রাব্বি অব্যাহতি চেয়ে আবেদন করেন। অন্যদিকে, রাষ্ট্রপক্ষ অভিযোগ গঠনের পক্ষে শুনানি করেন। উভয় পক্ষের শুনানি শেষে আদালত অব্যাহতির আবেদন খারিজ করে অভিযোগ গঠনের মাধ্যমে বিচার শুরুর আদেশ দেন। একইসঙ্গে সাক্ষ্যগ্রহণের জন্য আগামী ২২ ফেব্রুয়ারি দিন ধার্য করেন আদালত।"
 
-id2text = bsp.id2text(model_path, text2id)
+       similarity = bn_doc2vec.get_document_similarity(
+          model_path,
+          article_1,
+          article_2
+       )
+       print(similarity)
 
-print(id2text)
+  *
+    Train doc2vec vector with custom text files
 
-```
+    .. code-block:: py
 
-### Training SentencePiece
-==========================
+       from bnlp import BengaliDoc2vec
 
-```py
+       bn_doc2vec = BengaliDoc2vec()
 
-from bnlp import SentencepieceTokenizer
+       text_files = "path/myfiles"
+       checkpoint_path = "msc/logs"
 
-bsp = SentencepieceTokenizer()
+       bn_doc2vec.train_doc2vec(
+         text_files,
+         checkpoint_path=checkpoint_path,
+         vector_size=100,
+         min_count=2,
+         epochs=10
+       )
+       # it will train doc2vec with your text files and save the train model in checkpoint_path
 
-data = "raw_text.txt"
-
-model_prefix = "test"
-
-vocab_size = 5
-
-bsp.train(data, model*prefix, vocab*size)
-
-```
-
-# Word Embedding
-================
-
-## Bengali Word2Vec
+Bengali POS Tagging
 ===================
 
-### Generate Vector using pretrain model
-========================================
 
-```py
+* **Bengali CRF POS Tagging**
 
-from bnlp import BengaliWord2Vec
 
-bwv = BengaliWord2Vec()
+*
+  Find Pos Tag Using Pretrained Model
 
-model*path = "bengali*word2vec.model"
+  .. code-block:: py
 
-word = 'গ্রাম'
+     from bnlp import POS
+     bn_pos = POS()
+     model_path = "model/bn_pos_model.pkl"
+     text = "আমি ভাত খাই।" # or you can pass token list
+     res = bn_pos.tag(model_path, text)
+     print(res)
+     # [('আমি', 'PPR'), ('ভাত', 'NC'), ('খাই', 'VM'), ('।', 'PU')]
 
-vector = bwv.generate*word*vector(model_path, word)
+*
+  Train POS Tag Model
 
-print(vector.shape)
+  .. code-block:: py
 
-print(vector)
+     from bnlp import POS
+     bn_pos = POS()
+     model_name = "pos_model.pkl"
+     train_data = [[('রপ্তানি', 'JJ'), ('দ্রব্য', 'NC'), ('-', 'PU'), ('তাজা', 'JJ'), ('ও', 'CCD'), ('শুকনা', 'JJ'), ('ফল', 'NC'), (',', 'PU'), ('আফিম', 'NC'), (',', 'PU'), ('পশুচর্ম', 'NC'), ('ও', 'CCD'), ('পশম', 'NC'), ('এবং', 'CCD'),('কার্পেট', 'NC'), ('৷', 'PU')], [('মাটি', 'NC'), ('থেকে', 'PP'), ('বড়জোর', 'JQ'), ('চার', 'JQ'), ('পাঁচ', 'JQ'), ('ফুট', 'CCL'), ('উঁচু', 'JJ'), ('হবে', 'VM'), ('৷', 'PU')]]
+     test_data = [[('রপ্তানি', 'JJ'), ('দ্রব্য', 'NC'), ('-', 'PU'), ('তাজা', 'JJ'), ('ও', 'CCD'), ('শুকনা', 'JJ'), ('ফল', 'NC'), (',', 'PU'), ('আফিম', 'NC'), (',', 'PU'), ('পশুচর্ম', 'NC'), ('ও', 'CCD'), ('পশম', 'NC'), ('এবং', 'CCD'),('কার্পেট', 'NC'), ('৷', 'PU')], [('মাটি', 'NC'), ('থেকে', 'PP'), ('বড়জোর', 'JQ'), ('চার', 'JQ'), ('পাঁচ', 'JQ'), ('ফুট', 'CCL'), ('উঁচু', 'JJ'), ('হবে', 'VM'), ('৷', 'PU')]]
 
-```
+     bn_pos.train(model_name, train_data, test_data)
 
-### Find Most Similar Word Using Pretrained Model
-=================================================
 
-```py
-
-from bnlp import BengaliWord2Vec
-
-bwv = BengaliWord2Vec()
-
-model*path = "bengali*word2vec.model"
-
-word = 'গ্রাম'
-
-similar = bwv.most*similar(model*path, word, topn=10)
-
-print(similar)
-
-```
-### Train Bengali Word2Vec with your own data
-=============================================
-
-Train Bengali word2vec with your custom raw data or tokenized sentences.
-
-Custom tokenized sentence format example:
-
-```py
-
-sentences = [['আমি', 'ভাত', 'খাই', '।'], ['সে', 'বাজারে', 'যায়', '।']]
-
-```
-
-Check `gensim word2vec api <https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.Word2Vec>`_ for details of training parameter
-
-```py
-
-from bnlp import BengaliWord2Vec
-
-bwv = BengaliWord2Vec()
-
-data*file = "raw*text.txt" # or you can pass custom sentence tokens as list of list
-
-model*name = "test*model.model"
-
-vector*name = "test*vector.vector"
-
-bwv.train(data*file, model*name, vector_name, epochs=5)
-
-```
-
-### Pre-train or resume word2vec training with same or new corpus or tokenized sentences
-========================================================================================
-
-Check `gensim word2vec api <https://radimrehurek.com/gensim/models/word2vec.html#gensim.models.word2vec.Word2Vec>`_ for details of training parameter
-
-```py
-
-from bnlp import BengaliWord2Vec
-
-bwv = BengaliWord2Vec()
-
-trained*model*path = "mytrained_model.model"
-
-data*file = "raw*text.txt"
-
-model*name = "test*model.model"
-
-vector*name = "test*vector.vector"
-
-bwv.pretrain(trained*model*path, data*file, model*name, vector_name, epochs=5)
-
-```
-
-## Bengali FastText
-===================
-
-To use `fasttext` you need to install fasttext manually by `pip install fasttext==0.9.2`
-
-NB: `fasttext` may not be worked in `windows`, it will only work in `linux`
-
-## Generate Vector Using Pretrained Model
-=========================================
-
-  ```py
-
-  from bnlp.embedding.fasttext import BengaliFasttext
-
-  bft = BengaliFasttext()
-
-  word = "গ্রাম"
-
-  model*path = "bengali*fasttext_wiki.bin"
-
-  word*vector = bft.generate*word*vector(model*path, word)
-
-  print(word_vector.shape)
-
-  print(word_vector)
-
-  ```
-
-## Train Bengali FastText Model
-===============================
-
-Check `fasttext documentation <https://fasttext.cc/docs/en/options.html>`_ for details of training parameter
-
-  ```py
-
-  from bnlp.embedding.fasttext import BengaliFasttext
-
-  bft = BengaliFasttext()
-
-  data = "raw_text.txt"
-
-  model*name = "saved*model.bin"
-
-  epoch = 50
-
-  bft.train(data, model_name, epoch)
-
-  ```
-
-## Generate Vector File from Fasttext Binary Model
-==================================================
-
-```py
-
-from bnlp.embedding.fasttext import BengaliFasttext
-
-bft = BengaliFasttext()
-
-model_path = "mymodel.bin"
-
-out*vector*name = "myvector.txt"
-
-bft.bin2vec(model*path, out*vector_name)
-
-```
-
-# Bengali GloVe Word Vectors
-============================
-
-We trained glove model with bengali data(wiki+news articles) and published bengali glove word vectors</br>
-
-You can download and use it on your different machine learning purposes.
-
-```py
-
-from bnlp import BengaliGlove
-
-glove*path = "bn*glove.39M.100d.txt"
-
-word = "গ্রাম"
-
-bng = BengaliGlove()
-
-res = bng.closest*word(glove*path, word)
-
-print(res)
-
-vec = bng.word2vec(glove_path, word)
-
-print(vec)
-
-```
-
-# Document Embedding
-====================
-
-## Bengali Doc2Vec
-==================
-### Get document vector from input document
-===========================================
-
-```py
-
-from bnlp import BengaliDoc2vec
-
-bn_doc2vec = BengaliDoc2vec()
-
-model*path = "bangla*news*article*doc2vec.model" # keep other .npy model files also in same folder
-
-document = "রাষ্ট্রবিরোধী ও উসকানিমূলক বক্তব্য দেওয়ার অভিযোগে গাজীপুরের গাছা থানায় ডিজিটাল নিরাপত্তা আইনে করা মামলায় আলোচিত ‘শিশুবক্তা’ রফিকুল ইসলামের বিরুদ্ধে অভিযোগ গঠন করেছেন আদালত। ফলে মামলার আনুষ্ঠানিক বিচার শুরু হলো। আজ বুধবার (২৬ জানুয়ারি) ঢাকার সাইবার ট্রাইব্যুনালের বিচারক আসসামছ জগলুল হোসেন এ অভিযোগ গঠন করেন। এর আগে, রফিকুল ইসলামকে কারাগার থেকে আদালতে হাজির করা হয়। এরপর তাকে নির্দোষ দাবি করে তার আইনজীবী শোহেল মো. ফজলে রাব্বি অব্যাহতি চেয়ে আবেদন করেন। অন্যদিকে, রাষ্ট্রপক্ষ অভিযোগ গঠনের পক্ষে শুনানি করেন। উভয় পক্ষের শুনানি শেষে আদালত অব্যাহতির আবেদন খারিজ করে অভিযোগ গঠনের মাধ্যমে বিচার শুরুর আদেশ দেন। একইসঙ্গে সাক্ষ্যগ্রহণের জন্য আগামী ২২ ফেব্রুয়ারি দিন ধার্য করেন আদালত।"
-
-vector = bn*doc2vec.get*document*vector(model*path, text)
-
-print(vector)
-
-```
-
-### Find document similarity between two document
-=================================================
-
-```py
-
-from bnlp import BengaliDoc2vec
-
-bn_doc2vec = BengaliDoc2vec()
-
-model*path = "bangla*news*article*doc2vec.model" # keep other .npy model files also in same folder
-
-article_1 = "রাষ্ট্রবিরোধী ও উসকানিমূলক বক্তব্য দেওয়ার অভিযোগে গাজীপুরের গাছা থানায় ডিজিটাল নিরাপত্তা আইনে করা মামলায় আলোচিত ‘শিশুবক্তা’ রফিকুল ইসলামের বিরুদ্ধে অভিযোগ গঠন করেছেন আদালত। ফলে মামলার আনুষ্ঠানিক বিচার শুরু হলো। আজ বুধবার (২৬ জানুয়ারি) ঢাকার সাইবার ট্রাইব্যুনালের বিচারক আসসামছ জগলুল হোসেন এ অভিযোগ গঠন করেন। এর আগে, রফিকুল ইসলামকে কারাগার থেকে আদালতে হাজির করা হয়। এরপর তাকে নির্দোষ দাবি করে তার আইনজীবী শোহেল মো. ফজলে রাব্বি অব্যাহতি চেয়ে আবেদন করেন। অন্যদিকে, রাষ্ট্রপক্ষ অভিযোগ গঠনের পক্ষে শুনানি করেন। উভয় পক্ষের শুনানি শেষে আদালত অব্যাহতির আবেদন খারিজ করে অভিযোগ গঠনের মাধ্যমে বিচার শুরুর আদেশ দেন। একইসঙ্গে সাক্ষ্যগ্রহণের জন্য আগামী ২২ ফেব্রুয়ারি দিন ধার্য করেন আদালত।"
-
-article_2 = "রাষ্ট্রবিরোধী ও উসকানিমূলক বক্তব্য দেওয়ার অভিযোগে গাজীপুরের গাছা থানায় ডিজিটাল নিরাপত্তা আইনে করা মামলায় আলোচিত ‘শিশুবক্তা’ রফিকুল ইসলামের বিরুদ্ধে অভিযোগ গঠন করেছেন আদালত। ফলে মামলার আনুষ্ঠানিক বিচার শুরু হলো। আজ বুধবার (২৬ জানুয়ারি) ঢাকার সাইবার ট্রাইব্যুনালের বিচারক আসসামছ জগলুল হোসেন এ অভিযোগ গঠন করেন। এর আগে, রফিকুল ইসলামকে কারাগার থেকে আদালতে হাজির করা হয়। এরপর তাকে নির্দোষ দাবি করে তার আইনজীবী শোহেল মো. ফজলে রাব্বি অব্যাহতি চেয়ে আবেদন করেন। অন্যদিকে, রাষ্ট্রপক্ষ অভিযোগ গঠনের পক্ষে শুনানি করেন। উভয় পক্ষের শুনানি শেষে আদালত অব্যাহতির আবেদন খারিজ করে অভিযোগ গঠনের মাধ্যমে বিচার শুরুর আদেশ দেন। একইসঙ্গে সাক্ষ্যগ্রহণের জন্য আগামী ২২ ফেব্রুয়ারি দিন ধার্য করেন আদালত।"
-
-similarity = bn*doc2vec.get*document_similarity(
-
-  model_path,
-
-  article_1,
-
-  article_2
-)
-
-print(similarity)
-
-```
-
-### Train doc2vec vector with custom text files
-===============================================
-
-```py
-
-from bnlp import BengaliDoc2vec
-
-bn_doc2vec = BengaliDoc2vec()
-
-text_files = "path/myfiles"
-
-checkpoint_path = "msc/logs"
-
-bn*doc2vec.train*doc2vec(
-
-  text_files,
-
-  checkpoint*path=checkpoint*path,
-
-  vector_size=100,
-
-  min_count=2,
-
-  epochs=10
-)
-
-it will train doc2vec with your text files and save the train model in checkpoint_path
-======================================================================================
-
-```
-
-# Bengali POS Tagging
-=====================
-
-## Bengali CRF POS Tagging
-==========================
-
-### Find Pos Tag Using Pretrained Model
-=======================================
-
-```py
-
-from bnlp import POS
-
-bn_pos = POS()
-
-model*path = "model/bn*pos.pkl"
-
-text = "আমি ভাত খাই।" # or you can pass ['আমি', 'ভাত', 'খাই', '।']
-
-res = bn*pos.tag(model*path, text)
-
-print(res)
-[('আমি', 'PPR'), ('ভাত', 'NC'), ('খাই', 'VM'), ('।', 'PU')]
-===========================================================
-
-```
-
-### Train POS Tag Model
-=======================
-
-```py
-
-from bnlp import POS
-
-bn_pos = POS()
-
-model*name = "pos*model.pkl"
-
-train_data = [[('রপ্তানি', 'JJ'), ('দ্রব্য', 'NC'), ('-', 'PU'), ('তাজা',  'JJ'), ('ও', 'CCD'), ('শুকনা', 'JJ'), ('ফল', 'NC'), (',', 'PU'), ('আফিম', 'NC'), (',', 'PU'), ('পশুচর্ম', 'NC'), ('ও', 'CCD'), ('পশম', 'NC'), ('এবং', 'CCD'),('কার্পেট', 'NC'), ('৷', 'PU')], [('মাটি', 'NC'), ('থেকে', 'PP'), ('বড়জোর', 'JQ'), ('চার', 'JQ'), ('পাঁচ', 'JQ'), ('ফুট', 'CCL'), ('উঁচু', 'JJ'), ('হবে', 'VM'), ('৷', 'PU')]]
-
-test_data = [[('রপ্তানি', 'JJ'), ('দ্রব্য', 'NC'), ('-', 'PU'), ('তাজা', 'JJ'), ('ও', 'CCD'), ('শুকনা', 'JJ'), ('ফল', 'NC'), (',', 'PU'), ('আফিম', 'NC'), (',', 'PU'), ('পশুচর্ম', 'NC'), ('ও', 'CCD'), ('পশম', 'NC'), ('এবং', 'CCD'),('কার্পেট', 'NC'), ('৷', 'PU')], [('মাটি', 'NC'), ('থেকে', 'PP'), ('বড়জোর', 'JQ'), ('চার', 'JQ'), ('পাঁচ', 'JQ'), ('ফুট', 'CCL'), ('উঁচু', 'JJ'), ('হবে', 'VM'), ('৷', 'PU')]]
-
-bn*pos.train(model*name, train*data, test*data)
-
-```
-
-# Bengali NER
-=============
-
-## Bengali CRF NER
-==================
-
-### Find NER Tag Using Pretrained Model
-=======================================
-
-```py
-
-from bnlp import NER
-
-bn_ner = NER()
-
-model*path = "model/bn*ner.pkl"
-
-text = "সে ঢাকায় থাকে।" # or you can pass ['সে', 'ঢাকায়', 'থাকে', '।']
-
-result = bn*ner.tag(model*path, text)
-
-print(result)
-[('সে', 'O'), ('ঢাকায়', 'S-LOC'), ('থাকে', 'O')]
-================================================
-
-```
-
-### Train NER Tag Model
-=======================
-
-```py
-
-from bnlp import NER
-
-bn_ner = NER()
-
-model*name = "ner*model.pkl"
-
-train_data = [[('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')], [('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')], [('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')]]
-
-test_data = [[('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')], [('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')], [('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')]]
-
-bn*ner.train(model*name, train*data, test*data)
-
-```
-
-
-# Bengali Corpus Class
-======================
-
-## Stopwords and Punctuations
-=============================
-
-```py
-
-from bnlp.corpus import stopwords, punctuations, letters, digits
-
-print(stopwords)
-
-print(punctuations)
-
-print(letters)
-
-print(digits)
-
-```
-
-## Remove stopwords from Text
-=============================
-
-```py
-
-from bnlp.corpus import stopwords
-
-from bnlp.corpus.util import remove_stopwords
-
-raw_text = 'আমি ভাত খাই।'
-
-result = remove*stopwords(raw*text, stopwords)
-
-print(result)
-['ভাত', 'খাই', '।']
-===================
-
-```
-
-# Text Cleaning
-===============
-
-We adopted different text cleaning formula, codes from `clean-text <https://github.com/jfilter/clean-text>`_ and modified for Bangla. Now you can normalize and clean your text using the following methods.
-
-```py
-
-from bnlp import CleanText
-
-clean_text = CleanText(
-
-	fix\_unicode=True,
-
-	unicode\_norm=True,
-
-	unicode\_norm\_form="NFKC",
-
-	remove\_url=False,
-
-	remove\_email=False,
-
-	remove\_emoji=False,
-
-	remove\_number=False, # not implement yet
-
-	remove\_digits=False, # not implement yet
-
-	remove\_punct=False  # not implement yet
-
-)
-
-input_text = "আমার সোনার বাংলা।"
-
-clean*text = clean*text(input_text)
-
-print(clean_text)
-
-```
-
-# Contributor Guide
-===================
-
-Check `CONTRIBUTING.md <https://github.com/sagorbrur/bnlp/blob/master/CONTRIBUTING.md>`_ page for details.
-
-
-# Thanks To
+Bengali NER
 ===========
 
-* `Semantics Lab <https://www.facebook.com/lab.semantics/>`_
 
+* **Bengali CRF NER**
+
+
+*
+  Find NER Tag Using Pretrained Model
+
+  .. code-block:: py
+
+     from bnlp import ner
+     bn_ner = NER()
+     model_path = "model/bn_pos_model.pkl"
+     text = "সে ঢাকায় থাকে।" # or you can pass token list
+     res = bn_ner.tag(model_path, text)
+     print(res)
+     # [('সে', 'O'), ('ঢাকায়', 'S-LOC'), ('থাকে', 'O')]
+
+*
+  Train NER Model
+
+  .. code-block:: py
+
+     from bnlp import NER
+     bn_ner = NER()
+     model_name = "ner_model.pkl"
+     train_data = [[('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')]]
+     test_data = [[('ত্রাণ', 'O'),('ও', 'O'),('সমাজকল্যাণ', 'O'),('সম্পাদক', 'S-PER'),('সুজিত', 'B-PER'),('রায়', 'I-PER'),('নন্দী', 'E-PER'),('প্রমুখ', 'O'),('সংবাদ', 'O'),('সম্মেলনে', 'O'),('উপস্থিত', 'O'),('ছিলেন', 'O')]]
+
+     bn_ner.train(model_name, train_data, test_data)
+
+
+
+Bengali Corpus Class
+====================
+
+*
+  Stopwords and Punctuations
+
+  .. code-block:: py
+
+     from bnlp.corpus import stopwords, punctuations, letters, digits
+
+     print(stopwords)
+     print(punctuations)
+     print(letters)
+     print(digits)
+
+
+*
+  Remove Stopwords from text
+
+  .. code-block:: py
+
+      from bnlp.corpus import stopwords
+      from bnlp.corpus.util import remove_stopwords
+
+      raw_text = 'আমি ভাত খাই।'
+      result = remove_stopwords(raw_text, stopwords)
+      print(result)
+      # ['ভাত', 'খাই', '।']
+
+
+
+
+Contributor Guide
+=================
+
+Check `CONTRIBUTING.md <https://github.com/sagorbrur/bnlp/blob/master/CONTRIBUTING.md>`_ page for details.
