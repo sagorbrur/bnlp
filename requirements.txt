@@ -1,5 +1,5 @@
 sentencepiece
-gensim==4.0.1
+gensim
 nltk
 numpy
 scipy
