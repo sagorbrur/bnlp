@@ -66,7 +66,7 @@ class BasicTokenizer:
         """Tokenizes a piece of text."""
         text = convert_to_unicode(text)
         # handle (.) in bangla text
-        text = text.repalce('.', 'XTEMPDOT')
+        text = text.replace('.', 'XTEMPDOT')
 
         orig_tokens = whitespace_tokenize(text)
         # print("original tokens: ", orig_tokens)
