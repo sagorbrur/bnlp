@@ -65,18 +65,19 @@ class BasicTokenizer:
     def tokenize(self, text):
         """Tokenizes a piece of text."""
         text = convert_to_unicode(text)
+        # handle (.) in bangla text
+        text = text.repalce('.', 'XTEMPDOT')
 
         orig_tokens = whitespace_tokenize(text)
         # print("original tokens: ", orig_tokens)
         split_tokens = []
         for token in orig_tokens:
-            # if self.do_lower_case:
-            #   token = token.lower()
-            #   token = self._run_strip_accents(token)
             split_tokens.extend(self._run_split_on_punc(token))
 
         # print("split tokens: ", split_tokens)
         output_tokens = whitespace_tokenize(" ".join(split_tokens))
+        # get (.) back in output tokens
+        output_tokens = [token.replace('XTEMPDOT', '.') for token in output_tokens]
         return output_tokens
 
     def _run_strip_accents(self, text):
