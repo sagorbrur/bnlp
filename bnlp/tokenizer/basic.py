@@ -6,7 +6,7 @@ To check Original Code: https://github.com/google-research/bert/blob/master/toke
 """
 import six
 import unicodedata
-
+from typing import List
 
 def convert_to_unicode(text):
     """Converts `text` to Unicode (if it's not already), assuming utf-8 input."""
@@ -28,14 +28,12 @@ def convert_to_unicode(text):
         raise ValueError("Not running on Python2 or Python 3?")
 
 
-def whitespace_tokenize(text):
+def whitespace_tokenize(text: str) -> List[str]:
     """Runs basic whitespace cleaning and splitting on a piece of text."""
     text = text.strip()
-    # print("Text: ", text)
     if not text:
         return []
     tokens = text.split()
-    # print("tokens : ", tokens)
     return tokens
 
 
@@ -62,19 +60,17 @@ def _is_punctuation(char):
 class BasicTokenizer:
     """Runs basic tokenization (punctuation splitting, lower casing, etc.)."""
 
-    def tokenize(self, text):
+    def tokenize(self, text: str) -> List[str]:
         """Tokenizes a piece of text."""
         text = convert_to_unicode(text)
         # handle (.) in bangla text
         text = text.replace('.', 'XTEMPDOT')
 
         orig_tokens = whitespace_tokenize(text)
-        # print("original tokens: ", orig_tokens)
         split_tokens = []
         for token in orig_tokens:
             split_tokens.extend(self._run_split_on_punc(token))
 
-        # print("split tokens: ", split_tokens)
         output_tokens = whitespace_tokenize(" ".join(split_tokens))
         # get (.) back in output tokens
         output_tokens = [token.replace('XTEMPDOT', '.') for token in output_tokens]
