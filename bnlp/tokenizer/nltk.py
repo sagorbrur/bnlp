@@ -1,4 +1,5 @@
 import nltk
+from typing import List
 
 try:
     nltk.data.find("tokenizers/punkt")
@@ -8,7 +9,7 @@ except LookupError:
 
 
 class NLTKTokenizer:
-    def word_tokenize(self, text):
+    def word_tokenize(self, text: str) -> List[str]:
         tokens = nltk.word_tokenize(text)
         new_tokens = []
         for token in tokens:
@@ -21,8 +22,7 @@ class NLTKTokenizer:
                 new_tokens.append(token)
         return new_tokens
 
-    def sentence_tokenize(self, text):
-        # TODO: below two is contradictory, need to handle soon
+    def sentence_tokenize(self, text: str) -> List[str]:
         text = text.replace(".", "<dummy_bangla_token>")  # to deal with abbreviations
         text = text.replace("।", ".")
         tokens = nltk.tokenize.sent_tokenize(text)
