@@ -3,7 +3,7 @@ __version__ = "4.0.0"
 
 import os
 from bnlp.pos import POS
-from bnlp.ner import NER
+from bnlp.ner import BengaliNER
 from bnlp.tokenizer.nltk import NLTKTokenizer
 from bnlp.tokenizer.basic import BasicTokenizer
 from bnlp.tokenizer.sentencepiece import (
