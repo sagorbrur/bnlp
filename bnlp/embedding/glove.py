@@ -1,38 +1,35 @@
-import numpy as np
 import scipy
+import numpy as np
+from typing import List
 from scipy import spatial
 
-# print(np.__version__) #1.17.4
-# print(scipy.__version__) #1.3.3
-
-
 class BengaliGlove:
-    def word2vec(self, glove_path, test_word):
-        embeddings_dict = {}
-        with open(glove_path, "r") as f:
-            for line in f:
-                values = line.split()
-                word = values[0]
-                vector = np.asarray(values[1:], "float32")
-                embeddings_dict[word] = vector
-        result_vec = embeddings_dict[test_word]
-        return result_vec
+    def __init__(self, glove_vector_path: str):
+        self.embedding_dict = self._get_embedding_dict(glove_vector_path)
 
-    def closest_word(self, glove_path, test_word):
+    def get_word_vector(self, word: str) -> np.ndarray:
+        word_vector = self.embedding_dict[word]
+        return word_vector
+
+    def get_closest_word(self, word: str) -> List[str]:
         def find_closest_embeddings(embedding):
             return sorted(
-                embeddings_dict.keys(),
+                self.embeddings_dict.keys(),
                 key=lambda word: spatial.distance.euclidean(
-                    embeddings_dict[word], embedding
+                    self.embeddings_dict[word], embedding
                 ),
             )
 
+        result = find_closest_embeddings(self.embedding_dict[word])[:10]
+        return result
+
+    def _get_embedding_dict(self, glove_vector_path: str):
         embeddings_dict = {}
-        with open(glove_path, "r") as f:
+        with open(glove_vector_path, "r") as f:
             for line in f:
                 values = line.split()
                 word = values[0]
                 vector = np.asarray(values[1:], "float32")
                 embeddings_dict[word] = vector
-        result = find_closest_embeddings(embeddings_dict[test_word])[:10]
-        return result
+
+        return embeddings_dict
