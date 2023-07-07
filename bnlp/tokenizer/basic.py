@@ -57,6 +57,8 @@ def _is_punctuation(char):
     return False
 
 
+DUMMYTOKEN = 'XTEMPDOT'
+
 class BasicTokenizer:
     """Runs basic tokenization (punctuation splitting, lower casing, etc.)."""
 
@@ -64,7 +66,7 @@ class BasicTokenizer:
         """Tokenizes a piece of text."""
         text = convert_to_unicode(text)
         # handle (.) in bangla text
-        text = text.replace('.', 'XTEMPDOT')
+        text = text.replace('.', DUMMYTOKEN)
 
         orig_tokens = whitespace_tokenize(text)
         split_tokens = []
@@ -73,7 +75,7 @@ class BasicTokenizer:
 
         output_tokens = whitespace_tokenize(" ".join(split_tokens))
         # get (.) back in output tokens
-        output_tokens = [token.replace('XTEMPDOT', '.') for token in output_tokens]
+        output_tokens = [token.replace(DUMMYTOKEN, '.') for token in output_tokens]
         return output_tokens
 
     def _run_strip_accents(self, text):
