@@ -62,6 +62,9 @@ DUMMYTOKEN = 'XTEMPDOT'
 class BasicTokenizer:
     """Runs basic tokenization (punctuation splitting, lower casing, etc.)."""
 
+    def __call__(self, text: str) -> List[str]:
+        return self.tokenize(text)
+
     def tokenize(self, text: str) -> List[str]:
         """Tokenizes a piece of text."""
         text = convert_to_unicode(text)
