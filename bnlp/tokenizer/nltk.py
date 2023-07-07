@@ -8,7 +8,7 @@ except LookupError:
     nltk.download("punkt")
 
 
-DUMMYTOKEN = "<dummy_bangla_token>"
+DUMMYTOKEN = "XTEMPDOT"
 
 class NLTKTokenizer:
     def word_tokenize(self, text: str) -> List[str]:
