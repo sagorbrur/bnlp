@@ -2,8 +2,9 @@ __version__ = "4.0.0"
 
 
 import os
-from bnlp.pos import POS
+from bnlp.pos import BengaliPOS
 from bnlp.ner import BengaliNER
+from bnlp.token_classification_trainer import CRFTaggerTrainer
 from bnlp.tokenizer.nltk import NLTKTokenizer
 from bnlp.tokenizer.basic import BasicTokenizer
 from bnlp.tokenizer.sentencepiece import (
