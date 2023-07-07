@@ -6,9 +6,26 @@ from __future__ import print_function
 import os
 import sys
 import multiprocessing
+import numpy as np
 from gensim.models import Word2Vec
 from gensim.models.word2vec import LineSentence
 from bnlp.tokenizer.nltk import NLTKTokenizer
+
+from typing import List, Tuple
+
+
+class BengaliWord2Vec:
+    def __init__(self, model_path: str):
+        self.model = Word2Vec.load(model_path)
+    
+    def get_word_vector(self, word: str) -> np.ndarray:
+        vector = self.model.wv[word]
+        return vector
+
+    def get_most_similar_words(self, word: str, topn: int = 10) -> List[Tuple[str, float]]:
+        
+        similar_word = self.model.wv.most_similar(word, topn=topn)
+        return similar_word
 
 
 class MyCorpus:
@@ -28,7 +45,7 @@ class MyCorpus:
                 yield tokens
 
 
-class BengaliWord2Vec:
+class Word2VecTraining:
     def train(
         self,
         data_path,
@@ -109,7 +126,7 @@ class BengaliWord2Vec:
 
         print("train completed successfully")
         print(f"trianing loss: {training_loss}")
-        print(f"model and vector saving...")
+        print("model and vector saving...")
         model.save(model_name)
         model.wv.save_word2vec_format(vector_name, binary=False)
         print(f"model and vector saved as {model_name} and {vector_name}")
@@ -128,9 +145,9 @@ class BengaliWord2Vec:
         """
         if isinstance(new_sentences, str):
             new_sentences = MyCorpus(new_sentences)
-        print(f"model loading ....")
+        print("model loading ....")
         model = Word2Vec.load(model_path)
-        print(f"vocab building with new sentences")
+        print("vocab building with new sentences")
         model.build_vocab(new_sentences, update=True)
         print("pre-training started.......")
         print(
@@ -142,29 +159,9 @@ class BengaliWord2Vec:
 
         print("pre-train completed successfully")
         print(f"pre-trianing loss: {training_loss}")
-        print(f"model and vector saving...")
+        print("model and vector saving...")
         model.save(output_model_name)
         model.wv.save_word2vec_format(output_vector_name, binary=False)
         print(
             f"model and vector saved as {output_model_name} and {output_vector_name}"
         )
-
-    def generate_word_vector(self, model_path, input_word):
-        """
-        :model_name: (str) model path with file name and extension
-        :input_word: (str) word to generate vector
-
-        """
-        model = Word2Vec.load(model_path)
-        vector = model.wv[input_word]
-        return vector
-
-    def most_similar(self, model_path, word, topn=10):
-        """
-        :model_name: (str) model path with file name and extension
-        :word: (str) word to find similar word
-
-        """
-        model = Word2Vec.load(model_path)
-        similar_word = model.wv.most_similar(word, topn=topn)
-        return similar_word

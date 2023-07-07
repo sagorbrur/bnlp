@@ -10,7 +10,10 @@ from bnlp.tokenizer.sentencepiece import (
     SentencepieceTokenizer, 
     SentencepieceTrainer,
 )
-from bnlp.embedding.word2vec import BengaliWord2Vec
+from bnlp.embedding.word2vec import (
+    BengaliWord2Vec,
+    Word2VecTraining,
+)
 from bnlp.embedding.glove import BengaliGlove
 from bnlp.embedding.doc2vec import (
     BengaliDoc2vec, 
