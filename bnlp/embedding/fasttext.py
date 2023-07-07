@@ -1,12 +1,49 @@
 import multiprocessing
+import numpy as np
 
 try:
     import fasttext
 except ImportError:
     print("fasttext not installed. Install it by 'pip install fasttext'")
 
-
 class BengaliFasttext:
+    def __init__(self, model_path: str):
+        self.model = fasttext.load_model(model_path)
+
+    def generate_word_vector(self, word: str) -> np.ndarray:
+        """generate word vector from given input word
+
+        Args:
+            word (str): input word or token
+
+        Returns:
+            str: word or token vector
+        """
+        word_vector = self.model[word]
+
+        return word_vector
+
+    def bin2vec(self, vector_name: str):
+        """Generate vector text file from fasttext binary model
+
+        Args:
+            vector_name (str): name of the output vector with extension
+        """
+        output_vector = open(vector_name, "w")
+
+        words = self.model.get_words()
+        vocab_len = str(len(words))
+        dimension = str(self.model.get_dimension())
+        output_vector.write(vocab_len + " " + dimension + "\n")
+        for w in words:
+            v = self.model.get_word_vector(w)
+            vstr = ""
+            for vi in v:
+                vstr += " " + str(vi)
+            output_vector.write(w + vstr + "\n")
+        output_vector.close()
+
+class FasttextTrainer:
     def train(
         self,
         data,
@@ -61,40 +98,3 @@ class BengaliFasttext:
         )
         print(f"training done! saving as {model_name}")
         model.save_model(model_name)
-
-    def bin2vec(self, bin_model, vector_name):
-        """Generate vector text file from fasttext binary model
-
-        Args:
-            bin_model (bin): fasttext trained binary model
-            vector_name (str): name of the output vector with extension
-        """
-        output_vector = open(vector_name, "w")
-
-        f = fasttext.load_model(bin_model)
-        words = f.get_words()
-        vocab_len = str(len(words))
-        dimension = str(f.get_dimension())
-        output_vector.write(vocab_len + " " + dimension + "\n")
-        for w in words:
-            v = f.get_word_vector(w)
-            vstr = ""
-            for vi in v:
-                vstr += " " + str(vi)
-            output_vector.write(w + vstr + "\n")
-        output_vector.close()
-
-    def generate_word_vector(self, model_path, word):
-        """generate word vector from given input word
-
-        Args:
-            model_path (str): fasttext trained model path
-            word (str): input word or token
-
-        Returns:
-            str: word or token vector
-        """
-        model = fasttext.load_model(model_path)
-        word_vector = model[word]
-
-        return word_vector
