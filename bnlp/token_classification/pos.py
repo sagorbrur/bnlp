@@ -5,9 +5,9 @@ https://sklearn-crfsuite.readthedocs.io/en/latest/
 from sklearn_crfsuite import CRF
 from typing import Union, List, Tuple, Callable
 
-from .tokenizer.basic import BasicTokenizer
-from .utils.utils import load_pickle_model
-from .utils.utils import features
+from bnlp.tokenizer.basic import BasicTokenizer
+from bnlp.utils.utils import load_pickle_model
+from bnlp.utils.utils import features
 
 class BengaliPOS:
     def __init__(self, model_path: str, tokenizer: Callable = None):
