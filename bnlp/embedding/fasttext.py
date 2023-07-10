@@ -10,7 +10,7 @@ class BengaliFasttext:
     def __init__(self, model_path: str):
         self.model = fasttext.load_model(model_path)
 
-    def generate_word_vector(self, word: str) -> np.ndarray:
+    def get_word_vector(self, word: str) -> np.ndarray:
         """generate word vector from given input word
 
         Args:
