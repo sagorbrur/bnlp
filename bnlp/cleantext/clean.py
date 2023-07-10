@@ -97,7 +97,7 @@ class CleanText(object):
         self.replace_with_digit = replace_with_digit
         self.replace_with_punct = replace_with_punct
 
-    def __call__(self, text):
+    def __call__(self, text: str) -> str:
         if text is None:
             text = ""
         text = str(text)

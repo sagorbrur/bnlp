@@ -6,7 +6,6 @@ import re
 import sys
 import unicodedata
 
-# EMOJI_LANGUAGE = ['en', 'es', 'pt', 'it', 'fr', 'de', 'fa', 'id', 'zh', 'alias']
 
 BANGLA_DIGIT_REGEX = re.compile(
     r'[০-৯]+'
