@@ -80,18 +80,7 @@ class BasicTokenizer:
         # get (.) back in output tokens
         output_tokens = [token.replace(DUMMYTOKEN, '.') for token in output_tokens]
         return output_tokens
-
-    def _run_strip_accents(self, text):
-        """Strips accents from a piece of text."""
-        text = unicodedata.normalize("NFD", text)
-        output = []
-        for char in text:
-            cat = unicodedata.category(char)
-            if cat == "Mn":
-                continue
-            output.append(char)
-        return "".join(output)
-
+        
     def _run_split_on_punc(self, text):
         """Splits punctuation on a piece of text."""
         chars = list(text)
