@@ -21,3 +21,4 @@ from bnlp.embedding.doc2vec import (
     BengaliDoc2vecTrainer,
 )
 from bnlp.cleantext.clean import CleanText
+from bnlp.corpus.corpus import BengaliCorpus
