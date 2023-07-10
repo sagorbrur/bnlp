@@ -1,4 +1,4 @@
-bangla_stopwords = [
+bengali_stopwords = [
         "অতএব",
         "অথচ",
         "অথবা",

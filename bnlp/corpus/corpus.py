@@ -16,7 +16,7 @@ Available Corpus:
 from typing import List
 from dataclasses import dataclass
 from bnlp.tokenizer.basic import BasicTokenizer
-from ._stopwords import bangla_stopwords
+from ._stopwords import bengali_stopwords
 
 @dataclass
 class BengaliCorpus:
@@ -24,5 +24,5 @@ class BengaliCorpus:
     letters: str = "অআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহড়ঢ়য়ৎংঃঁ"
     digits: str = "০১২৩৪৫৬৭৮৯"
     vowels: str = "া ি ী ু ৃ ে ৈ ো ৌ"
-    stopwords: List[str] = bangla_stopwords
+    stopwords: List[str] = bengali_stopwords
 
