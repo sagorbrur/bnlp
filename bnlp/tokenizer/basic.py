@@ -66,7 +66,6 @@ class BasicTokenizer:
         """Tokenizes a piece of text."""
         text = convert_to_unicode(text)
         # handle (.) in bangla text
-        text = text.replace('.', 'XTEMPDOT')
 
         orig_tokens = whitespace_tokenize(text)
         # print("original tokens: ", orig_tokens)
@@ -77,7 +76,6 @@ class BasicTokenizer:
         # print("split tokens: ", split_tokens)
         output_tokens = whitespace_tokenize(" ".join(split_tokens))
         # get (.) back in output tokens
-        output_tokens = [token.replace('XTEMPDOT', '.') for token in output_tokens]
         return output_tokens
 
     def _run_strip_accents(self, text):
