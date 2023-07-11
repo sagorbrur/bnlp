@@ -1,5 +1,5 @@
 import unittest
-from bnlp.ner import BengaliNER
+from bnlp.token_classification.ner import BengaliNER
 
 class TestBengaliNER(unittest.TestCase):
     def setUp(self):

@@ -1,5 +1,5 @@
 import unittest
-from bnlp.pos import BengaliPOS
+from bnlp.token_classification.pos import BengaliPOS
 
 class TestBengaliNER(unittest.TestCase):
     def setUp(self):
