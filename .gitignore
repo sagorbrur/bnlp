@@ -1,3 +1,12 @@
+model/*
+!model/download_word2vec.sh
+!model/download_fasttext.sh
+!model/download_glove.sh
+!model/download_doc2vec.sh
+!model/bn_ner.pkl
+!model/bn_pos.pkl
+!model/bn_spm.model
+!model/bn_spm.vocab
 msc/
 temp.ipynb
 # Byte-compiled / optimized / DLL files
