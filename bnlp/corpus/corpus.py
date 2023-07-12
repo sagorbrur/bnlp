@@ -14,11 +14,9 @@ Available Corpus:
 """
 
 from typing import List
-from dataclasses import dataclass
 from bnlp.tokenizer.basic import BasicTokenizer
 from ._stopwords import bengali_stopwords
 
-@dataclass
 class BengaliCorpus:
     punctuations: str = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~।ঃ"
     letters: str = "অআইঈউঊঋএঐওঔকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহড়ঢ়য়ৎংঃঁ"
