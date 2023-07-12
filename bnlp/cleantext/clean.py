@@ -3,8 +3,8 @@ This cleantext scripts functions solely depends on clean-text library.
 Most of the functions are copied from clean-text.
 """
 import re
-from bnlp.corpus import punctuations
 from bnlp.cleantext import constants
+from bnlp.corpus.corpus import BengaliCorpus as corpus
 
 from ftfy import fix_text
 from unicodedata import category, normalize
@@ -57,7 +57,7 @@ def remove_number_or_digit(text, replace_with=""):
     return re.sub(constants.BANGLA_DIGIT_REGEX, replace_with, text)
 
 def remove_punctuations(text, replace_with=""):
-    for punc in punctuations:
+    for punc in corpus.punctuations:
         print(punc)
         text = text.replace(punc, replace_with)
     
