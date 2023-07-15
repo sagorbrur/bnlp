@@ -230,8 +230,8 @@ trained_model_path = "mytrained_model.model"
 data_file = "raw_text.txt"
 model_name = "test_model.model"
 vector_name = "test_vector.vector"
-
 trainer.pretrain(trained_model_path, data_file, model_name, vector_name, epochs=5)
+
 ```
 
 ### Bengali FastText
