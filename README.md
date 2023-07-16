@@ -253,6 +253,18 @@ NB: `fasttext` may not be worked in `windows`, it will only work in `linux`
   print(word_vector.shape)
   ```
 
+### Generate Vector File from Fasttext Binary Model
+
+```py
+from bnlp.embedding.fasttext import BengaliFasttext
+
+model_path = "mymodel.bin"
+bft = BengaliFasttext(model_path)
+
+out_vector_name = "myvector.txt"
+bft.bin2vec(out_vector_name)
+```
+
 ### Train Bengali FastText Model
 
 Check [fasttext documentation](https://fasttext.cc/docs/en/options.html) for details of training parameter
@@ -267,18 +279,6 @@ Check [fasttext documentation](https://fasttext.cc/docs/en/options.html) for det
   epoch = 50
   trainer.train(data, model_name, epoch)
   ```
-
-### Generate Vector File from Fasttext Binary Model
-
-```py
-from bnlp.embedding.fasttext import BengaliFasttext
-
-model_path = "mymodel.bin"
-bft = BengaliFasttext(model_path)
-
-out_vector_name = "myvector.txt"
-bft.bin2vec(out_vector_name)
-```
 
 ## Bengali GloVe Word Vectors
 
@@ -369,7 +369,7 @@ model_path = "model/bn_pos.pkl"
 bn_pos = BengaliPOS(model_path)
 
 text = "আমি ভাত খাই।" # or you can pass ['আমি', 'ভাত', 'খাই', '।']
-res = bn_pos.tag(model_path, text)
+res = bn_pos.tag(text)
 print(res)
 # [('আমি', 'PPR'), ('ভাত', 'NC'), ('খাই', 'VM'), ('।', 'PU')]
 ```
@@ -403,7 +403,7 @@ model_path = "model/bn_ner.pkl"
 bn_ner = BengaliNER(model_path)
 
 text = "সে ঢাকায় থাকে।" # or you can pass ['সে', 'ঢাকায়', 'থাকে', '।']
-result = bn_ner.tag(model_path, text)
+result = bn_ner.tag(text)
 print(result)
 # [('সে', 'O'), ('ঢাকায়', 'S-LOC'), ('থাকে', 'O')]
 ```
