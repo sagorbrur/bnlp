@@ -3,6 +3,8 @@
 [![PyPI version](https://img.shields.io/pypi/v/bnlp_toolkit)](https://pypi.org/project/bnlp-toolkit/)
 [![Downloads](https://pepy.tech/badge/bnlp-toolkit)](https://pepy.tech/project/bnlp-toolkit)
 
+__Check out [bnlp 4.0.0 dev](https://pypi.org/project/bnlp-toolkit/4.0.0.dev0/) version and its [documentation](https://pypi.org/project/bnlp-toolkit/4.0.0.dev0/). bnlp 4.0.0 was designed with the proper object-oriented method to initiate class with the trained model to re-use for getting results.__
+
 BNLP is a natural language processing toolkit for Bengali Language. This tool will help you to **tokenize Bengali text**, **Embedding Bengali words**, **Embedding Bengali Document**, **Bengali POS Tagging**, **Bengali Name Entity Recognition**, **Bangla Text Cleaning** for Bengali NLP purposes.
 
 Table of contents
