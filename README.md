@@ -192,13 +192,14 @@ trainer.train()
 
 ### Bengali Word2Vec
 
-#### Generate Vector using pretrain model
+#### Generate Vector Using Pretrain Model
+
+To use pretrained model do not pass `model_path` to `BengaliWord2Vec()`. It will download pretrained `BengaliWord2Vec` model itself.
 
 ```py
 from bnlp import BengaliWord2Vec
 
-model_path = "bengali_word2vec.model"
-bwv = BengaliWord2Vec(model_path)
+bwv = BengaliWord2Vec()
 
 word = 'গ্রাম'
 vector = bwv.get_word_vector(word)
@@ -207,11 +208,42 @@ print(vector.shape)
 
 #### Find Most Similar Word Using Pretrained Model
 
+To use pretrained model do not pass `model_path` to `BengaliWord2Vec()`. It will download pretrained `BengaliWord2Vec` model itself.
+
 ```py
 from bnlp import BengaliWord2Vec
 
-model_path = "bengali_word2vec.model"
-bwv = BengaliWord2Vec(model_path)
+bwv = BengaliWord2Vec()
+
+word = 'গ্রাম'
+similar_words = bwv.get_most_similar_words(word, topn=10)
+print(similar_words)
+```
+
+#### Generate Vector Using Own Model
+
+To use own model pass model path as `model_path` argument to `BengaliWord2Vec()` like below snippet
+
+```py
+from bnlp import BengaliWord2Vec
+
+own_model_path = "own_directory/own_bwv_model.pkl"
+bwv = BengaliWord2Vec(model_path=own_model_path)
+
+word = 'গ্রাম'
+vector = bwv.get_word_vector(word)
+print(vector.shape)
+```
+
+#### Find Most Similar Word Using Own Model
+
+To use own model pass model path as `model_path` argument to `BengaliWord2Vec()` like below snippet
+
+```py
+from bnlp import BengaliWord2Vec
+
+own_model_path = "own_directory/own_bwv_model.pkl"
+bwv = BengaliWord2Vec(model_path=own_model_path)
 
 word = 'গ্রাম'
 similar_words = bwv.get_most_similar_words(word, topn=10)

@@ -14,11 +14,15 @@ from gensim.models import Word2Vec
 from gensim.models.word2vec import LineSentence
 from bnlp.tokenizer.nltk import NLTKTokenizer
 
+from bnlp.utils.downloader import download_model
+
 from typing import List, Tuple
 
 
 class BengaliWord2Vec:
-    def __init__(self, model_path: str):
+    def __init__(self, model_path: str = ""):
+        if not model_path:
+            model_path = download_model("WORD2VEC")
         self.model = Word2Vec.load(model_path)
     
     def get_word_vector(self, word: str) -> np.ndarray:
