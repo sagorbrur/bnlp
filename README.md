@@ -395,12 +395,23 @@ trainer.train(model_name, train_data, test_data)
 ### Bengali CRF NER
 
 #### Find NER Tag Using Pretrained Model
-
+1. To use pretrained model do not pass `model_path` to `BengaliNER()`. It will download pretrained `BengaliNER` model itself.
 ```py
 from bnlp import BengaliNER
 
-model_path = "model/bn_ner.pkl"
-bn_ner = BengaliNER(model_path)
+bn_ner = BengaliNER()
+
+text = "সে ঢাকায় থাকে।" # or you can pass ['সে', 'ঢাকায়', 'থাকে', '।']
+result = bn_ner.tag(text)
+print(result)
+# [('সে', 'O'), ('ঢাকায়', 'S-LOC'), ('থাকে', 'O')]
+```
+2. To use own model pass model path as `model_path` argument to `BengaliNER()` like below snippet.
+```py
+from bnlp import BengaliNER
+
+own_model_path = "own_directory/own_ner_model.pkl"
+bn_ner = BengaliNER(model_path=own_model_path)
 
 text = "সে ঢাকায় থাকে।" # or you can pass ['সে', 'ঢাকায়', 'থাকে', '।']
 result = bn_ner.tag(text)
