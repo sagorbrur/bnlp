@@ -133,11 +133,33 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 ### Bengali SentencePiece Tokenization
 
 #### Tokenization using trained model
+
+To use pretrained model do not pass `model_path` to `SentencepieceTokenizer()`. It will download pretrained `SentencepieceTokenizer` model itself.
+
 ```py
 from bnlp import SentencepieceTokenizer
 
-model_path = "./model/bn_spm.model"
-bsp = SentencepieceTokenizer(model_path)
+bsp = SentencepieceTokenizer()
+
+
+input_text = "আমি ভাত খাই। সে বাজারে যায়।"
+tokens = bsp.tokenize(input_text)
+print(tokens)
+text2id = bsp.text2id(input_text)
+print(text2id)
+id2text = bsp.id2text(text2id)
+print(id2text)
+```
+
+#### Tokenization Using Own Model
+
+To use own model pass model path as `model_path` argument to `SentencepieceTokenizer()` like below snippet.
+
+```py
+from bnlp import SentencepieceTokenizer
+
+own_model_path = "own_directory/own_sp_model.pkl"
+bsp = SentencepieceTokenizer(model_path=own_model_path)
 
 
 input_text = "আমি ভাত খাই। সে বাজারে যায়।"
@@ -362,11 +384,28 @@ trainer.train(
 
 #### Find Pos Tag Using Pretrained Model
 
+To use pretrained model do not pass `model_path` to `BengaliPOS()`. It will download pretrained `BengaliPOS` model itself.
+
 ```py
 from bnlp import BengaliPOS
 
-model_path = "model/bn_pos.pkl"
-bn_pos = BengaliPOS(model_path)
+bn_pos = BengaliPOS()
+
+text = "আমি ভাত খাই।" # or you can pass ['আমি', 'ভাত', 'খাই', '।']
+res = bn_pos.tag(text)
+print(res)
+# [('আমি', 'PPR'), ('ভাত', 'NC'), ('খাই', 'VM'), ('।', 'PU')]
+```
+
+#### Find Pos Tag Using Own Model
+
+To use own model pass model path as `model_path` argument to `BengaliPOS()` like below snippet.
+
+```py
+from bnlp import BengaliPOS
+
+own_model_path = "own_directory/own_pos_model.pkl"
+bn_pos = BengaliPOS(model_path=own_model_path)
 
 text = "আমি ভাত খাই।" # or you can pass ['আমি', 'ভাত', 'খাই', '।']
 res = bn_pos.tag(text)
@@ -395,7 +434,9 @@ trainer.train(model_name, train_data, test_data)
 ### Bengali CRF NER
 
 #### Find NER Tag Using Pretrained Model
-1. To use pretrained model do not pass `model_path` to `BengaliNER()`. It will download pretrained `BengaliNER` model itself.
+
+To use pretrained model do not pass `model_path` to `BengaliNER()`. It will download pretrained `BengaliNER` model itself.
+
 ```py
 from bnlp import BengaliNER
 
@@ -406,7 +447,11 @@ result = bn_ner.tag(text)
 print(result)
 # [('সে', 'O'), ('ঢাকায়', 'S-LOC'), ('থাকে', 'O')]
 ```
-2. To use own model pass model path as `model_path` argument to `BengaliNER()` like below snippet.
+
+#### Find NER Tag Using Own Model
+
+To use own model pass model path as `model_path` argument to `BengaliNER()` like below snippet.
+
 ```py
 from bnlp import BengaliNER
 

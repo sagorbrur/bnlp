@@ -3,8 +3,12 @@ from typing import List
 import sentencepiece as bsp
 
 
+from bnlp.utils.downloader import download_model
+
 class SentencepieceTokenizer:
-    def __init__(self, model_path: str):
+    def __init__(self, model_path: str = ""):
+        if not model_path:
+            model_path = download_model("SPM")
         self.model = bsp.SentencePieceProcessor()
         self.model.Load(model_path)
 

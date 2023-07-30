@@ -8,9 +8,12 @@ from typing import Union, List, Tuple, Callable
 from bnlp.tokenizer.basic import BasicTokenizer
 from bnlp.utils.utils import load_pickle_model
 from bnlp.utils.utils import features
+from bnlp.utils.downloader import download_model
 
 class BengaliPOS:
-    def __init__(self, model_path: str, tokenizer: Callable = None):
+    def __init__(self, model_path: str = "", tokenizer: Callable = None):
+        if not model_path:
+            model_path = download_model("POS")
         self.model = load_pickle_model(model_path)
         self.tokenizer = tokenizer if tokenizer else BasicTokenizer()
 
