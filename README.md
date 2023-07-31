@@ -373,8 +373,7 @@ You can download and use it on your different machine learning purposes.
 ```py
 from bnlp import BengaliGlove
 
-glove_path = "bn_glove.39M.100d.txt"
-bengali_glove = BengaliGlove(glove_path)
+bengali_glove = BengaliGlove() # will automatically download pretrained model
 
 word = "গ্রাম"
 vector = bengali_glove.get_word_vector(word)
