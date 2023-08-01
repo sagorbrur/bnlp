@@ -11,6 +11,7 @@ from typing import Callable, List
 from gensim.models.doc2vec import Doc2Vec
 
 from bnlp.tokenizer.basic import BasicTokenizer
+from bnlp.utils.downloader import download_model
 
 default_tokenizer = BasicTokenizer()
 
@@ -29,9 +30,13 @@ def _read_corpus(files: List[str], tokenizer=None):
 class BengaliDoc2vec:
     def __init__(
         self,
-        model_path: str,
+        model_path: str = "",
         tokenizer: Callable = None
         ):
+        if model_path == "" or model_path == "NEWS_DOC2VEC":
+            model_path = download_model("NEWS_DOC2VEC")
+        if model_path == "WIKI_DOC2VEC":
+            model_path = download_model("WIKI_DOC2VEC")
         self.tokenizer = tokenizer
         self.model = Doc2Vec.load(model_path)
 

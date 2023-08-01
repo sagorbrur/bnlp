@@ -133,11 +133,33 @@ Large model published in [huggingface](https://huggingface.co/) model hub.
 ### Bengali SentencePiece Tokenization
 
 #### Tokenization using trained model
+
+To use pretrained model do not pass `model_path` to `SentencepieceTokenizer()`. It will download pretrained `SentencepieceTokenizer` model itself.
+
 ```py
 from bnlp import SentencepieceTokenizer
 
-model_path = "./model/bn_spm.model"
-bsp = SentencepieceTokenizer(model_path)
+bsp = SentencepieceTokenizer()
+
+
+input_text = "আমি ভাত খাই। সে বাজারে যায়।"
+tokens = bsp.tokenize(input_text)
+print(tokens)
+text2id = bsp.text2id(input_text)
+print(text2id)
+id2text = bsp.id2text(text2id)
+print(id2text)
+```
+
+#### Tokenization Using Own Model
+
+To use own model pass model path as `model_path` argument to `SentencepieceTokenizer()` like below snippet.
+
+```py
+from bnlp import SentencepieceTokenizer
+
+own_model_path = "own_directory/own_sp_model.pkl"
+bsp = SentencepieceTokenizer(model_path=own_model_path)
 
 
 input_text = "আমি ভাত খাই। সে বাজারে যায়।"
@@ -170,13 +192,14 @@ trainer.train()
 
 ### Bengali Word2Vec
 
-#### Generate Vector using pretrain model
+#### Generate Vector Using Pretrain Model
+
+To use pretrained model do not pass `model_path` to `BengaliWord2Vec()`. It will download pretrained `BengaliWord2Vec` model itself.
 
 ```py
 from bnlp import BengaliWord2Vec
 
-model_path = "bengali_word2vec.model"
-bwv = BengaliWord2Vec(model_path)
+bwv = BengaliWord2Vec()
 
 word = 'গ্রাম'
 vector = bwv.get_word_vector(word)
@@ -185,11 +208,42 @@ print(vector.shape)
 
 #### Find Most Similar Word Using Pretrained Model
 
+To use pretrained model do not pass `model_path` to `BengaliWord2Vec()`. It will download pretrained `BengaliWord2Vec` model itself.
+
 ```py
 from bnlp import BengaliWord2Vec
 
-model_path = "bengali_word2vec.model"
-bwv = BengaliWord2Vec(model_path)
+bwv = BengaliWord2Vec()
+
+word = 'গ্রাম'
+similar_words = bwv.get_most_similar_words(word, topn=10)
+print(similar_words)
+```
+
+#### Generate Vector Using Own Model
+
+To use own model pass model path as `model_path` argument to `BengaliWord2Vec()` like below snippet
+
+```py
+from bnlp import BengaliWord2Vec
+
+own_model_path = "own_directory/own_bwv_model.pkl"
+bwv = BengaliWord2Vec(model_path=own_model_path)
+
+word = 'গ্রাম'
+vector = bwv.get_word_vector(word)
+print(vector.shape)
+```
+
+#### Find Most Similar Word Using Own Model
+
+To use own model pass model path as `model_path` argument to `BengaliWord2Vec()` like below snippet
+
+```py
+from bnlp import BengaliWord2Vec
+
+own_model_path = "own_directory/own_bwv_model.pkl"
+bwv = BengaliWord2Vec(model_path=own_model_path)
 
 word = 'গ্রাম'
 similar_words = bwv.get_most_similar_words(word, topn=10)
@@ -238,28 +292,59 @@ trainer.pretrain(trained_model_path, data_file, model_name, vector_name, epochs=
 
 To use `fasttext` you need to install fasttext manually by `pip install fasttext==0.9.2`
 
-NB: `fasttext` may not be worked in `windows`, it will only work in `linux`
+NB: To use `fasttext` on `windows`, install `fasttext` by following [this article](https://medium.com/@oleg.tarasov/building-fasttext-python-wrapper-from-source-under-windows-68e693a68cbb).
 
 ### Generate Vector Using Pretrained Model
 
-  ```py
-  from bnlp.embedding.fasttext import BengaliFasttext
-
-  model_path = "bengali_fasttext_wiki.bin"
-  bft = BengaliFasttext(model_path)
-
-  word = "গ্রাম"
-  word_vector = bft.get_word_vector(model_path, word)
-  print(word_vector.shape)
-  ```
-
-### Generate Vector File from Fasttext Binary Model
+To use pretrained model do not pass `model_path` to `BengaliFasttext()`. It will download pretrained `BengaliFasttext` model itself.
 
 ```py
 from bnlp.embedding.fasttext import BengaliFasttext
 
-model_path = "mymodel.bin"
-bft = BengaliFasttext(model_path)
+bft = BengaliFasttext()
+
+word = "গ্রাম"
+word_vector = bft.get_word_vector(word)
+print(word_vector.shape)
+```
+
+### Generate Vector File from Fasttext Binary Model
+
+To use pretrained model do not pass `model_path` to `BengaliFasttext()`. It will download pretrained `BengaliFasttext` model itself.
+
+```py
+from bnlp.embedding.fasttext import BengaliFasttext
+
+bft = BengaliFasttext()
+
+out_vector_name = "myvector.txt"
+bft.bin2vec(out_vector_name)
+```
+
+### Generate Vector Using Pretrained Model
+
+To use own model pass model path as `model_path` argument to `BengaliFasttext()` like below snippet.
+
+```py
+from bnlp.embedding.fasttext import BengaliFasttext
+
+own_model_path = "own_directory/own_fasttext_model.bin"
+bft = BengaliFasttext(model_path=own_model_path)
+
+word = "গ্রাম"
+word_vector = bft.get_word_vector(model_path, word)
+print(word_vector.shape)
+```
+
+### Generate Vector File from Fasttext Binary Model
+
+To use own model pass model path as `model_path` argument to `BengaliFasttext()` like below snippet.
+
+```py
+from bnlp.embedding.fasttext import BengaliFasttext
+
+own_model_path = "own_directory/own_fasttext_model.bin"
+bft = BengaliFasttext(model_path=own_model_path)
 
 out_vector_name = "myvector.txt"
 bft.bin2vec(out_vector_name)
@@ -288,8 +373,7 @@ You can download and use it on your different machine learning purposes.
 ```py
 from bnlp import BengaliGlove
 
-glove_path = "bn_glove.39M.100d.txt"
-bengali_glove = BengaliGlove(glove_path)
+bengali_glove = BengaliGlove() # will automatically download pretrained model
 
 word = "গ্রাম"
 vector = bengali_glove.get_word_vector(word)
@@ -302,12 +386,52 @@ print(similar_words)
 ## Document Embedding
 
 ### Bengali Doc2Vec
+
+We have two pretrained model for `BengaliDoc2vec`, one is trained on News Article dataset (identified as `NEWS_DOC2VEC`) and another is trained on Wikipedia Dump dataset (identified as `WIKI_DOC2VEC`).
+
+To use pretrained model pass `NEWS_DOC2VEC`, or `WIKI_DOC2VEC` as `model_path` to `BengaliDoc2vec()`. It will download desired pretrained `BengaliDoc2vec` model itself.
+
 #### Get document vector from input document
 
 ```py
 from bnlp import BengaliDoc2vec
 
-model_path = "bangla_news_article_doc2vec.model" # keep other .npy model files also in same folder
+model_key = "NEWS_DOC2VEC" # set this to WIKI_DOC2VEC for model trained on Wikipedis
+bn_doc2vec = BengaliDoc2vec(model_path=model_key) # if model_path path is not passed NEWS_DOC2VEC will be selected
+
+document = "রাষ্ট্রবিরোধী ও উসকানিমূলক বক্তব্য দেওয়ার অভিযোগে গাজীপুরের গাছা থানায় ডিজিটাল নিরাপত্তা আইনে করা মামলায় আলোচিত ‘শিশুবক্তা’ রফিকুল ইসলামের বিরুদ্ধে অভিযোগ গঠন করেছেন আদালত। ফলে মামলার আনুষ্ঠানিক বিচার শুরু হলো। আজ বুধবার (২৬ জানুয়ারি) ঢাকার সাইবার ট্রাইব্যুনালের বিচারক আসসামছ জগলুল হোসেন এ অভিযোগ গঠন করেন। এর আগে, রফিকুল ইসলামকে কারাগার থেকে আদালতে হাজির করা হয়। এরপর তাকে নির্দোষ দাবি করে তার আইনজীবী শোহেল মো. ফজলে রাব্বি অব্যাহতি চেয়ে আবেদন করেন। অন্যদিকে, রাষ্ট্রপক্ষ অভিযোগ গঠনের পক্ষে শুনানি করেন। উভয় পক্ষের শুনানি শেষে আদালত অব্যাহতির আবেদন খারিজ করে অভিযোগ গঠনের মাধ্যমে বিচার শুরুর আদেশ দেন। একইসঙ্গে সাক্ষ্যগ্রহণের জন্য আগামী ২২ ফেব্রুয়ারি দিন ধার্য করেন আদালত।"
+vector = bn_doc2vec.get_document_vector(text)
+print(vector.shape)
+
+```
+
+#### Find document similarity between two document
+
+```py
+from bnlp import BengaliDoc2vec
+
+model_key = "NEWS_DOC2VEC" # set this to WIKI_DOC2VEC for model trained on Wikipedis
+bn_doc2vec = BengaliDoc2vec(model_path=model_key) # if model_path path is not passed NEWS_DOC2VEC will be selected
+
+article_1 = "রাষ্ট্রবিরোধী ও উসকানিমূলক বক্তব্য দেওয়ার অভিযোগে গাজীপুরের গাছা থানায় ডিজিটাল নিরাপত্তা আইনে করা মামলায় আলোচিত ‘শিশুবক্তা’ রফিকুল ইসলামের বিরুদ্ধে অভিযোগ গঠন করেছেন আদালত। ফলে মামলার আনুষ্ঠানিক বিচার শুরু হলো। আজ বুধবার (২৬ জানুয়ারি) ঢাকার সাইবার ট্রাইব্যুনালের বিচারক আসসামছ জগলুল হোসেন এ অভিযোগ গঠন করেন। এর আগে, রফিকুল ইসলামকে কারাগার থেকে আদালতে হাজির করা হয়। এরপর তাকে নির্দোষ দাবি করে তার আইনজীবী শোহেল মো. ফজলে রাব্বি অব্যাহতি চেয়ে আবেদন করেন। অন্যদিকে, রাষ্ট্রপক্ষ অভিযোগ গঠনের পক্ষে শুনানি করেন। উভয় পক্ষের শুনানি শেষে আদালত অব্যাহতির আবেদন খারিজ করে অভিযোগ গঠনের মাধ্যমে বিচার শুরুর আদেশ দেন। একইসঙ্গে সাক্ষ্যগ্রহণের জন্য আগামী ২২ ফেব্রুয়ারি দিন ধার্য করেন আদালত।"
+article_2 = "রাষ্ট্রবিরোধী ও উসকানিমূলক বক্তব্য দেওয়ার অভিযোগে গাজীপুরের গাছা থানায় ডিজিটাল নিরাপত্তা আইনে করা মামলায় আলোচিত ‘শিশুবক্তা’ রফিকুল ইসলামের বিরুদ্ধে অভিযোগ গঠন করেছেন আদালত। ফলে মামলার আনুষ্ঠানিক বিচার শুরু হলো। আজ বুধবার (২৬ জানুয়ারি) ঢাকার সাইবার ট্রাইব্যুনালের বিচারক আসসামছ জগলুল হোসেন এ অভিযোগ গঠন করেন। এর আগে, রফিকুল ইসলামকে কারাগার থেকে আদালতে হাজির করা হয়। এরপর তাকে নির্দোষ দাবি করে তার আইনজীবী শোহেল মো. ফজলে রাব্বি অব্যাহতি চেয়ে আবেদন করেন। অন্যদিকে, রাষ্ট্রপক্ষ অভিযোগ গঠনের পক্ষে শুনানি করেন। উভয় পক্ষের শুনানি শেষে আদালত অব্যাহতির আবেদন খারিজ করে অভিযোগ গঠনের মাধ্যমে বিচার শুরুর আদেশ দেন। একইসঙ্গে সাক্ষ্যগ্রহণের জন্য আগামী ২২ ফেব্রুয়ারি দিন ধার্য করেন আদালত।"
+
+similarity = bn_doc2vec.get_document_similarity(
+  article_1,
+  article_2
+)
+print(similarity)
+
+```
+
+To use own model pass model path as `model_path` argument to `BengaliDoc2vec()` like below snippet.
+
+#### Get document vector from input document
+
+```py
+from bnlp import BengaliDoc2vec
+
+own_model_path = "own_directory/own_doc2vec_model.pkl" # keep other .npy model files also in same folder
 bn_doc2vec = BengaliDoc2vec(model_path)
 
 document = "রাষ্ট্রবিরোধী ও উসকানিমূলক বক্তব্য দেওয়ার অভিযোগে গাজীপুরের গাছা থানায় ডিজিটাল নিরাপত্তা আইনে করা মামলায় আলোচিত ‘শিশুবক্তা’ রফিকুল ইসলামের বিরুদ্ধে অভিযোগ গঠন করেছেন আদালত। ফলে মামলার আনুষ্ঠানিক বিচার শুরু হলো। আজ বুধবার (২৬ জানুয়ারি) ঢাকার সাইবার ট্রাইব্যুনালের বিচারক আসসামছ জগলুল হোসেন এ অভিযোগ গঠন করেন। এর আগে, রফিকুল ইসলামকে কারাগার থেকে আদালতে হাজির করা হয়। এরপর তাকে নির্দোষ দাবি করে তার আইনজীবী শোহেল মো. ফজলে রাব্বি অব্যাহতি চেয়ে আবেদন করেন। অন্যদিকে, রাষ্ট্রপক্ষ অভিযোগ গঠনের পক্ষে শুনানি করেন। উভয় পক্ষের শুনানি শেষে আদালত অব্যাহতির আবেদন খারিজ করে অভিযোগ গঠনের মাধ্যমে বিচার শুরুর আদেশ দেন। একইসঙ্গে সাক্ষ্যগ্রহণের জন্য আগামী ২২ ফেব্রুয়ারি দিন ধার্য করেন আদালত।"
@@ -321,7 +445,7 @@ print(vector.shape)
 ```py
 from bnlp import BengaliDoc2vec
 
-model_path = "bangla_news_article_doc2vec.model" # keep other .npy model files also in same folder
+own_model_path = "own_directory/own_doc2vec_model.pkl" # keep other .npy model files also in same folder
 bn_doc2vec = BengaliDoc2vec(model_path)
 
 article_1 = "রাষ্ট্রবিরোধী ও উসকানিমূলক বক্তব্য দেওয়ার অভিযোগে গাজীপুরের গাছা থানায় ডিজিটাল নিরাপত্তা আইনে করা মামলায় আলোচিত ‘শিশুবক্তা’ রফিকুল ইসলামের বিরুদ্ধে অভিযোগ গঠন করেছেন আদালত। ফলে মামলার আনুষ্ঠানিক বিচার শুরু হলো। আজ বুধবার (২৬ জানুয়ারি) ঢাকার সাইবার ট্রাইব্যুনালের বিচারক আসসামছ জগলুল হোসেন এ অভিযোগ গঠন করেন। এর আগে, রফিকুল ইসলামকে কারাগার থেকে আদালতে হাজির করা হয়। এরপর তাকে নির্দোষ দাবি করে তার আইনজীবী শোহেল মো. ফজলে রাব্বি অব্যাহতি চেয়ে আবেদন করেন। অন্যদিকে, রাষ্ট্রপক্ষ অভিযোগ গঠনের পক্ষে শুনানি করেন। উভয় পক্ষের শুনানি শেষে আদালত অব্যাহতির আবেদন খারিজ করে অভিযোগ গঠনের মাধ্যমে বিচার শুরুর আদেশ দেন। একইসঙ্গে সাক্ষ্যগ্রহণের জন্য আগামী ২২ ফেব্রুয়ারি দিন ধার্য করেন আদালত।"
@@ -362,11 +486,28 @@ trainer.train(
 
 #### Find Pos Tag Using Pretrained Model
 
+To use pretrained model do not pass `model_path` to `BengaliPOS()`. It will download pretrained `BengaliPOS` model itself.
+
 ```py
 from bnlp import BengaliPOS
 
-model_path = "model/bn_pos.pkl"
-bn_pos = BengaliPOS(model_path)
+bn_pos = BengaliPOS()
+
+text = "আমি ভাত খাই।" # or you can pass ['আমি', 'ভাত', 'খাই', '।']
+res = bn_pos.tag(text)
+print(res)
+# [('আমি', 'PPR'), ('ভাত', 'NC'), ('খাই', 'VM'), ('।', 'PU')]
+```
+
+#### Find Pos Tag Using Own Model
+
+To use own model pass model path as `model_path` argument to `BengaliPOS()` like below snippet.
+
+```py
+from bnlp import BengaliPOS
+
+own_model_path = "own_directory/own_pos_model.pkl"
+bn_pos = BengaliPOS(model_path=own_model_path)
 
 text = "আমি ভাত খাই।" # or you can pass ['আমি', 'ভাত', 'খাই', '।']
 res = bn_pos.tag(text)
@@ -396,11 +537,28 @@ trainer.train(model_name, train_data, test_data)
 
 #### Find NER Tag Using Pretrained Model
 
+To use pretrained model do not pass `model_path` to `BengaliNER()`. It will download pretrained `BengaliNER` model itself.
+
 ```py
 from bnlp import BengaliNER
 
-model_path = "model/bn_ner.pkl"
-bn_ner = BengaliNER(model_path)
+bn_ner = BengaliNER()
+
+text = "সে ঢাকায় থাকে।" # or you can pass ['সে', 'ঢাকায়', 'থাকে', '।']
+result = bn_ner.tag(text)
+print(result)
+# [('সে', 'O'), ('ঢাকায়', 'S-LOC'), ('থাকে', 'O')]
+```
+
+#### Find NER Tag Using Own Model
+
+To use own model pass model path as `model_path` argument to `BengaliNER()` like below snippet.
+
+```py
+from bnlp import BengaliNER
+
+own_model_path = "own_directory/own_ner_model.pkl"
+bn_ner = BengaliNER(model_path=own_model_path)
 
 text = "সে ঢাকায় থাকে।" # or you can pass ['সে', 'ঢাকায়', 'থাকে', '।']
 result = bn_ner.tag(text)

@@ -1,13 +1,17 @@
 import multiprocessing
 import numpy as np
 
+from bnlp.utils.downloader import download_model
+
 try:
     import fasttext
 except ImportError:
     print("fasttext not installed. Install it by 'pip install fasttext'")
 
 class BengaliFasttext:
-    def __init__(self, model_path: str):
+    def __init__(self, model_path: str = ""):
+        if not model_path:
+            model_path = download_model("FASTTEXT")
         self.model = fasttext.load_model(model_path)
 
     def get_word_vector(self, word: str) -> np.ndarray:

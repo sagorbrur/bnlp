@@ -3,8 +3,12 @@ import numpy as np
 from typing import List
 from scipy import spatial
 
+from bnlp.utils.downloader import download_model
+
 class BengaliGlove:
-    def __init__(self, glove_vector_path: str):
+    def __init__(self, glove_vector_path: str = ""):
+        if not glove_vector_path:
+            glove_vector_path = download_model("GLOVE")
         self.embedding_dict = self._get_embedding_dict(glove_vector_path)
 
     def get_word_vector(self, word: str) -> np.ndarray:
@@ -25,7 +29,7 @@ class BengaliGlove:
 
     def _get_embedding_dict(self, glove_vector_path: str):
         embeddings_dict = {}
-        with open(glove_vector_path, "r") as f:
+        with open(glove_vector_path, "r", encoding="utf-8") as f:
             for line in f:
                 values = line.split()
                 word = values[0]
