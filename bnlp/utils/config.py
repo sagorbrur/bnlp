@@ -1,7 +1,6 @@
 """Module providing Config for model name and URL."""
-from enum import Enum
 
-class ModelTypeEnum(Enum):
+class ModelTypeEnum:
     NER = "NER"
     POS = "POS"
     SENTENCEPIECE = "SPM"
