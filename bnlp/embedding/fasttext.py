@@ -2,6 +2,7 @@ import multiprocessing
 import numpy as np
 
 from bnlp.utils.downloader import download_model
+from bnlp.utils.config import ModelTypeEnum
 
 try:
     import fasttext
@@ -11,7 +12,7 @@ except ImportError:
 class BengaliFasttext:
     def __init__(self, model_path: str = ""):
         if not model_path:
-            model_path = download_model("FASTTEXT")
+            model_path = download_model(ModelTypeEnum.FASTTEXT)
         self.model = fasttext.load_model(model_path)
 
     def get_word_vector(self, word: str) -> np.ndarray:

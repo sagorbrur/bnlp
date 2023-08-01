@@ -1,4 +1,16 @@
 """Module providing Config for model name and URL."""
+from enum import Enum
+
+class ModelTypeEnum(Enum):
+    NER = "NER"
+    POS = "POS"
+    SENTENCEPIECE = "SPM"
+    FASTTEXT = "FASTTEXT"
+    GLOVE = "GLOVE"
+    NEWS_DOC2VEC = "NEWS_DOC2VEC"
+    WIKI_DOC2VEC = "WIKI_DOC2VEC"
+    WORD2VEC = "WORD2VEC"
+
 
 class ModelInfo():
     """Class for various model name and their URLs
@@ -80,3 +92,5 @@ class ModelInfo():
         """
         all_model_keys = list(ModelInfo.__url_dict.keys())
         return all_model_keys
+
+

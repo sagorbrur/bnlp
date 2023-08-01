@@ -4,11 +4,12 @@ import sentencepiece as bsp
 
 
 from bnlp.utils.downloader import download_model
+from bnlp.utils.config import ModelTypeEnum
 
 class SentencepieceTokenizer:
     def __init__(self, model_path: str = ""):
         if not model_path:
-            model_path = download_model("SPM")
+            model_path = download_model(ModelTypeEnum.SENTENCEPIECE)
         self.model = bsp.SentencePieceProcessor()
         self.model.Load(model_path)
 

@@ -4,11 +4,12 @@ from typing import List
 from scipy import spatial
 
 from bnlp.utils.downloader import download_model
+from bnlp.utils.config import ModelTypeEnum
 
 class BengaliGlove:
     def __init__(self, glove_vector_path: str = ""):
         if not glove_vector_path:
-            glove_vector_path = download_model("GLOVE")
+            glove_vector_path = download_model(ModelTypeEnum.GLOVE)
         self.embedding_dict = self._get_embedding_dict(glove_vector_path)
 
     def get_word_vector(self, word: str) -> np.ndarray:

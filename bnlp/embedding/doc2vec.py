@@ -12,6 +12,7 @@ from gensim.models.doc2vec import Doc2Vec
 
 from bnlp.tokenizer.basic import BasicTokenizer
 from bnlp.utils.downloader import download_model
+from bnlp.utils.config import ModelTypeEnum
 
 default_tokenizer = BasicTokenizer()
 
@@ -33,10 +34,10 @@ class BengaliDoc2vec:
         model_path: str = "",
         tokenizer: Callable = None
         ):
-        if model_path == "" or model_path == "NEWS_DOC2VEC":
-            model_path = download_model("NEWS_DOC2VEC")
-        if model_path == "WIKI_DOC2VEC":
-            model_path = download_model("WIKI_DOC2VEC")
+        if model_path == "" or model_path == ModelTypeEnum.NEWS_DOC2VEC:
+            model_path = download_model(ModelTypeEnum.NEWS_DOC2VEC)
+        if model_path == ModelTypeEnum.WIKI_DOC2VEC:
+            model_path = download_model(ModelTypeEnum.WIKI_DOC2VEC)
         self.tokenizer = tokenizer
         self.model = Doc2Vec.load(model_path)
 
