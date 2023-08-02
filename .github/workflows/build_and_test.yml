@@ -42,5 +42,5 @@ jobs:
         python -m tests.embedding.test_docvec
         python -m tests.embedding.test_glove
         python -m tests.embedding.test_word2vec
-        python -m tests.test_ner
-        python -m tests.test_pos
+        python -m tests.token_classification.test_ner
+        python -m tests.token_classification.test_pos
