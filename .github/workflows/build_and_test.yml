@@ -5,9 +5,9 @@ name: Building and Testing
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "bnlp_4_dev" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master", "bnlp_4_dev" ]
 
 jobs:
   build:
@@ -39,5 +39,8 @@ jobs:
         python -m tests.tokenizer.test_basic_tokenizer
         python -m tests.tokenizer.test_nltk_tokenizer
         python -m tests.tokenizer.test_sentencepiece_tokenizer
+        python -m tests.embedding.test_docvec
+        python -m tests.embedding.test_glove
+        python -m tests.embedding.test_word2vec
         python -m tests.test_ner
         python -m tests.test_pos
