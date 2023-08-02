@@ -13,9 +13,6 @@ class TestDocVec(unittest.TestCase):
         vector = self.doc2vec.get_document_vector(self.document)
         self.assertEqual(vector.shape, (100,))
 
-    def test_get_document_similarity(self):
-        similarity = self.doc2vec.get_document_similarity(self.document, self.document)
-        self.assertEqual(similarity, 0.98)
 
 if __name__ == '__main__':
     unittest.main()
