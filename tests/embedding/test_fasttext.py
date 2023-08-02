@@ -4,8 +4,7 @@ from bnlp import BengaliFasttext
 
 class TestBengaliFasttext(unittest.TestCase):
     def setUp(self):
-        model_path = ""
-        self.fasttext = BengaliFasttext(model_path)
+        self.fasttext = BengaliFasttext()
 
     def test_generate_word_vector(self):
         word = "আমি"

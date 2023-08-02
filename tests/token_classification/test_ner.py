@@ -3,8 +3,7 @@ from bnlp.token_classification.ner import BengaliNER
 
 class TestBengaliNER(unittest.TestCase):
     def setUp(self):
-        model_path = "model/bn_ner.pkl"
-        self.ner = BengaliNER(model_path)
+        self.ner = BengaliNER()
 
     def test_tag(self):
         text = "সে ঢাকায় থাকে।"

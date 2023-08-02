@@ -3,8 +3,7 @@ from bnlp import BengaliWord2Vec
 
 class TestBengaliWord2Vec(unittest.TestCase):
     def setUp(self):
-        model_path = ""
-        self.word2vec = BengaliWord2Vec(model_path)
+        self.word2vec = BengaliWord2Vec()
 
     def test_get_word_vector(self):
         word = "আমি"

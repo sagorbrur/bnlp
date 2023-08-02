@@ -3,8 +3,7 @@ from bnlp.token_classification.pos import BengaliPOS
 
 class TestBengaliNER(unittest.TestCase):
     def setUp(self):
-        model_path = "model/bn_pos.pkl"
-        self.ner = BengaliPOS(model_path)
+        self.ner = BengaliPOS()
 
     def test_tag(self):
         text = "আমি ভাত খাই।"

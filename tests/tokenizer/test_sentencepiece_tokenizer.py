@@ -3,8 +3,7 @@ from bnlp import SentencepieceTokenizer
 
 class TestSentencepieceTokenizer(unittest.TestCase):
     def setUp(self):
-        model_path = "model/bn_spm.model"
-        self.bsp = SentencepieceTokenizer(model_path)
+        self.bsp = SentencepieceTokenizer()
         self.input_text = "সে বাজারে যায়।"
         self.input_text_gt_tokens = ['▁সে', '▁বাজারে', '▁যায়', '।']
 
