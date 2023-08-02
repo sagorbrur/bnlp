@@ -379,7 +379,7 @@ word = "গ্রাম"
 vector = bengali_glove.get_word_vector(word)
 print(vector.shape)
 
-similar_words = bengali_glove.get_closest_word(glove_path, word)
+similar_words = bengali_glove.get_closest_word(word)
 print(similar_words)
 ```
 
