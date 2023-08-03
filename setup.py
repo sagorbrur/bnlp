@@ -29,5 +29,6 @@ setuptools.setup(
         "tqdm",
         "ftfy",
         "emoji==1.7.0",
+        "requests",
     ],
 )
