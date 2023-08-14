@@ -1,5 +1,5 @@
-__version__ = "4.0.0dev4"
 
+__version__ = "4.0.0dev4"
 
 import os
 from bnlp.tokenizer.basic import BasicTokenizer
@@ -14,6 +14,7 @@ from bnlp.embedding.word2vec import (
     Word2VecTraining,
 )
 from bnlp.embedding.glove import BengaliGlove
+
 from bnlp.embedding.doc2vec import (
     BengaliDoc2vec, 
     BengaliDoc2vecTrainer,

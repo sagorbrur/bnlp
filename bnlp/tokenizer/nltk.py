@@ -7,6 +7,7 @@ except LookupError:
     print("punkt not found. downloading...")
     nltk.download("punkt")
 
+DUMMYTOKEN = "XTEMPTOKEN"
 
 DUMMYTOKEN = "XTEMPDOT"
 

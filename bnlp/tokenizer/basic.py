@@ -70,7 +70,6 @@ class BasicTokenizer:
         text = convert_to_unicode(text)
         # handle (.) in bangla text
         text = text.replace('.', DUMMYTOKEN)
-
         orig_tokens = whitespace_tokenize(text)
         split_tokens = []
         for token in orig_tokens:
