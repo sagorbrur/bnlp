@@ -1,5 +1,5 @@
 
-__version__ = "4.0.0dev4"
+__version__ = "4.0.0"
 
 import os
 from bnlp.tokenizer.basic import BasicTokenizer

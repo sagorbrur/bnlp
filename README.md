@@ -62,7 +62,7 @@ print(tokens)
 ```
 
 ## Documentation
-Full documentation are available [here](./docs/README.md)
+Full documentation are available [here](https://github.com/sagorbrur/bnlp/tree/master/docs)
 
 If you are using previous version of **bnlp** check the document [archive]()
 
