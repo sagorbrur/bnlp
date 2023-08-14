@@ -9,6 +9,8 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 ## Documentation
 Full documentation are available [here](./docs/README.md)
 
+If you are using previous version of **bnlp** check the document [archive]()
+
 ## Features
 - Tokenization
    - [Basic Tokenizer](./docs/README.md#basic-tokenizer)
@@ -61,3 +63,13 @@ tokens = tokenizer(raw_text)
 print(tokens)
 # output: ["আমি", "বাংলায়", "গান", "গাই", "।"]
 ```
+
+## Contributor Guide
+
+Check [CONTRIBUTING.md](https://github.com/sagorbrur/bnlp/blob/master/CONTRIBUTING.md) page for details.
+
+
+## Thanks To
+
+* [Semantics Lab](https://www.facebook.com/lab.semantics/)
+* All the developers who are contributing to enrich Bengali NLP.
