@@ -19,9 +19,9 @@ class BengaliGlove:
     def get_closest_word(self, word: str) -> List[str]:
         def find_closest_embeddings(embedding):
             return sorted(
-                self.embeddings_dict.keys(),
+                self.embedding_dict.keys(),
                 key=lambda word: spatial.distance.euclidean(
-                    self.embeddings_dict[word], embedding
+                    self.embedding_dict[word], embedding
                 ),
             )
 
