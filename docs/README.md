@@ -290,7 +290,7 @@ trainer.pretrain(trained_model_path, data_file, model_name, vector_name, epochs=
 
 ### Bengali FastText
 
-To use `fasttext` you need to install fasttext manually by `pip install fasttext==0.9.2`
+To use `fasttext` you need to install fasttext manually by `pip install fasttext==0.9.2` or install via bnlp by `pip install bnlp_toolkit[fasttext]`
 
 NB: To use `fasttext` on `windows`, install `fasttext` by following [this article](https://medium.com/@oleg.tarasov/building-fasttext-python-wrapper-from-source-under-windows-68e693a68cbb).
 
