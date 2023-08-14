@@ -4,7 +4,7 @@ import setuptools
 
 setuptools.setup(
     name="bnlp_toolkit",
-    version="3.3.2",
+    version="4.0.0dev4",
     author="Sagor Sarker",
     author_email="sagorhem3532@gmail.com",
     description="BNLP is a natural language processing toolkit for Bengali Language",
@@ -29,5 +29,9 @@ setuptools.setup(
         "tqdm",
         "ftfy",
         "emoji==1.7.0",
+        "requests",
     ],
+    extras_require={
+        "fasttext": ["fasttext==0.9.2"],
+    },
 )
