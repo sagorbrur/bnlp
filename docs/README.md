@@ -42,7 +42,6 @@ Table of contents
          * [Train NER Tag Model](#train-ner-tag-model)
    * [Bengali Corpus Class](#bengali-corpus-class)
       * [Stopwords and Punctuations](#stopwords-and-punctuations)
-      * [Remove stopwords from Text](#remove-stopwords-from-text)
    * [Bangla Text Cleaning](#text-cleaning)
    * [Contributor Guide](#contributor-guide)
 <!--te-->
