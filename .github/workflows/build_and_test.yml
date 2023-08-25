@@ -5,9 +5,9 @@ name: Building and Testing
 
 on:
   push:
-    branches: [ "master", "bnlp_4_dev" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "master", "bnlp_4_dev" ]
+    branches: [ "master" ]
 
 jobs:
   build:
