@@ -58,7 +58,6 @@ def remove_number_or_digit(text, replace_with=""):
 
 def remove_punctuations(text, replace_with=""):
     for punc in corpus.punctuations:
-        print(punc)
         text = text.replace(punc, replace_with)
     
     return text
