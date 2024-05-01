@@ -2,7 +2,7 @@ sentencepiece
 gensim
 nltk
 numpy
-scipy==1.12.0
+scipy
 sklearn-crfsuite
 tqdm
 ftfy
