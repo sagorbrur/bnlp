@@ -24,7 +24,7 @@ setuptools.setup(
         "gensim",
         "nltk",
         "numpy",
-        "scipy",
+        "scipy==1.12.0",
         "sklearn-crfsuite",
         "tqdm",
         "ftfy",
