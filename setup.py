@@ -26,7 +26,7 @@ setuptools.setup(
         "numpy",
         "scipy==1.10.1",
         "sklearn-crfsuite==0.3.6",
-        "tqdm==4.66.2",
+        "tqdm==4.66.3",
         "ftfy==6.2.0",
         "emoji==1.7.0",
         "requests",
