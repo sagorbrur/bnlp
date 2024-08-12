@@ -5,7 +5,7 @@ try:
     nltk.data.find("tokenizers/punkt")
 except LookupError:
     print("punkt not found. downloading...")
-    nltk.download("punkt")
+    nltk.download("punkt_tab")
 
 DUMMYTOKEN = "XTEMPTOKEN"
 
