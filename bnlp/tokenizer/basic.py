@@ -59,7 +59,7 @@ def _is_punctuation(char):
 
 DUMMYTOKEN = 'XTEMPDOT'
 
-class BasicTokenizer:
+class BasicTokenizerT:
     """Runs basic tokenization (punctuation splitting, lower casing, etc.)."""
 
     def __call__(self, text: str) -> List[str]:
