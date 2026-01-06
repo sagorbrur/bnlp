@@ -77,7 +77,7 @@ bnlp tokenize "আমি বাংলায় গান গাই।"
 # Output: ['আমি', 'বাংলায়', 'গান', 'গাই', '।']
 
 # Named Entity Recognition
-bnlp ner "সজীব ওয়াজেদ জয় ঢাকায় থাকেন।"
+bnlp ner "সজীব ঢাকায় থাকেন।"
 
 # Part-of-Speech Tagging
 bnlp pos "আমি ভাত খাই।"
