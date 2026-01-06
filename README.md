@@ -28,6 +28,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 - [Batch Processing](#batch-processing)
 - [Async Model Loading](#async-model-loading)
 - [Spell Checking](#spell-checking)
+- [Language Detection](#language-detection)
 
 ## Installation
 
@@ -325,6 +326,104 @@ checker = BengaliSpellChecker(max_edit_distance=1)  # Faster, less suggestions
 # Get word probability
 prob = checker.word_probability("আমি")
 print(prob)  # Higher = more common word
+```
+
+## Language Detection
+
+Fast and accurate language detection using FastText's language identification model. Supports 176 languages including Bengali.
+
+```bash
+# Install with language detection support
+pip install bnlp_toolkit[langdetect]
+```
+
+```python
+from bnlp import LanguageDetector, detect_language, is_bengali
+
+# Create detector (downloads model automatically on first use)
+detector = LanguageDetector()
+
+# Detect language
+result = detector.detect("আমি বাংলায় গান গাই")
+print(result.language)      # 'bn'
+print(result.confidence)    # ~0.99
+print(result.is_bengali)    # True
+
+# Get multiple predictions
+result = detector.detect("আমি বাংলায় গান গাই", top_k=3)
+print(result.all_predictions)
+# Output: [('bn', 0.99), ('hi', 0.005), ...]
+
+# Check if text is Bengali
+print(detector.is_bengali("আমি বাংলায় গান গাই"))  # True
+print(detector.is_bengali("Hello world"))           # False
+
+# Detect English
+result = detector.detect("Hello, this is English text")
+print(result.language)      # 'en'
+print(result.is_bengali)    # False
+```
+
+### Convenience Functions
+
+```python
+from bnlp import detect_language, is_bengali
+
+# Quick language detection
+result = detect_language("আমি বাংলায় গান গাই")
+print(result.language)  # 'bn'
+
+# Quick Bengali check
+print(is_bengali("আমি বাংলায় গান গাই"))  # True
+print(is_bengali("Hello world"))           # False
+```
+
+### Batch Detection
+
+```python
+from bnlp import LanguageDetector
+
+detector = LanguageDetector()
+
+texts = ["আমি বাংলায় গান গাই", "Hello world", "Bonjour le monde"]
+results = detector.detect_batch(texts)
+
+for text, result in zip(texts, results):
+    print(f"{text[:20]}... -> {result.language} ({result.confidence:.2f})")
+```
+
+### Mixed Language Detection
+
+Detect code-mixed text (e.g., Bengali-English):
+
+```python
+from bnlp import LanguageDetector
+
+detector = LanguageDetector()
+
+mixed_text = "আমি today বাংলায় গান গাই। This is mixed text।"
+languages = detector.detect_mixed(mixed_text)
+print(languages)
+# Output: {'bn': 0.5, 'en': 0.5}
+```
+
+### Language Detection Options
+
+```python
+from bnlp import LanguageDetector
+
+# Custom confidence threshold
+detector = LanguageDetector(threshold=0.7)
+
+# Use your own model file
+detector = LanguageDetector(model_path="/path/to/lid.176.ftz")
+
+# Disable auto-download
+detector = LanguageDetector(auto_download=False)
+
+# Get language name
+print(detector.get_language_name('bn'))  # 'Bengali'
+print(detector.get_language_name('en'))  # 'English'
 ```
 
 ## Documentation
