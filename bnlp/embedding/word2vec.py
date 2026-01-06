@@ -1,23 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""Bengali Word2Vec embeddings module."""
 
-from __future__ import print_function
-
-import warnings
-warnings.filterwarnings("ignore")
-
-import os
-import sys
-import multiprocessing
+import logging
 import numpy as np
-from gensim.models import Word2Vec
-from gensim.models.word2vec import LineSentence
-from bnlp.tokenizer.nltk import NLTKTokenizer
+from typing import List, Tuple
 
+from gensim.models import Word2Vec
+from bnlp.tokenizer.nltk import NLTKTokenizer
 from bnlp.utils.downloader import download_model
 from bnlp.utils.config import ModelTypeEnum
 
-from typing import List, Tuple
+logger = logging.getLogger(__name__)
 
 
 class BengaliWord2Vec:
@@ -106,10 +100,8 @@ class Word2VecTraining:
         else:
             sentences = MyCorpus(data_path)
 
-        print("training started.......")
-        print(
-            "please wait.....it will take time according to your data size and computation capability"
-        )
+        logger.info("Training started...")
+        logger.info("Please wait, this may take time depending on data size and computation capability")
         model = Word2Vec(
             sentences=sentences,
             vector_size=vector_size,
@@ -132,12 +124,12 @@ class Word2VecTraining:
         # getting the training loss value
         training_loss = model.get_latest_training_loss()
 
-        print("train completed successfully")
-        print(f"trianing loss: {training_loss}")
-        print("model and vector saving...")
+        logger.info("Training completed successfully")
+        logger.info(f"Training loss: {training_loss}")
+        logger.info("Saving model and vector...")
         model.save(model_name)
         model.wv.save_word2vec_format(vector_name, binary=False)
-        print(f"model and vector saved as {model_name} and {vector_name}")
+        logger.info(f"Model and vector saved as {model_name} and {vector_name}")
 
     def pretrain(
         self, model_path, new_sentences, output_model_name, output_vector_name, epochs=5
@@ -153,23 +145,19 @@ class Word2VecTraining:
         """
         if isinstance(new_sentences, str):
             new_sentences = MyCorpus(new_sentences)
-        print("model loading ....")
+        logger.info("Loading model...")
         model = Word2Vec.load(model_path)
-        print("vocab building with new sentences")
+        logger.info("Building vocab with new sentences")
         model.build_vocab(new_sentences, update=True)
-        print("pre-training started.......")
-        print(
-            "please wait.....it will take time according to your data size and computation capability"
-        )
+        logger.info("Pre-training started...")
+        logger.info("Please wait, this may take time depending on data size and computation capability")
         model.train(new_sentences, total_examples=model.corpus_count, epochs=epochs)
         # getting the training loss value
         training_loss = model.get_latest_training_loss()
 
-        print("pre-train completed successfully")
-        print(f"pre-trianing loss: {training_loss}")
-        print("model and vector saving...")
+        logger.info("Pre-training completed successfully")
+        logger.info(f"Pre-training loss: {training_loss}")
+        logger.info("Saving model and vector...")
         model.save(output_model_name)
         model.wv.save_word2vec_format(output_vector_name, binary=False)
-        print(
-            f"model and vector saved as {output_model_name} and {output_vector_name}"
-        )
+        logger.info(f"Model and vector saved as {output_model_name} and {output_vector_name}")

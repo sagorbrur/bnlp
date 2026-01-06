@@ -1,9 +1,25 @@
+"""Utility functions for BNLP."""
+
+import logging
 import pickle
+from typing import List, Dict, Tuple, Any
+
 from sklearn_crfsuite import CRF
 from nltk.tag.util import untag
 
-def features(sentence, index):
-    """sentence: [w1, w2, ...], index: the index of the word"""
+logger = logging.getLogger(__name__)
+
+
+def features(sentence: List[str], index: int) -> Dict[str, Any]:
+    """Extract features for a word in a sentence.
+
+    Args:
+        sentence: List of words [w1, w2, ...]
+        index: Index of the word to extract features for
+
+    Returns:
+        Dictionary of features for the word
+    """
     return {
         "word": sentence[index],
         "is_first": index == 0,
@@ -24,20 +40,41 @@ def features(sentence, index):
         "capitals_inside": sentence[index][1:].lower() != sentence[index][1:],
     }
 
-def transform_to_dataset(tagged_sentences):
+
+def transform_to_dataset(
+    tagged_sentences: List[List[Tuple[str, str]]]
+) -> Tuple[List[List[Dict[str, Any]]], List[List[str]]]:
+    """Transform tagged sentences to CRF dataset format.
+
+    Args:
+        tagged_sentences: List of tagged sentences, each containing (word, tag) tuples
+
+    Returns:
+        Tuple of (features_list, tags_list)
+    """
     X, y = [], []
 
     for tagged in tagged_sentences:
         try:
             X.append([features(untag(tagged), index) for index in range(len(tagged))])
             y.append([tag for _, tag in tagged])
-        except Exception as e:
-            print(e)
+        except (IndexError, ValueError) as e:
+            logger.warning(f"Error processing tagged sentence: {e}")
+            continue
 
     return X, y
 
+
 def load_pickle_model(model_path: str) -> CRF:
+    """Load a pickled CRF model from file.
+
+    Args:
+        model_path: Path to the pickle file
+
+    Returns:
+        Loaded CRF model
+    """
     with open(model_path, "rb") as pkl_model:
         model = pickle.load(pkl_model)
-        
+
     return model

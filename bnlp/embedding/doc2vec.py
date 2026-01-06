@@ -1,31 +1,52 @@
-import warnings
-warnings.filterwarnings("ignore")
+"""Bengali Doc2Vec document embeddings module."""
 
 import os
 import glob
-import gensim
 import numpy as np
 from tqdm import tqdm
 from scipy import spatial
-from typing import Callable, List
-from gensim.models.doc2vec import Doc2Vec
+from typing import Callable, List, Optional, Iterator
+
+from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 
 from bnlp.tokenizer.basic import BasicTokenizer
 from bnlp.utils.downloader import download_model
 from bnlp.utils.config import ModelTypeEnum
 
-default_tokenizer = BasicTokenizer()
+# Lazy default tokenizer - only created when needed
+_default_tokenizer: Optional[BasicTokenizer] = None
 
 
-def _read_corpus(files: List[str], tokenizer=None):
+def _get_default_tokenizer() -> BasicTokenizer:
+    """Get or create the default tokenizer (lazy initialization)."""
+    global _default_tokenizer
+    if _default_tokenizer is None:
+        _default_tokenizer = BasicTokenizer()
+    return _default_tokenizer
+
+
+def _read_corpus(
+    files: List[str],
+    tokenizer: Optional[Callable] = None
+) -> Iterator[TaggedDocument]:
+    """Read corpus files and yield TaggedDocuments.
+
+    Args:
+        files: List of file paths to read
+        tokenizer: Optional tokenizer function
+
+    Yields:
+        TaggedDocument for each file
+    """
+    default_tok = _get_default_tokenizer()
     for i, file in tqdm(enumerate(files)):
-        with open(file) as f:
+        with open(file, encoding='utf-8') as f:
             text = f.read()
             if tokenizer:
                 tokens = tokenizer(text)
             else:
-                tokens = default_tokenizer.tokenize(text)
-            yield gensim.models.doc2vec.TaggedDocument(tokens, [i])
+                tokens = default_tok.tokenize(text)
+            yield TaggedDocument(tokens, [i])
 
 
 class BengaliDoc2vec:
@@ -54,7 +75,7 @@ class BengaliDoc2vec:
         if self.tokenizer:
             tokens = self.tokenizer(document)
         else:
-            tokens = default_tokenizer.tokenize(document)
+            tokens = _get_default_tokenizer().tokenize(document)
 
         vector = self.model.infer_vector(tokens)
 
@@ -74,8 +95,9 @@ class BengaliDoc2vec:
             document_1_tokens = self.tokenizer(document_1)
             document_2_tokens = self.tokenizer(document_2)
         else:
-            document_1_tokens = default_tokenizer.tokenize(document_1)
-            document_2_tokens = default_tokenizer.tokenize(document_2)
+            default_tok = _get_default_tokenizer()
+            document_1_tokens = default_tok.tokenize(document_1)
+            document_2_tokens = default_tok.tokenize(document_2)
 
         document_1_vector = self.model.infer_vector(document_1_tokens)
         document_2_vector = self.model.infer_vector(document_2_tokens)

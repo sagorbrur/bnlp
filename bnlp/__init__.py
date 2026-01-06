@@ -28,7 +28,7 @@ from bnlp.cleantext.clean import CleanText
 
 from bnlp.corpus.corpus import BengaliCorpus
 
-# Lazy imports for optional dependencies (spell checking, language detection)
+# Lazy imports for optional dependencies (spell checking, language detection, fasttext)
 # These are loaded on-demand to avoid requiring symspellpy/fasttext at package load
 def __getattr__(name):
     """Lazy load optional modules."""
@@ -39,6 +39,13 @@ def __getattr__(name):
     elif name == "SpellingError":
         from bnlp.spellcheck import SpellingError
         return SpellingError
+    # FastText embeddings (requires fasttext)
+    elif name == "BengaliFasttext":
+        from bnlp.embedding.fasttext import BengaliFasttext
+        return BengaliFasttext
+    elif name == "FasttextTrainer":
+        from bnlp.embedding.fasttext import FasttextTrainer
+        return FasttextTrainer
     # Language detection (requires fasttext)
     elif name == "LanguageDetector":
         from bnlp.langdetect import LanguageDetector

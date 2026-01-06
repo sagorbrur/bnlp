@@ -1,16 +1,33 @@
+"""Bengali FastText embeddings module."""
+
+import logging
 import multiprocessing
 import numpy as np
 
 from bnlp.utils.downloader import download_model
 from bnlp.utils.config import ModelTypeEnum
 
-try:
-    import fasttext
-except ImportError:
-    print("fasttext not installed. Install it by 'pip install fasttext'")
+logger = logging.getLogger(__name__)
+
+# Lazy import for fasttext
+fasttext = None
+
+
+def _ensure_fasttext():
+    """Ensure fasttext is available, raise ImportError if not."""
+    global fasttext
+    if fasttext is None:
+        try:
+            import fasttext as _fasttext
+            fasttext = _fasttext
+        except ImportError:
+            raise ImportError(
+                "fasttext is not installed. Install it with: pip install fasttext"
+            )
 
 class BengaliFasttext:
     def __init__(self, model_path: str = ""):
+        _ensure_fasttext()
         if not model_path:
             model_path = download_model(ModelTypeEnum.FASTTEXT)
         self.model = fasttext.load_model(model_path)
@@ -28,25 +45,22 @@ class BengaliFasttext:
 
         return word_vector
 
-    def bin2vec(self, vector_name: str):
-        """Generate vector text file from fasttext binary model
+    def bin2vec(self, vector_name: str) -> None:
+        """Generate vector text file from fasttext binary model.
 
         Args:
-            vector_name (str): name of the output vector with extension
+            vector_name: Name of the output vector file with extension
         """
-        output_vector = open(vector_name, "w")
-
         words = self.model.get_words()
         vocab_len = str(len(words))
         dimension = str(self.model.get_dimension())
-        output_vector.write(vocab_len + " " + dimension + "\n")
-        for w in words:
-            v = self.model.get_word_vector(w)
-            vstr = ""
-            for vi in v:
-                vstr += " " + str(vi)
-            output_vector.write(w + vstr + "\n")
-        output_vector.close()
+
+        with open(vector_name, "w", encoding="utf-8") as output_vector:
+            output_vector.write(f"{vocab_len} {dimension}\n")
+            for w in words:
+                v = self.model.get_word_vector(w)
+                vstr = " ".join(str(vi) for vi in v)
+                output_vector.write(f"{w} {vstr}\n")
 
 class FasttextTrainer:
     def train(
@@ -84,7 +98,8 @@ class FasttextTrainer:
             bucket (int, optional): [description]. Defaults to 2000000.
             thread ([type], optional): [description]. Defaults to multiprocessing.cpu_count()-1.
         """
-        print("training started.....")
+        _ensure_fasttext()
+        logger.info("Training started...")
         model = fasttext.train_unsupervised(
             data,
             model="skipgram",
@@ -101,5 +116,5 @@ class FasttextTrainer:
             bucket=bucket,
             thread=thread,
         )
-        print(f"training done! saving as {model_name}")
+        logger.info(f"Training done! Saving as {model_name}")
         model.save_model(model_name)
