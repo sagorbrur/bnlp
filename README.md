@@ -27,6 +27,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 - [Pipeline API](#pipeline-api)
 - [Batch Processing](#batch-processing)
 - [Async Model Loading](#async-model-loading)
+- [Spell Checking](#spell-checking)
 
 ## Installation
 
@@ -261,6 +262,69 @@ loader = load_model_async(BengaliWord2Vec)
 
 # Get model when ready
 model = loader.get_model()
+```
+
+## Spell Checking
+
+Fast and accurate Bengali spell checking using the SymSpell algorithm.
+
+```python
+from bnlp import BengaliSpellChecker
+
+# Create spell checker
+checker = BengaliSpellChecker()
+
+# Check if a word is spelled correctly
+print(checker.is_correct("আমি"))  # True
+print(checker.is_correct("আমর"))  # False (misspelled)
+
+# Get spelling suggestions
+suggestions = checker.suggestions("আমর")
+print(suggestions)
+# Output: [('আমি', 1), ('আমার', 2), ...]
+
+# Check text for errors
+text = "আমর বাংলায় গান গাই।"
+errors = checker.check(text)
+for error in errors:
+    print(f"{error.word} -> {error.best_correction}")
+# Output: আমর -> আমি
+
+# Automatically correct text
+corrected = checker.correct("আমর বাংলায় গান গাই।")
+print(corrected)
+# Output: আমি বাংলায় গান গাই।
+```
+
+### Custom Dictionary
+
+```python
+from bnlp import BengaliSpellChecker
+
+# Add custom words
+checker = BengaliSpellChecker()
+checker.add_word("কাস্টমশব্দ", frequency=1000)
+checker.add_words(["নতুনশব্দ", "আরেকটি"], default_frequency=500)
+
+# Or pass custom words during initialization
+custom_words = {"বিএনএলপি": 1000, "এনএলপি": 900}
+checker = BengaliSpellChecker(custom_words=custom_words)
+
+# Load dictionary from file
+checker.load_dictionary("my_dictionary.txt")
+```
+
+### Spell Checker Options
+
+```python
+from bnlp import BengaliSpellChecker
+
+# Customize edit distance (default: 2)
+checker = BengaliSpellChecker(max_edit_distance=1)  # Faster, less suggestions
+
+# Get word probability
+prob = checker.word_probability("আমি")
+print(prob)  # Higher = more common word
 ```
 
 ## Documentation
