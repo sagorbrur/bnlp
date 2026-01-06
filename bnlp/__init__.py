@@ -1,5 +1,5 @@
 
-__version__ = "4.3.0"
+__version__ = "4.4.0"
 
 import os
 from bnlp.tokenizer.basic import BasicTokenizer
@@ -28,8 +28,31 @@ from bnlp.cleantext.clean import CleanText
 
 from bnlp.corpus.corpus import BengaliCorpus
 
-# Spell checking
-from bnlp.spellcheck import BengaliSpellChecker, SpellingError
+# Lazy imports for optional dependencies (spell checking, language detection)
+# These are loaded on-demand to avoid requiring symspellpy/fasttext at package load
+def __getattr__(name):
+    """Lazy load optional modules."""
+    # Spell checking (requires symspellpy)
+    if name == "BengaliSpellChecker":
+        from bnlp.spellcheck import BengaliSpellChecker
+        return BengaliSpellChecker
+    elif name == "SpellingError":
+        from bnlp.spellcheck import SpellingError
+        return SpellingError
+    # Language detection (requires fasttext)
+    elif name == "LanguageDetector":
+        from bnlp.langdetect import LanguageDetector
+        return LanguageDetector
+    elif name == "DetectionResult":
+        from bnlp.langdetect import DetectionResult
+        return DetectionResult
+    elif name == "detect_language":
+        from bnlp.langdetect import detect_language
+        return detect_language
+    elif name == "is_bengali":
+        from bnlp.langdetect import is_bengali
+        return is_bengali
+    raise AttributeError(f"module 'bnlp' has no attribute '{name}'")
 
 # Core module - Protocols, Pipeline, Exceptions, Batch Processing, Async Loading
 from bnlp.core import (

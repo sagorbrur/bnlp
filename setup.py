@@ -4,7 +4,7 @@ import setuptools
 
 setuptools.setup(
     name="bnlp_toolkit",
-    version="4.3.0",
+    version="4.4.0",
     author="Sagor Sarker",
     author_email="sagorhem3532@gmail.com",
     description="BNLP is a natural language processing toolkit for Bengali Language",
@@ -33,7 +33,10 @@ setuptools.setup(
         "symspellpy>=6.7.0",
     ],
     extras_require={
-        "fasttext": ["fasttext==0.9.2"],
+        "fasttext": ["fasttext>=0.9.2"],
+        "spellcheck": ["symspellpy>=6.7.0"],
+        "langdetect": ["fasttext>=0.9.2"],
+        "all": ["symspellpy>=6.7.0", "fasttext>=0.9.2"],
     },
     entry_points={
         "console_scripts": [
