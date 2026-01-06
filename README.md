@@ -165,7 +165,7 @@ tokens = tokenizer_pipeline("আমি বাংলায় গান গাই
 
 # NER pipeline
 ner_pipeline = create_ner_pipeline(clean=True)
-entities = ner_pipeline("সজীব ওয়াজেদ জয় ঢাকায় থাকেন।")
+entities = ner_pipeline("সজীব ঢাকায় থাকেন।")
 
 # POS pipeline
 pos_pipeline = create_pos_pipeline(clean=True)
@@ -189,7 +189,7 @@ print(results)
 
 # Batch NER tagging
 ner = BengaliNER()
-texts = ["সজীব ওয়াজেদ জয় ঢাকায় থাকেন।", "রবীন্দ্রনাথ ঠাকুর কলকাতায় জন্মগ্রহণ করেন।"]
+texts = ["সজীব ঢাকায় থাকেন।", "রবীন্দ্রনাথ ঠাকুর কলকাতায় জন্মগ্রহণ করেন।"]
 results = tag_batch(ner.tag, texts)
 
 # Batch text cleaning
