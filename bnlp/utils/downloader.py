@@ -1,13 +1,17 @@
-"""Module providing Function for downloading models."""
+"""Module providing functions for downloading models."""
 
+import logging
 import os
 import shutil
 from zipfile import ZipFile
 from urllib.parse import urlparse
+
 import requests
 from tqdm.auto import tqdm
 
 from bnlp.utils.config import ModelInfo
+
+logger = logging.getLogger(__name__)
 
 def _create_dirs(model_name: str) -> str:
     """Create directories for downloading models
@@ -42,19 +46,19 @@ def _unzip_file(zip_file_path: str, unzip_dir: str = "") -> None:
                 file_name = os.path.basename(member_name)
                 if not file_name:
                     continue
-                target_path = os.path.join(unzip_dir, file_name)
-                target_path = open(target_path, "wb")
-                source_file = zip_file.open(member_name)
-                with source_file, target_path:
-                    shutil.copyfileobj(source_file, target_path)
+                target_file_path = os.path.join(unzip_dir, file_name)
+                with zip_file.open(member_name) as source_file:
+                    with open(target_file_path, "wb") as target_file:
+                        shutil.copyfileobj(source_file, target_file)
         os.remove(zip_file_path)
-    except Exception as zip_error:
+    except (OSError, IOError) as zip_error:
+        logger.error(f"Error extracting {zip_file_path}: {zip_error}")
         zip_file_str = os.path.basename(zip_file_path)
         zip_file_str = os.path.splitext(zip_file_str)[0]
         for file_name in os.listdir(unzip_dir):
             if zip_file_str in file_name:
                 os.remove(os.path.join(unzip_dir, file_name))
-        raise zip_error
+        raise
 
 def _download_file(file_url: str, file_path: str) -> str:
     """Function to download file
@@ -75,15 +79,16 @@ def _download_file(file_url: str, file_path: str) -> str:
     try:
         with requests.Session() as req_sess:
             req_res = req_sess.get(file_url, stream=True)
-            total_length = int(req_res.headers.get("Content-Length"))
+            total_length = int(req_res.headers.get("Content-Length", 0))
             with tqdm.wrapattr(req_res.raw, "read", total=total_length, desc=op_desc) as raw:
-                with open(file_path , "wb") as file:
-                    shutil.copyfileobj(raw,file)
+                with open(file_path, "wb") as file:
+                    shutil.copyfileobj(raw, file)
         return file_path
-    except Exception as network_error:
+    except (requests.RequestException, OSError, IOError) as network_error:
+        logger.error(f"Error downloading {file_url}: {network_error}")
         if os.path.exists(file_path):
             os.remove(file_path)
-        raise network_error
+        raise
 
 def _download_zip_model(model_url: str, model_path: str) -> str:
     """Download and extract model archive and return extracted path.
@@ -120,7 +125,7 @@ def download_model(name: str) -> str:
     elif model_type == "zip":
         model_path = _download_zip_model(model_url, model_path)
     else:
-        print(f"model type {model_type} not yet implemented")
+        logger.warning(f"Model type '{model_type}' not yet implemented")
         model_path = ""
     return model_path
 

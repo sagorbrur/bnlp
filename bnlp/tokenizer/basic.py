@@ -4,28 +4,25 @@ Basic tokenization tokenize sentence using white spaces, punctuation mark
 Code shamelessly copied from BERT tokenization
 To check Original Code: https://github.com/google-research/bert/blob/master/tokenization.py
 """
-import six
 import unicodedata
-from typing import List
+from typing import List, Union
 
-def convert_to_unicode(text):
-    """Converts `text` to Unicode (if it's not already), assuming utf-8 input."""
-    if six.PY3:
-        if isinstance(text, str):
-            return text
-        elif isinstance(text, bytes):
-            return text.decode("utf-8", "ignore")
-        else:
-            raise ValueError("Unsupported string type: %s" % (type(text)))
-    elif six.PY2:
-        if isinstance(text, str):
-            return text.decode("utf-8", "ignore")
-        elif isinstance(text, unicode):
-            return text
-        else:
-            raise ValueError("Unsupported string type: %s" % (type(text)))
+
+def convert_to_unicode(text: Union[str, bytes]) -> str:
+    """Converts `text` to Unicode (if it's not already), assuming utf-8 input.
+
+    Args:
+        text: Input text as string or bytes
+
+    Returns:
+        Unicode string
+    """
+    if isinstance(text, str):
+        return text
+    elif isinstance(text, bytes):
+        return text.decode("utf-8", "ignore")
     else:
-        raise ValueError("Not running on Python2 or Python 3?")
+        raise ValueError(f"Unsupported string type: {type(text)}")
 
 
 def whitespace_tokenize(text: str) -> List[str]:
@@ -37,8 +34,15 @@ def whitespace_tokenize(text: str) -> List[str]:
     return tokens
 
 
-def _is_punctuation(char):
-    """Checks whether `chars` is a punctuation character."""
+def _is_punctuation(char: str) -> bool:
+    """Checks whether `char` is a punctuation character.
+
+    Args:
+        char: Single character to check
+
+    Returns:
+        True if the character is punctuation
+    """
     cp = ord(char)
     # We treat all non-letter/number ASCII as punctuation.
     # Characters such as "^", "$", and "`" are not in the Unicode
@@ -80,8 +84,15 @@ class BasicTokenizer:
         output_tokens = [token.replace(DUMMYTOKEN, '.') for token in output_tokens]
         return output_tokens
         
-    def _run_split_on_punc(self, text):
-        """Splits punctuation on a piece of text."""
+    def _run_split_on_punc(self, text: str) -> List[str]:
+        """Splits punctuation on a piece of text.
+
+        Args:
+            text: Text to split on punctuation
+
+        Returns:
+            List of tokens split on punctuation
+        """
         chars = list(text)
         i = 0
         start_new_word = True

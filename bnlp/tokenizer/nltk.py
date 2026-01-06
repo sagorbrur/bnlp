@@ -1,14 +1,16 @@
+import logging
 import nltk
 from typing import List
+
+logger = logging.getLogger(__name__)
 
 try:
     nltk.data.find("tokenizers/punkt")
 except LookupError:
-    print("punkt not found. downloading...")
+    logger.info("punkt not found. downloading...")
     nltk.download("punkt_tab")
 
-DUMMYTOKEN = "XTEMPTOKEN"
-
+# Temporary token to preserve dots during tokenization
 DUMMYTOKEN = "XTEMPDOT"
 
 class NLTKTokenizer:
