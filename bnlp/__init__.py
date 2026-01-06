@@ -1,5 +1,5 @@
 
-__version__ = "4.2.0"
+__version__ = "4.3.0"
 
 import os
 from bnlp.tokenizer.basic import BasicTokenizer
@@ -27,6 +27,9 @@ from bnlp.token_classification.token_classification_trainer import CRFTaggerTrai
 from bnlp.cleantext.clean import CleanText
 
 from bnlp.corpus.corpus import BengaliCorpus
+
+# Spell checking
+from bnlp.spellcheck import BengaliSpellChecker, SpellingError
 
 # Core module - Protocols, Pipeline, Exceptions, Batch Processing, Async Loading
 from bnlp.core import (
