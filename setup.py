@@ -34,4 +34,9 @@ setuptools.setup(
     extras_require={
         "fasttext": ["fasttext==0.9.2"],
     },
+    entry_points={
+        "console_scripts": [
+            "bnlp=bnlp.cli:main",
+        ],
+    },
 )
