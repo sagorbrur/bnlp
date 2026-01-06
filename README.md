@@ -23,6 +23,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
 - [Text Cleaning](./docs/README.md#text-cleaning)
 - [Corpus](./docs/README.md#bengali-corpus-class)
    - Letters, vowels, punctuations, stopwords
+- [Command Line Interface (CLI)](#command-line-interface)
 
 ## Installation
 
@@ -57,6 +58,74 @@ raw_text = "আমি বাংলায় গান গাই।"
 tokens = tokenizer(raw_text)
 print(tokens)
 # output: ["আমি", "বাংলায়", "গান", "গাই", "।"]
+```
+
+## Command Line Interface
+
+BNLP provides a command-line interface for quick text processing without writing Python code.
+
+### Basic Usage
+
+```bash
+# Tokenize text
+bnlp tokenize "আমি বাংলায় গান গাই।"
+# Output: ['আমি', 'বাংলায়', 'গান', 'গাই', '।']
+
+# Named Entity Recognition
+bnlp ner "সজীব ওয়াজেদ জয় ঢাকায় থাকেন।"
+
+# Part-of-Speech Tagging
+bnlp pos "আমি ভাত খাই।"
+
+# Get word embeddings (similar words)
+bnlp embedding "বাংলা" --similar
+
+# Clean text
+bnlp clean "hello@example.com আমি বাংলায়" --remove-email
+
+# Download models
+bnlp download all          # Download all models
+bnlp download word2vec     # Download specific model
+
+# List available models
+bnlp list-models
+
+# Access corpus data
+bnlp corpus stopwords
+bnlp corpus letters
+```
+
+### CLI Commands
+
+| Command | Description |
+|---------|-------------|
+| `tokenize` | Tokenize Bengali text (supports: basic, nltk, sentencepiece) |
+| `ner` | Named Entity Recognition |
+| `pos` | Part-of-Speech tagging |
+| `embedding` | Word embeddings (supports: word2vec, fasttext, glove) |
+| `clean` | Text cleaning and normalization |
+| `download` | Download pre-trained models |
+| `list-models` | List all available models |
+| `corpus` | Access Bengali corpus data (stopwords, letters, digits, etc.) |
+
+### CLI Options
+
+```bash
+# Get help
+bnlp --help
+bnlp tokenize --help
+
+# Output as JSON
+bnlp tokenize "আমি বাংলায় গান গাই।" --json
+
+# Use different tokenizer
+bnlp tokenize "আমি বাংলায় গান গাই।" --type nltk
+
+# Sentence tokenization
+bnlp tokenize "আমি বাংলায় গান গাই। তুমি কি গাও?" --type nltk --sentence
+
+# Get similar words with custom count
+bnlp embedding "বাংলা" --similar --topn 5
 ```
 
 ## Documentation
