@@ -20,7 +20,7 @@ setuptools.setup(
     ],
     python_requires=">=3.6",
     install_requires=[
-        "sentencepiece==0.2.0",
+        "sentencepiece==0.2.1",
         "gensim==4.3.2",
         "nltk",
         "numpy",
