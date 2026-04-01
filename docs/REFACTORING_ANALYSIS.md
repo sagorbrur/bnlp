@@ -443,25 +443,26 @@ $ bnlp download all
 
 | Dependency | Pinned | Latest | Risk |
 |------------|--------|--------|------|
-| `scipy==1.10.1` | Yes | 1.11+ | Security patches |
-| `gensim==4.3.2` | Yes | 4.3.3+ | Bug fixes |
-| `emoji==1.7.0` | Yes | 2.x | Breaking changes (API changed) |
-| `sklearn-crfsuite==0.3.6` | Yes | 0.5+ | Compatibility |
+| `scipy>=1.11.0` | No | 1.13+ | Updated for Python 3.12+ |
+| `gensim>=4.3.3` | No | 4.4+ | Updated for scipy compatibility |
+| `emoji>=2.0.0` | No | 2.15+ | Updated, code migrated to new API |
+| `sklearn-crfsuite>=0.5.0` | No | 0.5+ | Updated for Python 3.12+ |
 
 ### 6.2 Recommended Approach
 
 ```python
 install_requires=[
-    "sentencepiece>=0.2.0,<0.3.0",
-    "gensim>=4.3.0,<5.0.0",
-    "nltk>=3.8",
-    "numpy>=1.21",
-    "scipy>=1.10.0,<2.0.0",
-    "sklearn-crfsuite>=0.3.6,<1.0.0",
-    "tqdm>=4.60.0",
-    "ftfy>=6.0.0",
-    "emoji>=1.7.0,<2.0.0",  # Note: emoji 2.x has breaking changes
-    "requests>=2.25.0",
+    "sentencepiece>=0.2.0",
+    "gensim>=4.3.3",
+    "nltk",
+    "numpy",
+    "scipy>=1.11.0",
+    "sklearn-crfsuite>=0.5.0",
+    "tqdm>=4.66.3",
+    "ftfy>=6.2.0",
+    "emoji>=2.0.0",
+    "requests",
+    "symspellpy>=6.7.0",
 ],
 ```
 

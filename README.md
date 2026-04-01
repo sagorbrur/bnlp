@@ -42,7 +42,7 @@ BNLP is a natural language processing toolkit for Bengali Language. This tool wi
   ```
   pip install -U bnlp_toolkit
   ```
-  - Python: 3.8, 3.9, 3.10, 3.11
+  - Python: 3.8, 3.9, 3.10, 3.11, 3.12, 3.13
   - OS: Linux, Windows, Mac
 
 ### Build from source

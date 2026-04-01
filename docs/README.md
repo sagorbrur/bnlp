@@ -59,7 +59,7 @@ Table of contents
   ```
   pip install -U bnlp_toolkit
   ```
-  - Python: 3.6, 3.7, 3.8, 3.9, 3.10
+  - Python: 3.8, 3.9, 3.10, 3.11, 3.12, 3.13
   - OS: Linux, Windows, Mac
 
 
