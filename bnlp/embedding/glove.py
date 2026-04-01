@@ -1,4 +1,3 @@
-import scipy
 import numpy as np
 from typing import List
 from scipy import spatial

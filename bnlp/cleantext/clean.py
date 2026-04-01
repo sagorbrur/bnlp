@@ -8,7 +8,7 @@ from bnlp.corpus.corpus import BengaliCorpus as corpus
 
 from ftfy import fix_text
 from unicodedata import category, normalize
-from emoji import UNICODE_EMOJI, demojize, emojize
+import emoji
 
 def fix_bad_unicode(text, normalization="NFC"):
     return fix_text(text, normalization=normalization)
@@ -51,7 +51,7 @@ def remove_substrings(text, to_replace, replace_with=""):
     return result
 
 def remove_emoji(text):
-    return remove_substrings(text, UNICODE_EMOJI["en"])
+    return emoji.replace_emoji(text, replace="")
 
 def remove_number_or_digit(text, replace_with=""):
     return re.sub(constants.BANGLA_DIGIT_REGEX, replace_with, text)
